@@ -1,0 +1,25 @@
+.containerDashboard{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.tableContainer{
+    width: 100%;
+    margin:10px;
+
+
+
+  th{
+    background-color: red;
+  }
+   th,td{
+    border: 2px solid;
+        text-align: left;
+    }
+  
+    tr:nth-child(even) {background-color: #f2f2f2;}
+
+    
+}
+
