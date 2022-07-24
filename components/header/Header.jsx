@@ -3,7 +3,6 @@ import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 
 import styles from "./Header.module.scss";
-import { useEffect } from "react";
 
 const Header = () => {
   const { status, data: session } = useSession();

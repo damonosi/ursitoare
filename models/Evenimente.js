@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const formularSchema = new mongoose.Schema(
+export const evenimenteSchema = new mongoose.Schema(
   {
     numeCopil: { type: String, required: true },
     dataNastereCopil: { type: String, required: true },
@@ -15,7 +15,5 @@ const formularSchema = new mongoose.Schema(
     timestamps: true,
   },
 );
-
-const Formular =
-  mongoose.models.Formular || mongoose.model("Formular", formularSchema);
-export default Formular;
+export const Evenimente =
+  mongoose.models.Evenimente || mongoose.model("Evenimente", evenimenteSchema);

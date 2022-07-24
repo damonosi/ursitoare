@@ -1,5 +1,5 @@
 import bcryptjs from "bcryptjs";
-import Formular from "../../models/Formular";
+import Evenimente from "../../models/evenimente";
 import db from "../../utils/db";
 
 const handler = async (req, res) => {
@@ -19,7 +19,7 @@ const handler = async (req, res) => {
 
   await db.connect();
   console.log("db connected");
-  const newForm = new Formular({
+  const newForm = new Evenimente({
     numeCopil,
     dataNastereCopil,
     numeMama,

@@ -20,7 +20,7 @@ function reducer(state, action) {
   }
 }
 
-export default function DashboardPage() {
+export default function DashboardUrsitoarePage() {
   const { data: session } = useSession();
   const [{ loading, error, rezervari }, dispatch] = useReducer(reducer, {
     loading: true,
@@ -29,14 +29,7 @@ export default function DashboardPage() {
   });
 
   const router = useRouter();
-  useEffect(() => {
-    if (session?.user.isUrsitoare) {
-      console.log(session.user.isUrsitoare);
-      return;
-    } else {
-      router.push("/");
-    }
-  }, [router, session?.user.isUrsitoare]);
+
   useEffect(() => {
     const fetchProgramari = async () => {
       try {
@@ -80,8 +73,9 @@ export default function DashboardPage() {
             <th>
               <h3>Ora Preferata de client</h3>
             </th>
+
             <th>
-              <h3>OPTEAZA</h3>
+              <h3>Vrei sa mergi la eveniment?</h3>
             </th>
           </tr>
         </thead>
@@ -96,13 +90,29 @@ export default function DashboardPage() {
               <td>{rezervare.numeNasi}</td>
               <td>{rezervare.dataEveniment}</td>
               <td>{rezervare.oraEveniment}</td>
-              <td>
-                <input type="checkbox" />
+
+              <td className={styles.butonTabel}>
+                <button
+                  onClick={async (e) => {
+                    axios.post(`/api/evenimente/${rezervare._id}/opteaza`);
+                    e.currentTarget.disabled = true;
+                    toast.success("Ai optat pentru eveniment");
+                  }}
+                >
+                  Opteaza
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <button
+        onClick={() => {
+          router.push("/dashboard/ursitoare/evenimentele-mele");
+        }}
+      >
+        Vezi evenimentele tale
+      </button>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import Layout from "../components/Layout";
+import React from "react";
 
 import { useRouter } from "next/router";
 import { SessionProvider, useSession } from "next-auth/react";
@@ -9,8 +10,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
       <Layout>
-        {Component.auth ? (
-          <Auth>
+        {Component.Admin ? (
+          <Admin>
             <AnimatePresence
               exitBeforeEnter
               initial={false}
@@ -18,7 +19,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
             >
               <Component {...pageProps} />
             </AnimatePresence>
-          </Auth>
+          </Admin>
         ) : (
           <Component {...pageProps} />
         )}
@@ -26,20 +27,22 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     </SessionProvider>
   );
 }
-function Auth({ children }) {
+function Admin({ children }) {
   const router = useRouter();
-
-  const { status } = useSession({
-    required: true,
-    onUnauthenticated() {
-      router.push("/unauthorized?message=login required");
-      console.log("Nu Esti logat");
-    },
-  });
+  const { data: session, status } = useSession();
+  React.useEffect(() => {
+    if (status === "loading") return;
+    if (!session?.user.isAdmin) {
+      router.push("/");
+      console.log("Nu esti Admin !");
+    }
+  }, [router, session?.user.isAdmin, status]);
+  if (session?.user.isAdmin) {
+    return children;
+  }
   if (status === "loading") {
     return <div>Loading...</div>;
   }
-  return children;
 }
 
 export default MyApp;
