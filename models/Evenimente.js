@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const evenimenteSchema = new mongoose.Schema(
+export const evenimenteSchema = new mongoose.Schema(
   {
     numeCopil: { type: String, required: true },
     dataNastereCopil: { type: String, required: true },

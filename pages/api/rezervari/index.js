@@ -1,4 +1,4 @@
-import Evenimente from "../../../models/Evenimente";
+import { Evenimente } from "../../../models/Evenimente";
 import db from "../../../utils/db";
 
 const handler = async (req, res) => {

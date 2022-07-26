@@ -84,7 +84,7 @@ export default function DashboardUrsitoarePage() {
             </div>
             <button
               onClick={async (e) => {
-                axios.post(`/api/evenimente/${rezervare._id}/opteaza`);
+                axios.post(`/api/evenimente/${eveniment._id}/opteaza`);
                 e.currentTarget.disabled = true;
                 toast.success("Ai optat pentru eveniment");
               }}
