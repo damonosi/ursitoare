@@ -19,7 +19,6 @@ const handler = async (req, res) => {
 
   await db.connect();
   console.log("db connected");
-  console.log(Evenimente);
   const newForm = new Evenimente({
     numeCopil,
     dataNastereCopil,

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Eveniment from "./Evenimente";
+import Evenimente from "./Evenimente";
 
 const userSchema = new mongoose.Schema(
   {
@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema(
     isAdmin: { type: Boolean, required: true, default: false },
     isUrsitoare: { type: Boolean, default: false },
     numarEvenimente: { type: Number, default: "0" },
-    evenimente: [Eveniment],
+    evenimente: { type: [Evenimente] },
   },
   {
     timestamps: true,
