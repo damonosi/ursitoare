@@ -36,7 +36,6 @@ const handler = async (req, res) => {
     message: "Cerere rezervare facuta",
     numeCopil: formular.numeCopil,
     dataNastereCopil: formular.dataNastereCopil,
-
     numeMama: formular.numeMama,
     numeTata: formular.numeTata,
     numeFrate: formular.frati.nume,
