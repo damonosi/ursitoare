@@ -1,5 +1,5 @@
 import bcryptjs from "bcryptjs";
-import { Evenimente } from "../../models/evenimente";
+import Evenimente from "../../models/evenimente";
 import db from "../../utils/db";
 
 const handler = async (req, res) => {

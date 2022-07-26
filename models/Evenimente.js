@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export const evenimenteSchema = new mongoose.Schema(
+const evenimenteSchema = new mongoose.Schema(
   {
     numeCopil: { type: String, required: true },
     dataNastereCopil: { type: String, required: true },
@@ -21,5 +21,5 @@ export const evenimenteSchema = new mongoose.Schema(
     timestamps: true,
   },
 );
-export const Evenimente =
+export default Evenimente =
   mongoose.models.Evenimente || mongoose.model("Evenimente", evenimenteSchema);
