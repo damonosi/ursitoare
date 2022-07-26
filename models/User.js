@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Evenimente from "./Evenimente";
+import { Evenimente } from "./Evenimente";
 
 const userSchema = new mongoose.Schema(
   {
