@@ -6,7 +6,7 @@ const handler = async (req, res) => {
     return res.status(401).send("Error: signin required");
   }
   const { user } = session;
-  let evenimenteleMele = user.evenimente;
+  let evenimenteleMele = user.rezervari;
   res.send(evenimenteleMele);
 };
 

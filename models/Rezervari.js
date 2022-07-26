@@ -21,5 +21,5 @@ export const evenimenteSchema = new mongoose.Schema(
     timestamps: true,
   },
 );
-export const Evenimente =
-  mongoose.models.Evenimente || mongoose.model("Evenimente", evenimenteSchema);
+export const Rezervari =
+  mongoose.models.Rezervari || mongoose.model("Rezervari", evenimenteSchema);

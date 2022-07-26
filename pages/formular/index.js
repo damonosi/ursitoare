@@ -16,22 +16,22 @@ export default function FormularPage() {
 
   const submitHandler = async ({
     numecopil,
-    dataNastereCopil,
+    datanastere,
     mama,
-    numetata,
+    tata,
     frati: { nume, varsta },
-    numeNasi,
+    nasi,
     dataeveniment,
     oraeveniment,
   }) => {
     try {
       await axios.post("/api/form", {
         numecopil,
-        dataNastereCopil,
+        datanastere,
         mama,
-        numetata,
+        tata,
         frati: { nume, varsta },
-        numeNasi,
+        nasi,
         dataeveniment,
         oraeveniment,
       });
@@ -97,14 +97,14 @@ export default function FormularPage() {
           </div>
 
           <div className={styles.randFormular}>
-            <label htmlFor="numetata">Numele tatalui : </label>
+            <label htmlFor="tata">Numele tatalui : </label>
             <input
               type="text"
-              {...register("numetata", {
+              {...register("tata", {
                 required: "Va rugam sa introduceti numele tatalui",
               })}
               className=""
-              id="numetata"
+              id="tata"
               autoFocus
             ></input>
           </div>
@@ -134,14 +134,14 @@ export default function FormularPage() {
           </div>
 
           <div className={styles.randFormular}>
-            <label htmlFor="numeNasi">Numele nasilor : </label>
+            <label htmlFor="nasi">Numele nasilor : </label>
             <input
               type="text"
-              {...register("numeNasi", {
+              {...register("nasi", {
                 required: "Va rugam sa introduceti numele tatalui",
               })}
               className=""
-              id="numeNasi"
+              id="nasi"
               autoFocus
             ></input>
           </div>

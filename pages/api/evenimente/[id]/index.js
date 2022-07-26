@@ -1,4 +1,4 @@
-import { Evenimente } from "../../../../models/Evenimente";
+import { Rezervari } from "../../../../models/Rezervari";
 import db from "../../../../utils/db";
 import { getSession } from "next-auth/react";
 
@@ -8,7 +8,7 @@ const handler = async (req, res) => {
     return res.status(401).send("signin required");
   }
   await db.connect();
-  const eveniment = await Evenimente.findById(req.query.id);
+  const eveniment = await Rezervari.findById(req.query.id);
   await db.disconnect();
   res.send(eveniment);
 };

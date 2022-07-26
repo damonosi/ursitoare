@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { evenimenteSchema } from "./Evenimente";
+import { evenimenteSchema } from "./Rezervari";
 
 const userSchema = new mongoose.Schema(
   {
@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema(
     isadmin: { type: Boolean, required: true, default: false },
     isursitoare: { type: Boolean, default: false },
     numarevenimente: { type: Number, default: "0" },
-    evenimente: { type: [evenimenteSchema] },
+    rezervari: { type: [evenimenteSchema] },
   },
   {
     timestamps: true,

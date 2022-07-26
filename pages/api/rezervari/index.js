@@ -1,9 +1,9 @@
-import { Evenimente } from "../../../models/Evenimente";
+import { Rezervari } from "../../../models/Rezervari";
 import db from "../../../utils/db";
 
 const handler = async (req, res) => {
   await db.connect();
-  const rezervare = await Evenimente.find();
+  const rezervare = await Rezervari.find();
 
   await db.disconnect();
   res.send(rezervare);

@@ -1,5 +1,5 @@
 import bcryptjs from "bcryptjs";
-import { Evenimente } from "../../models/evenimente";
+import { Rezervari } from "../../models/Rezervari";
 import db from "../../utils/db";
 
 const handler = async (req, res) => {
@@ -10,22 +10,22 @@ const handler = async (req, res) => {
     numecopil,
     datanastere,
     mama,
-    numetata,
+    tata,
     frati: { nume, varsta },
-    numeNasi,
+    nasi,
     dataeveniment,
     oraeveniment,
   } = req.body;
 
   await db.connect();
   console.log("db connected");
-  const newForm = new Evenimente({
+  const newForm = new Rezervari({
     numecopil,
     datanastere,
     mama,
-    numetata,
+    tata,
     frati: { nume, varsta },
-    numeNasi,
+    nasi,
     dataeveniment,
     oraeveniment,
   });
@@ -37,10 +37,10 @@ const handler = async (req, res) => {
     numecopil: formular.numecopil,
     datanastere: formular.datanastere,
     mama: formular.mama,
-    numetata: formular.numetata,
+    tata: formular.tata,
     numeFrate: formular.frati.nume,
     varstaFrate: formular.frati.varsta,
-    numeNasi: formular.numeNasi,
+    nasi: formular.nasi,
     dataeveniment: formular.dataeveniment,
     oraeveniment: formular.oraeveniment,
   });

@@ -1,4 +1,4 @@
-import { Evenimente } from "../../../../models/Evenimente";
+import { Rezervari } from "../../../../models/Rezervari";
 import User from "../../../../models/User";
 import db from "../../../../utils/db";
 import { getSession } from "next-auth/react";
@@ -11,7 +11,7 @@ const handler = async (req, res) => {
   const { user } = session;
 
   await db.connect();
-  const eveniment = await Evenimente.findById(req.query.id);
+  const rezervare = await Rezervari.findById(req.query.id);
   console.log(eveniment);
   const { email } = user;
   await User.findOneAndUpdate(
@@ -20,7 +20,7 @@ const handler = async (req, res) => {
     },
     {
       $pullAll: {
-        evenimente: [eveniment],
+        rezervari: [rezervare],
       },
     },
   );

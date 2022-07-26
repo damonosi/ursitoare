@@ -70,7 +70,7 @@ export default function EvenimenteleMele() {
                 <div className={styles.parintiContainerMic}>
                   <h3>Tata</h3>
                   <hr />
-                  <h3> {eveniment.numetata}</h3>
+                  <h3> {eveniment.tata}</h3>
                 </div>
               </div>
             </div>

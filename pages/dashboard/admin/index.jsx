@@ -79,7 +79,7 @@ export default function AdminDashboard() {
               <td>{rezervare.numecopil}</td>
               <td>{rezervare.datanastere}</td>
               <td>{rezervare.mama}</td>
-              <td>{rezervare.numetata}</td>
+              <td>{rezervare.tata}</td>
               <td>{rezervare.dataeveniment}</td>
               <td>{rezervare.oraeveniment}</td>
             </tr>

@@ -44,7 +44,7 @@ const handler = async (req, res) => {
     isadmin: user.isadmin,
     isursitoare: user.isursitoare,
     numarevenimente: user.numarevenimente,
-    evenimente: user.evenimente,
+    rezervari: user.rezervari,
   });
 };
 export default handler;
