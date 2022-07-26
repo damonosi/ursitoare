@@ -15,25 +15,25 @@ export default function FormularPage() {
   const router = useRouter();
 
   const submitHandler = async ({
-    numeCopil,
+    numecopil,
     dataNastereCopil,
-    numeMama,
-    numeTata,
+    mama,
+    numetata,
     frati: { nume, varsta },
     numeNasi,
-    dataEveniment,
-    oraEveniment,
+    dataeveniment,
+    oraeveniment,
   }) => {
     try {
       await axios.post("/api/form", {
-        numeCopil,
+        numecopil,
         dataNastereCopil,
-        numeMama,
-        numeTata,
+        mama,
+        numetata,
         frati: { nume, varsta },
         numeNasi,
-        dataEveniment,
-        oraEveniment,
+        dataeveniment,
+        oraeveniment,
       });
       toast.success("Rezervare facuta !", {
         position: toast.POSITION.BOTTOM_CENTER,
@@ -56,55 +56,55 @@ export default function FormularPage() {
         <div className={styles.dateCopil}>
           <h1>Date copil</h1>
           <div className={styles.randFormular}>
-            <label htmlFor="numeCopil">Numele copilului : </label>
+            <label htmlFor="numecopil">Numele copilului : </label>
             <input
               type="text"
-              {...register("numeCopil", {
+              {...register("numecopil", {
                 required: "Va rugam sa introduceti numele copilului",
               })}
               className=""
-              id="numeCopil"
+              id="numecopil"
               autoFocus
             ></input>
           </div>
 
           <div className={styles.randFormular}>
-            <label htmlFor="dataNastereCopil">
+            <label htmlFor="datanastere">
               Data nasterii (luna / ziua / anul ) :
             </label>
             <input
               type="date"
               defaultValue={toDay}
-              {...register("dataNastereCopil", {
+              {...register("datanastere", {
                 required: "Va rugam sa data cand s-a naschut copilul",
               })}
               className=""
-              id="dataNastereCopil"
+              id="datanastere"
               autoFocus
             />
           </div>
           <div className={styles.randFormular}>
-            <label htmlFor="numeMama">Numele mamei : </label>
+            <label htmlFor="mama">Numele mamei : </label>
             <input
               type="text"
-              {...register("numeMama", {
+              {...register("mama", {
                 required: "Va rugam sa introduceti numele mamei",
               })}
               className=""
-              id="numeMama"
+              id="mama"
               autoFocus
             ></input>
           </div>
 
           <div className={styles.randFormular}>
-            <label htmlFor="numeTata">Numele tatalui : </label>
+            <label htmlFor="numetata">Numele tatalui : </label>
             <input
               type="text"
-              {...register("numeTata", {
+              {...register("numetata", {
                 required: "Va rugam sa introduceti numele tatalui",
               })}
               className=""
-              id="numeTata"
+              id="numetata"
               autoFocus
             ></input>
           </div>
@@ -149,28 +149,28 @@ export default function FormularPage() {
         <div className={styles.dateEveniment}>
           <h1>Data eveniment : </h1>
           <div className={styles.randFormular}>
-            <label htmlFor="dataEveniment">
+            <label htmlFor="dataeveniment">
               Data evenimentului (luna / ziua / anul ) :
             </label>
             <input
               type="date"
               defaultValue={toDay}
-              {...register("dataEveniment", {
+              {...register("dataeveniment", {
                 required: "Va rugam sa data cand are loc evenimentul",
               })}
               className=""
-              id="dataEveniment"
+              id="dataeveniment"
               autoFocus
             />
           </div>
           <div className={styles.randFormular}>
-            <label htmlFor="oraEveniment">Ora preferata : </label>
+            <label htmlFor="oraeveniment">Ora preferata : </label>
             <input
               type="number"
-              {...register("oraEveniment", {
+              {...register("oraeveniment", {
                 required: "Va rugam sa ora la care preferati sa venim",
               })}
-              id="oraEveniment"
+              id="oraeveniment"
               autoFocus
             ></input>
           </div>

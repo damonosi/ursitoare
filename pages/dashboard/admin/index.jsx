@@ -76,12 +76,12 @@ export default function AdminDashboard() {
         <tbody>
           {rezervari.map((rezervare) => (
             <tr key={rezervare._id}>
-              <td>{rezervare.numeCopil}</td>
-              <td>{rezervare.dataNastereCopil}</td>
-              <td>{rezervare.numeMama}</td>
-              <td>{rezervare.numeTata}</td>
-              <td>{rezervare.dataEveniment}</td>
-              <td>{rezervare.oraEveniment}</td>
+              <td>{rezervare.numecopil}</td>
+              <td>{rezervare.datanastere}</td>
+              <td>{rezervare.mama}</td>
+              <td>{rezervare.numetata}</td>
+              <td>{rezervare.dataeveniment}</td>
+              <td>{rezervare.oraeveniment}</td>
             </tr>
           ))}
         </tbody>

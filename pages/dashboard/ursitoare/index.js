@@ -50,20 +50,20 @@ export default function DashboardUrsitoarePage() {
       <div className={styles.containerDashboard}>
         {rezervari.map((eveniment) => (
           <CasetaEveniment key={eveniment._id}>
-            <h1>{eveniment.numeCopil}</h1>
-            <h2>Data Nasterii : {eveniment.dataNastereCopil}</h2>
+            <h1>{eveniment.numecopil}</h1>
+            <h2>Data Nasterii : {eveniment.datanastere}</h2>
             <div>
               <h2>Parinti</h2>
               <div className={styles.parintiContainer}>
                 <div className={styles.parintiContainerMic}>
                   <h3>Mama </h3>
                   <hr />
-                  <h3> {eveniment.numeMama}</h3>
+                  <h3> {eveniment.mama}</h3>
                 </div>
                 <div className={styles.parintiContainerMic}>
                   <h3>Tata</h3>
                   <hr />
-                  <h3> {eveniment.numeTata}</h3>
+                  <h3> {eveniment.numetata}</h3>
                 </div>
               </div>
             </div>
@@ -79,8 +79,8 @@ export default function DashboardUrsitoarePage() {
             ))}
             <h2> Detalii eveniment</h2>
             <div className={styles.detaliiEveniment}>
-              <h3>Data evenimentului {eveniment.dataEveniment}</h3>
-              <h3>Ora {eveniment.oraEveniment}.00</h3>
+              <h3>Data evenimentului {eveniment.dataeveniment}</h3>
+              <h3>Ora {eveniment.oraeveniment}.00</h3>
             </div>
             <button
               onClick={async (e) => {

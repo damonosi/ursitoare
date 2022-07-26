@@ -7,42 +7,42 @@ const handler = async (req, res) => {
     return;
   }
   const {
-    numeCopil,
-    dataNastereCopil,
-    numeMama,
-    numeTata,
+    numecopil,
+    datanastere,
+    mama,
+    numetata,
     frati: { nume, varsta },
     numeNasi,
-    dataEveniment,
-    oraEveniment,
+    dataeveniment,
+    oraeveniment,
   } = req.body;
 
   await db.connect();
   console.log("db connected");
   const newForm = new Evenimente({
-    numeCopil,
-    dataNastereCopil,
-    numeMama,
-    numeTata,
+    numecopil,
+    datanastere,
+    mama,
+    numetata,
     frati: { nume, varsta },
     numeNasi,
-    dataEveniment,
-    oraEveniment,
+    dataeveniment,
+    oraeveniment,
   });
   const formular = await newForm.save();
   await db.disconnect();
 
   res.status(201).send({
     message: "Cerere rezervare facuta",
-    numeCopil: formular.numeCopil,
-    dataNastereCopil: formular.dataNastereCopil,
-    numeMama: formular.numeMama,
-    numeTata: formular.numeTata,
+    numecopil: formular.numecopil,
+    datanastere: formular.datanastere,
+    mama: formular.mama,
+    numetata: formular.numetata,
     numeFrate: formular.frati.nume,
     varstaFrate: formular.frati.varsta,
     numeNasi: formular.numeNasi,
-    dataEveniment: formular.dataEveniment,
-    oraEveniment: formular.oraEveniment,
+    dataeveniment: formular.dataeveniment,
+    oraeveniment: formular.oraeveniment,
   });
 };
 export default handler;
