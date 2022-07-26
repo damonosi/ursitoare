@@ -23,7 +23,7 @@ export default NextAuth({
       const user = await User.findOne({
         _id: token._id,
       });
-
+      await db.disconnect();
       session.user.isUrsitoare = token.isUrsitoare;
       session.user.evenimente = user.evenimente;
       return session;

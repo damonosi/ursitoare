@@ -80,8 +80,6 @@ export default function AdminDashboard() {
               <td>{rezervare.dataNastereCopil}</td>
               <td>{rezervare.numeMama}</td>
               <td>{rezervare.numeTata}</td>
-              <td>{rezervare.altiCopiiNumeVarsta}</td>
-              <td>{rezervare.numeNasi}</td>
               <td>{rezervare.dataEveniment}</td>
               <td>{rezervare.oraEveniment}</td>
             </tr>

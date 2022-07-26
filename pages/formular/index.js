@@ -19,7 +19,7 @@ export default function FormularPage() {
     dataNastereCopil,
     numeMama,
     numeTata,
-    altiCopiiNumeVarsta,
+    frati: { nume, varsta },
     numeNasi,
     dataEveniment,
     oraEveniment,
@@ -30,7 +30,7 @@ export default function FormularPage() {
         dataNastereCopil,
         numeMama,
         numeTata,
-        altiCopiiNumeVarsta,
+        frati: { nume, varsta },
         numeNasi,
         dataEveniment,
         oraEveniment,
@@ -47,8 +47,12 @@ export default function FormularPage() {
 
   return (
     <div className={styles.formularContainer}>
-      <form className="" onSubmit={handleSubmit(submitHandler)}>
-        <h1>Rezervare ursitoare</h1>
+      <form onSubmit={handleSubmit(submitHandler)}>
+        <h1>Vreti sa faceti o rezervare?</h1>
+        <h3>
+          Completati formularul cu datele necesare si va vom contacta in cel mai
+          scurt timp posibil
+        </h3>
         <div className={styles.dateCopil}>
           <h1>Date copil</h1>
           <div className={styles.randFormular}>
@@ -105,16 +109,26 @@ export default function FormularPage() {
             ></input>
           </div>
           <div className={styles.randFormular}>
-            <label htmlFor="altiCopiiNumeVarsta">
-              Numele si varsta celorlalti copii :
-            </label>
+            <label htmlFor="numeFrate">Numele Fratelui :</label>
             <input
               type="text"
-              {...register("altiCopiiNumeVarsta", {
+              {...register("frati.nume", {
                 required: "Va rugam sa bifati daca au si alti copii ; ",
               })}
               className=""
-              id="altiCopiiNumeVarsta"
+              id="numeFrate"
+              autoFocus
+            ></input>
+          </div>
+          <div className={styles.randFormular}>
+            <label htmlFor="varstaFrate">Varsta fratelui :</label>
+            <input
+              type="text"
+              {...register("frati.varsta", {
+                required: "Va rugam sa bifati daca au si alti copii ; ",
+              })}
+              className=""
+              id="varstaFrate"
               autoFocus
             ></input>
           </div>

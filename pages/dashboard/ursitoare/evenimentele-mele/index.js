@@ -3,6 +3,8 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 import { getError } from "../../../../utils/error";
 
+import CasetaEveniment from "../../../../components/eveniment/CasetaEveniment";
+
 import styles from "../../Dashboard.module.scss";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
@@ -50,69 +52,83 @@ export default function EvenimenteleMele() {
   }, []);
   const flatRez = evenimenteleMele.flatMap((num) => num);
   return (
-    <div className={styles.containerDashboard}>
+    <div className={styles.containerDsh}>
       <h1>Evenimentele Mele</h1>
-      <table className={styles.tableContainer}>
-        <thead>
-          <tr>
-            <th>
-              <h3>Numele Copilului</h3>
-            </th>
-            <th>
-              <h3> Data nasterii</h3>
-            </th>
-            <th>
-              <h3>Numele mamei</h3>
-            </th>
-            <th>
-              <h3>Numele tatalui</h3>
-            </th>
-            <th>
-              <h3>Alti copii</h3>
-            </th>
-            <th>
-              <h3>Numele nasilor</h3>
-            </th>
-            <th>
-              <h3>Data eveniment</h3>
-            </th>
-            <th>
-              <h3>Ora Preferata de client</h3>
-            </th>
-            <th>
-              <h3>Vrei sa mergi la eveniment?</h3>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {flatRez.map((eveniment) => (
-            <tr key={eveniment._id}>
-              <td>{eveniment.numeCopil}</td>
-              <td>{eveniment.dataNastereCopil}</td>
-              <td>{eveniment.numeMama}</td>
-              <td>{eveniment.numeTata}</td>
-              <td>{eveniment.altiCopiiNumeVarsta}</td>
-              <td>{eveniment.numeNasi}</td>
-              <td>{eveniment.dataEveniment}</td>
-              <td>{eveniment.oraEveniment}</td>
-              <td className={styles.butonTabel}>
-                <button
-                  onClick={async (e) => {
-                    await axios.post(
-                      `/api/evenimente/${eveniment._id}/renunta`,
-                    );
+      <div className={styles.containerDashboard}>
+        {flatRez.map((eveniment) => (
+          <CasetaEveniment key={eveniment._id}>
+            <h1>{eveniment.numeCopil}</h1>
+            <h2>Data Nasterii : {eveniment.dataNastereCopil}</h2>
+            <div>
+              <h2>Parinti</h2>
+              <div className={styles.parintiContainer}>
+                <div className={styles.parintiContainerMic}>
+                  <h3>Mama </h3>
+                  <hr />
+                  <h3> {eveniment.numeMama}</h3>
+                </div>
+                <div className={styles.parintiContainerMic}>
+                  <h3>Tata</h3>
+                  <hr />
+                  <h3> {eveniment.numeTata}</h3>
+                </div>
+              </div>
+            </div>
+            <br />
+            <h2>Frati/ Surori</h2>
 
-                    router.reload();
-                    toast.success("Ai renuntat la eveniment");
-                  }}
-                >
-                  Renunta
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            {eveniment.frati.map((i) => (
+              <div key={eveniment._id} className={styles.fratiContainer}>
+                <h3>{i.nume}</h3>
+                <hr />
+                <h3>{i.varsta} ani</h3>
+              </div>
+            ))}
+            <h2> Detalii eveniment</h2>
+            <div className={styles.detaliiEveniment}>
+              <h3>Data evenimentului {eveniment.dataEveniment}</h3>
+              <h3>Ora {eveniment.oraEveniment}.00</h3>
+            </div>
+            <button
+              onClick={async (e) => {
+                await axios.post(`/api/evenimente/${eveniment._id}/renunta`);
+
+                router.reload();
+                toast.success("Ai renuntat la eveniment");
+              }}
+            >
+              Nu mai vreau / pot sa merg
+            </button>
+          </CasetaEveniment>
+        ))}
+      </div>
     </div>
   );
 }
+
+// <td>{eveniment.dataNastereCopil}</td>
+//             <td>{eveniment.numeMama}</td>
+//             <td>{eveniment.numeTata}</td>
+// {eveniment.frati.map((i) => (
+//   <>
+//     <td>{i.nume}</td>
+//     <td>{i.varsta}</td>
+//   </>
+// ))}
+//             <td>{eveniment.numeNasi}</td>
+//             <td>{eveniment.dataEveniment}</td>
+//             <td>{eveniment.oraEveniment}</td>
+//             <td className={styles.butonTabel}>
+//               <button
+//                 onClick={async (e) => {
+//                   await axios.post(
+//                     `/api/evenimente/${eveniment._id}/renunta`,
+//                   );
+
+//                   router.reload();
+//                   toast.success("Ai renuntat la eveniment");
+//                 }}
+//               >
+//                 Renunta
+//               </button>
+//             </td>

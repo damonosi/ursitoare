@@ -12,8 +12,8 @@ const handler = async (req, res) => {
 
   await db.connect();
   const eveniment = await Evenimente.findById(req.query.id);
-  console.log(eveniment);
   const { email } = user;
+
   await User.findOneAndUpdate(
     {
       email,

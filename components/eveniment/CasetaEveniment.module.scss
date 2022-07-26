@@ -1,0 +1,11 @@
+.casetaContainer{
+    display:flex;
+    flex-direction: column;
+    border:5px solid black;
+    max-width:30em;
+    margin-bottom:35px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding:5em;
+    text-align: center;
+}

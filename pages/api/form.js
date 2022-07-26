@@ -1,5 +1,5 @@
 import bcryptjs from "bcryptjs";
-import Evenimente from "../../models/evenimente";
+import { Evenimente } from "../../models/evenimente";
 import db from "../../utils/db";
 
 const handler = async (req, res) => {
@@ -11,7 +11,7 @@ const handler = async (req, res) => {
     dataNastereCopil,
     numeMama,
     numeTata,
-    altiCopiiNumeVarsta,
+    frati: { nume, varsta },
     numeNasi,
     dataEveniment,
     oraEveniment,
@@ -19,12 +19,13 @@ const handler = async (req, res) => {
 
   await db.connect();
   console.log("db connected");
+  console.log(Evenimente);
   const newForm = new Evenimente({
     numeCopil,
     dataNastereCopil,
     numeMama,
     numeTata,
-    altiCopiiNumeVarsta,
+    frati: { nume, varsta },
     numeNasi,
     dataEveniment,
     oraEveniment,
@@ -36,9 +37,11 @@ const handler = async (req, res) => {
     message: "Cerere rezervare facuta",
     numeCopil: formular.numeCopil,
     dataNastereCopil: formular.dataNastereCopil,
+
     numeMama: formular.numeMama,
     numeTata: formular.numeTata,
-    altiCopiiNumeVarsta: formular.altiCopiiNumeVarsta,
+    numeFrate: formular.frati.nume,
+    varstaFrate: formular.frati.varsta,
     numeNasi: formular.numeNasi,
     dataEveniment: formular.dataEveniment,
     oraEveniment: formular.oraEveniment,

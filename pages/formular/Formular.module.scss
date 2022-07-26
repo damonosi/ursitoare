@@ -3,6 +3,7 @@
     width:100%;
     align-items: center;
     justify-content: center;
+    
 
 
 
@@ -35,13 +36,14 @@
 .dateCopil{
     display: flex;
     flex-direction: column;
-    background-color:blue;
+
     width:100%;
+    padding:3em;
 }
 .dateEveniment{
     display: flex;
     flex-direction: column;
-    background-color:red;
+
     width:100%;
 }
 
@@ -50,7 +52,10 @@
     display: flex;
     align-items: center;
     height:40px;
+    justify-content: space-between;
     
 }
+
+
 
 

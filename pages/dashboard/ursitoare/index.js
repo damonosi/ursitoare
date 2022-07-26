@@ -6,6 +6,7 @@ import { getError } from "../../../utils/error";
 import styles from "../Dashboard.module.scss";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import CasetaEveniment from "../../../components/eveniment/CasetaEveniment";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -44,68 +45,55 @@ export default function DashboardUrsitoarePage() {
   }, []);
 
   return (
-    <div className={styles.containerDashboard}>
+    <div className={styles.containerDsh}>
       <h1>Rezervari clienti</h1>
-      <table className={styles.tableContainer}>
-        <thead>
-          <tr>
-            <th>
-              <h3>Numele Copilului</h3>
-            </th>
-            <th>
-              <h3> Data nasterii</h3>
-            </th>
-            <th>
-              <h3>Numele mamei</h3>
-            </th>
-            <th>
-              <h3>Numele tatalui</h3>
-            </th>
-            <th>
-              <h3>Alti copii</h3>
-            </th>
-            <th>
-              <h3>Numele nasilor</h3>
-            </th>
-            <th>
-              <h3>Data eveniment</h3>
-            </th>
-            <th>
-              <h3>Ora Preferata de client</h3>
-            </th>
+      <div className={styles.containerDashboard}>
+        {rezervari.map((eveniment) => (
+          <CasetaEveniment key={eveniment._id}>
+            <h1>{eveniment.numeCopil}</h1>
+            <h2>Data Nasterii : {eveniment.dataNastereCopil}</h2>
+            <div>
+              <h2>Parinti</h2>
+              <div className={styles.parintiContainer}>
+                <div className={styles.parintiContainerMic}>
+                  <h3>Mama </h3>
+                  <hr />
+                  <h3> {eveniment.numeMama}</h3>
+                </div>
+                <div className={styles.parintiContainerMic}>
+                  <h3>Tata</h3>
+                  <hr />
+                  <h3> {eveniment.numeTata}</h3>
+                </div>
+              </div>
+            </div>
+            <br />
+            <h2>Frati/ Surori</h2>
 
-            <th>
-              <h3>Vrei sa mergi la eveniment?</h3>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {rezervari.map((rezervare) => (
-            <tr key={rezervare._id}>
-              <td>{rezervare.numeCopil}</td>
-              <td>{rezervare.dataNastereCopil}</td>
-              <td>{rezervare.numeMama}</td>
-              <td>{rezervare.numeTata}</td>
-              <td>{rezervare.altiCopiiNumeVarsta}</td>
-              <td>{rezervare.numeNasi}</td>
-              <td>{rezervare.dataEveniment}</td>
-              <td>{rezervare.oraEveniment}</td>
-
-              <td className={styles.butonTabel}>
-                <button
-                  onClick={async (e) => {
-                    axios.post(`/api/evenimente/${rezervare._id}/opteaza`);
-                    e.currentTarget.disabled = true;
-                    toast.success("Ai optat pentru eveniment");
-                  }}
-                >
-                  Opteaza
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            {eveniment.frati.map((i) => (
+              <div key={eveniment._id} className={styles.fratiContainer}>
+                <h3>{i.nume}</h3>
+                <hr />
+                <h3>{i.varsta} ani</h3>
+              </div>
+            ))}
+            <h2> Detalii eveniment</h2>
+            <div className={styles.detaliiEveniment}>
+              <h3>Data evenimentului {eveniment.dataEveniment}</h3>
+              <h3>Ora {eveniment.oraEveniment}.00</h3>
+            </div>
+            <button
+              onClick={async (e) => {
+                axios.post(`/api/evenimente/${rezervare._id}/opteaza`);
+                e.currentTarget.disabled = true;
+                toast.success("Ai optat pentru eveniment");
+              }}
+            >
+              Vreau sa merg !
+            </button>
+          </CasetaEveniment>
+        ))}
+      </div>{" "}
       <button
         onClick={() => {
           router.push("/dashboard/ursitoare/evenimentele-mele");
