@@ -30,8 +30,8 @@ const handler = async (req, res) => {
     name,
     email,
     password: bcryptjs.hashSync(password),
-    isAdmin: false,
-    isUrsitoare: false,
+    isadmin: false,
+    isursitoare: false,
   });
   const user = await newUser.save();
   await db.disconnect();
@@ -41,9 +41,9 @@ const handler = async (req, res) => {
     _id: user._id,
     name: user.name,
     email: user.email,
-    isAdmin: user.isAdmin,
-    isUrsitoare: user.isUrsitoare,
-    numarEvenimente: user.numarEvenimente,
+    isadmin: user.isadmin,
+    isursitoare: user.isursitoare,
+    numarevenimente: user.numarevenimente,
     evenimente: user.evenimente,
   });
 };

@@ -24,14 +24,14 @@ const Header = () => {
           <Link href="/formular">
             <a>Programare</a>
           </Link>
-          {session?.user.isAdmin ? (
+          {session?.user.isadmin ? (
             <Link href="/dashboard/admin">
               <a>Rezervari</a>
             </Link>
           ) : (
             ""
           )}
-          {session?.user.isUrsitoare ? (
+          {session?.user.isursitoare ? (
             <Link href="/dashboard/ursitoare">
               <a>Program</a>
             </Link>

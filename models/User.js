@@ -6,9 +6,9 @@ const userSchema = new mongoose.Schema(
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    isAdmin: { type: Boolean, required: true, default: false },
-    isUrsitoare: { type: Boolean, default: false },
-    numarEvenimente: { type: Number, default: "0" },
+    isadmin: { type: Boolean, required: true, default: false },
+    isursitoare: { type: Boolean, default: false },
+    numarevenimente: { type: Number, default: "0" },
     evenimente: { type: [evenimenteSchema] },
   },
   {

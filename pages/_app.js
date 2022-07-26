@@ -32,12 +32,12 @@ function Admin({ children }) {
   const { data: session, status } = useSession();
   React.useEffect(() => {
     if (status === "loading") return;
-    if (!session?.user.isAdmin) {
+    if (!session?.user.isadmin) {
       router.push("/");
       console.log("Nu esti Admin !");
     }
-  }, [router, session?.user.isAdmin, status]);
-  if (session?.user.isAdmin) {
+  }, [router, session?.user.isadmin, status]);
+  if (session?.user.isadmin) {
     return children;
   }
   if (status === "loading") {
