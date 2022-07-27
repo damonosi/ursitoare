@@ -46,13 +46,14 @@ export default function DashboardUrsitoarePage() {
   return (
     <div className={styles.containerDsh}>
       <h1>Rezervari clienti</h1>
-      <div className={styles.containerDashboard}>
-        {loading ? (
-          <div className={styles.loaderContainer}>
-            <div className={styles.loader}></div>
-          </div>
-        ) : (
-          rezervari.map((eveniment) => (
+
+      {loading ? (
+        <div className={styles.loaderContainer}>
+          <div className={styles.loader}></div>
+        </div>
+      ) : (
+        <div className={styles.containerDashboard}>
+          {rezervari.map((eveniment) => (
             <CasetaEveniment key={eveniment._id}>
               <h1>{eveniment.numecopil}</h1>
               <h2>Data Nasterii : {eveniment.datanastere}</h2>
@@ -96,9 +97,10 @@ export default function DashboardUrsitoarePage() {
                 Vreau sa merg !
               </button>
             </CasetaEveniment>
-          ))
-        )}
-      </div>{" "}
+          ))}
+        </div>
+      )}
+
       <button
         onClick={() => {
           router.push("/dashboard/ursitoare/evenimentele-mele");
