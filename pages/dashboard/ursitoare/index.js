@@ -3,10 +3,13 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 import { getError } from "../../../utils/error";
 
-import styles from "../Dashboard.module.scss";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+
 import CasetaEveniment from "../../../components/eveniment/CasetaEveniment";
+import Spinner from "./../../../components/spinner/Spinner";
+
+import styles from "../Dashboard.module.scss";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -48,9 +51,7 @@ export default function DashboardUrsitoarePage() {
       <h1>Rezervari clienti</h1>
 
       {loading ? (
-        <div className={styles.loaderContainer}>
-          <div className={styles.loader}></div>
-        </div>
+        <Spinner />
       ) : (
         <div className={styles.containerDashboard}>
           {rezervari.map((eveniment) => (
