@@ -3,20 +3,24 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 import { getError } from "../../../utils/error";
 
-import { useRouter } from "next/router";
-import { toast } from "react-toastify";
-
 import CasetaEveniment from "../../../components/eveniment/CasetaEveniment";
-import Spinner from "./../../../components/spinner/Spinner";
 
 import styles from "../Dashboard.module.scss";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import Spinner from "../../../components/spinner/Spinner";
 
 function reducer(state, action) {
   switch (action.type) {
     case "FETCH_REQUEST":
       return { ...state, loading: true, error: "" };
     case "FETCH_SUCCESS":
-      return { ...state, loading: false, rezervari: action.payload, error: "" };
+      return {
+        ...state,
+        loading: false,
+        evenimenteleMele: action.payload,
+        error: "",
+      };
     case "FETCH_FAIL":
       return { ...state, loading: true, error: action.payload };
     default:
@@ -24,10 +28,10 @@ function reducer(state, action) {
   }
 }
 
-export default function DashboardUrsitoarePage() {
-  const [{ loading, error, rezervari }, dispatch] = useReducer(reducer, {
+export default function EvenimenteleMele() {
+  const [{ loading, error, evenimenteleMele }, dispatch] = useReducer(reducer, {
     loading: true,
-    rezervari: [],
+    evenimenteleMele: [],
     error: "",
   });
 
@@ -37,24 +41,24 @@ export default function DashboardUrsitoarePage() {
     const fetchProgramari = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get("/api/rezervari");
+        const { data } = await axios.get("/api/rezervari/evenimentele-mele");
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
     };
+
     fetchProgramari();
   }, []);
-
+  const flatRez = evenimenteleMele.flatMap((num) => num);
   return (
     <div className={styles.containerDsh}>
-      <h1>Rezervari clienti</h1>
-
+      <h1>Evenimentele Mele</h1>
       {loading ? (
         <Spinner />
       ) : (
         <div className={styles.containerDashboard}>
-          {rezervari.map((eveniment) => (
+          {flatRez.map((eveniment) => (
             <CasetaEveniment key={eveniment._id}>
               <h1>{eveniment.numecopil}</h1>
               <h2>Data Nasterii : {eveniment.datanastere}</h2>
@@ -76,8 +80,8 @@ export default function DashboardUrsitoarePage() {
               <br />
               <h2>Frati/ Surori</h2>
 
-              {eveniment.frati.map((i) => (
-                <div key={eveniment._id} className={styles.fratiContainer}>
+              {eveniment.frati.map((i, index) => (
+                <div key={index} className={styles.fratiContainer}>
                   <h3>{i.nume}</h3>
                   <hr />
                   <h3>{i.varsta} ani</h3>
@@ -88,27 +92,10 @@ export default function DashboardUrsitoarePage() {
                 <h3>Data evenimentului {eveniment.dataeveniment}</h3>
                 <h3>Ora {eveniment.oraeveniment}.00</h3>
               </div>
-              <button
-                onClick={async (e) => {
-                  axios.post(`/api/evenimente/${eveniment._id}/opteaza`);
-                  e.currentTarget.disabled = true;
-                  toast.success("Ai optat pentru eveniment");
-                }}
-              >
-                Vreau sa merg !
-              </button>
             </CasetaEveniment>
           ))}
         </div>
       )}
-
-      <button
-        onClick={() => {
-          router.push("/dashboard/ursitoare/evenimentele-mele");
-        }}
-      >
-        Vezi evenimentele tale
-      </button>
     </div>
   );
 }

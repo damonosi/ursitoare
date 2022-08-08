@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import User from "../../../models/User";
+import { User } from "../../../models/User";
 import db from "../../../utils/db";
 
 export default NextAuth({
@@ -18,15 +18,16 @@ export default NextAuth({
     },
     async session({ session, token }) {
       if (token?._id) session.user._id = token._id;
-      if (token?.isadmin) session.user.isadmin = token.isadmin;
+
       await db.connect();
       const user = await User.findOne({
         _id: token._id,
       });
-
+      await db.disconnect();
+      session.user.isadmin = user.isadmin;
       session.user.isursitoare = token.isursitoare;
       session.user.rezervari = user.rezervari;
-      await db.disconnect();
+
       return session;
     },
   },

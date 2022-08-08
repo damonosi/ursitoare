@@ -1,14 +1,13 @@
 import mongoose from "mongoose";
 import { evenimenteSchema } from "./Rezervari";
 
-const userSchema = new mongoose.Schema(
+export const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     isadmin: { type: Boolean, required: true, default: false },
     isursitoare: { type: Boolean, default: false },
-    numarevenimente: { type: Number, default: "0" },
     rezervari: { type: [evenimenteSchema] },
   },
   {
@@ -16,5 +15,4 @@ const userSchema = new mongoose.Schema(
   },
 );
 
-const User = mongoose.models.User || mongoose.model("User", userSchema);
-export default User;
+export const User = mongoose.models.User || mongoose.model("User", userSchema);

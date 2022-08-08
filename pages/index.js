@@ -6,7 +6,7 @@ import styles from "./Home.module.scss";
 
 export default function Home() {
   const { scrollYProgress } = useViewportScroll();
-  console.log(scrollYProgress);
+
   return (
     <div className={styles.container}>
       <div className={styles.spatiu}>

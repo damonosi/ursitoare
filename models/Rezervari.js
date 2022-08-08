@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import { userSchema } from "./Rezervari";
 export const evenimenteSchema = new mongoose.Schema(
   {
     numecopil: { type: String, required: true },
@@ -16,6 +16,7 @@ export const evenimenteSchema = new mongoose.Schema(
     nasi: { type: String, required: true },
     dataeveniment: { type: String, required: true },
     oraeveniment: { type: Number, required: true },
+    ursitoare: { type: [userSchema] },
   },
   {
     timestamps: true,

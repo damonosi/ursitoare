@@ -180,3 +180,4 @@ export default function FormularPage() {
     </div>
   );
 }
+FormularPage.Auth = true;

@@ -10,8 +10,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
       <Layout>
-        {Component.Admin ? (
-          <Admin>
+        {Component.Auth ? (
+          <Auth>
             <AnimatePresence
               exitBeforeEnter
               initial={false}
@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
             >
               <Component {...pageProps} />
             </AnimatePresence>
-          </Admin>
+          </Auth>
         ) : (
           <Component {...pageProps} />
         )}
@@ -27,22 +27,19 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     </SessionProvider>
   );
 }
-function Admin({ children }) {
+function Auth({ children }) {
   const router = useRouter();
-  const { data: session, status } = useSession();
-  React.useEffect(() => {
-    if (status === "loading") return;
-    if (!session?.user.isadmin) {
-      router.push("/");
-      console.log("Nu esti Admin !");
-    }
-  }, [router, session?.user.isadmin, status]);
-  if (session?.user.isadmin) {
-    return children;
-  }
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/unauthorized?message=login required");
+      console.log("Nu Esti logat");
+    },
+  });
   if (status === "loading") {
     return <div>Loading...</div>;
   }
+  return children;
 }
 
 export default MyApp;

@@ -1,0 +1,16 @@
+.neautorizatContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:80vh;
+    background-color: gray;
+    button{
+        padding:1em;
+        float: inline-end;
+    }
+}
+
+.errorText{
+    color:red
+}

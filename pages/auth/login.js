@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import Spinner from "./../../components/spinner/Spinner";
 
+import styles from "./login.module.scss";
+
 const LoginScreen = () => {
   const { status, data: session } = useSession();
   const [loading, setLoading] = useState(false);
@@ -45,15 +47,15 @@ const LoginScreen = () => {
     return <Spinner />;
   }
   return (
-    <div>
+    <div className={styles.loginContainer}>
       <form
-        className="mx-auto max-w-screen-md"
+        className={styles.formContainer}
         onSubmit={handleSubmit(submitHandler)}
       >
-        <h1 className="mb-4 text-xl">Login</h1>
-        <div className="mb-4">
-          <label htmlFor="email">Email</label>
+        <h1 className="mb-4 text-xl">Conecteaza-te</h1>
+        <div className={styles.emailContainer}>
           <input
+            placeholder="Adresa Email"
             type="email"
             {...register("email", {
               required: "Please enter email",
@@ -70,9 +72,9 @@ const LoginScreen = () => {
             <div className="text-red-500">{errors.email.message}</div>
           )}
         </div>
-        <div className="mb-4">
-          <label htmlFor="password">Password</label>
+        <div className={styles.passwordContainer}>
           <input
+            placeholder="Parola"
             type="password"
             {...register("password", {
               required: "Please enter password",
@@ -86,12 +88,14 @@ const LoginScreen = () => {
             <div className="text-red-500 ">{errors.password.message}</div>
           )}
         </div>
-        <div className="mb-4 ">
-          <button className="primary-button">Login</button>
+        <div className={styles.loginButton}>
+          <button>Logare</button>
         </div>
-        <div className="mb-4 ">
-          Don&apos;t have an account? &nbsp;
-          <Link href="/auth/register">Register</Link>
+        <div className={styles.registerButton}>
+          Nu ai cont ?
+          <Link href="/auth/register">
+            <a> Inregistreaza-te</a>
+          </Link>
         </div>
       </form>
     </div>
