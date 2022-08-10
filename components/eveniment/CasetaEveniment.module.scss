@@ -1,11 +1,33 @@
-.casetaContainer{
-    display:flex;
-    flex-direction: column;
-    border:5px solid black;
-    max-width:30em;
-    margin-bottom:35px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    padding:5em;
-    text-align: center;
+.casetaContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 30em;
+  margin-bottom: 35px;
+  padding: 5em;
+  padding-top: 1em;
+  text-align: center;
+}
+
+.cuBorder {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid black;
+  max-width: 30em;
+  margin-bottom: 35px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 5em;
+  padding-top: 1em;
+  text-align: center;
+}
+
+.buttonRez {
+  padding: 2em;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  h1 {
+    font-size: 2em;
+  }
 }

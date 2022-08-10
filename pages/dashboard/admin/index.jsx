@@ -10,6 +10,8 @@ import Spinner from "../../../components/spinner/Spinner";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
+import Collapsible from "react-collapsible";
+import { BsFillArrowDownCircleFill } from "react-icons/bs";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -30,8 +32,10 @@ export default function AdminDashboard() {
     rezervari: [],
     error: "",
   });
+
   const [ursitoare, setUrsitoare] = useState([]);
   const [userChoice, setUserChoice] = useState("");
+  const [azi, setAzi] = useState(new Date());
 
   const { status, data: session } = useSession();
   const router = useRouter();
@@ -40,7 +44,17 @@ export default function AdminDashboard() {
   const handleChange = (chioce) => {
     setUserChoice(chioce);
   };
+  useEffect(() => {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var yyyy = today.getFullYear();
 
+    const astazi = mm + "/" + dd + "/" + yyyy;
+    const datAz = new Date(astazi);
+    setAzi(datAz);
+  }, []);
+  console.log(azi);
   useEffect(() => {
     if (session?.user.isadmin) {
     } else {
@@ -81,64 +95,92 @@ export default function AdminDashboard() {
       ) : (
         <div className={styles.containerDashboard}>
           {rezervari.map((eveniment) => (
-            <CasetaEveniment key={eveniment._id}>
-              <h1>{eveniment.numecopil}</h1>
-              <h2>Data Nasterii : {eveniment.datanastere}</h2>
-              <div>
-                <h2>Parinti</h2>
-                <div className={styles.parintiContainer}>
-                  <div className={styles.parintiContainerMic}>
-                    <h3>Mama </h3>
-                    <hr />
-                    <h3> {eveniment.mama}</h3>
-                  </div>
-                  <div className={styles.parintiContainerMic}>
-                    <h3>Tata</h3>
-                    <hr />
-                    <h3> {eveniment.tata}</h3>
-                  </div>
-                </div>
-              </div>
-              <br />
-              <h2>Frati/ Surori</h2>
+            <>
+              {new Date(eveniment.dataeveniment).getTime() > azi.getTime() ? (
+                <CasetaEveniment key={eveniment._id} eveniment={eveniment}>
+                  <div>
+                    <h2>Data Nasterii {eveniment.datanastere}</h2>
+                    <div>
+                      <h2>Parinti</h2>
+                      <div className={styles.parintiContainer}>
+                        <div className={styles.parintiContainerMic}>
+                          <h3>Mama </h3>
+                          <hr />
+                          <h3> {eveniment.mama}</h3>
+                        </div>
+                        <div className={styles.parintiContainerMic}>
+                          <h3>Tata</h3>
+                          <hr />
+                          <h3> {eveniment.tata}</h3>
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                    <h2>Frati/ Surori</h2>
+                    {eveniment.frati.map((i) => (
+                      <div
+                        key={eveniment._id}
+                        className={styles.fratiContainer}
+                      >
+                        <h3>{i.nume}</h3>
+                        <hr />
+                        <h3>{i.varsta} ani</h3>
+                      </div>
+                    ))}
+                    <h2> Detalii eveniment</h2>
+                    <div className={styles.detaliiEveniment}>
+                      <h3>Data evenimentului {eveniment.dataeveniment}</h3>
+                      <h3>Ora {eveniment.oraeveniment}.00</h3>
+                    </div>
+                    <div className={styles.contact}>
+                      <h3>Numar de contact </h3>
+                      <h4>{eveniment.nrcontact}</h4>
+                    </div>
+                    {eveniment.ursitoare.length < 3 ? (
+                      <div>
+                        <h1>Cine Merge La Eveniment</h1>
 
-              {eveniment.frati.map((i) => (
-                <div key={eveniment._id} className={styles.fratiContainer}>
-                  <h3>{i.nume}</h3>
-                  <hr />
-                  <h3>{i.varsta} ani</h3>
-                </div>
-              ))}
-              <h2> Detalii eveniment</h2>
-              <div className={styles.detaliiEveniment}>
-                <h3>Data evenimentului {eveniment.dataeveniment}</h3>
-                <h3>Ora {eveniment.oraeveniment}.00</h3>
-              </div>
-              <div className={styles.adaugUrsitoare}>
-                <Select
-                  isMulti
-                  onChange={handleChange}
-                  options={options}
-                  name="ursitoare"
-                />
-                <button
-                  onClick={async () => {
-                    userChoice.map((op) => {
-                      const ursitoareId = op.value;
-                      const rezId = eveniment._id;
-                      axios.post("/api/adauga-ursitoare", {
-                        ursitoareId,
-                        rezId,
-                      });
+                        <div className={styles.adaugUrsitoare}>
+                          <Select
+                            isMulti
+                            onChange={handleChange}
+                            options={options}
+                            name="ursitoare"
+                          />
+                          <button
+                            onClick={async () => {
+                              userChoice.map((op) => {
+                                const ursitoareId = op.value;
+                                const rezId = eveniment._id;
+                                axios.post("/api/adauga-ursitoare", {
+                                  ursitoareId,
+                                  rezId,
+                                });
 
-                      toast.success("Ai optat pentru eveniment");
-                    });
-                  }}
-                >
-                  Adaga ursitoarele care merg la eveniment
-                </button>
-              </div>
-            </CasetaEveniment>
+                                toast.success("Ai optat pentru eveniment");
+                              });
+                            }}
+                          >
+                            Adaga ursitoarele care merg la eveniment
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className={styles.ursContainer}>
+                        <h1>Ursitoare</h1>
+                        {eveniment.ursitoare.map((ur) => (
+                          <div key={ur._id}>
+                            <h3>{ur.name}</h3>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </CasetaEveniment>
+              ) : (
+                ""
+              )}
+            </>
           ))}
         </div>
       )}

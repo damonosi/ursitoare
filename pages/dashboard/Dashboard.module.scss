@@ -1,64 +1,101 @@
-.containerDsh{
+.containerDsh {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
 }
 
-
-.containerDashboard{
-    display: grid;
-    grid-template-columns: 550px 550px ;
-    grid-template-rows: auto auto ;
-    gap:1em;
-    
-      hr{
+.containerDashboard {
+  display: grid;
+  grid-template-columns: 550px 550px;
+  grid-template-rows: auto auto;
+  gap: 1em;
+  h1,
+  h2,
+  h3 {
+    text-transform: capitalize;
+  }
+  hr {
     width: 90%;
   }
 }
 
-.parintiContainer{
+.parintiContainer {
   display: flex;
-  flex-direction:row ;
+  flex-direction: row;
   justify-content: space-between;
-  border:2px dashed gray;
-  padding:1em;
-  margin-bottom:2em;
+  border: 2px dashed gray;
+  padding: 1em;
+  margin-bottom: 2em;
 }
-.parintiContainerMic{
+.parintiContainerMic {
   display: flex;
-  flex-direction:column ;
-  
+  flex-direction: column;
 }
 
-.fratiContainer{
+.fratiContainer {
   display: flex;
-  flex-direction:column ;
-  
-  border:2px dashed gray;
-  padding:1em;
-  margin-bottom:2em;
+  flex-direction: column;
+
+  border: 2px dashed gray;
+  padding: 1em;
+  margin-bottom: 2em;
 }
 
-.detaliiEveniment{
+.detaliiEveniment {
   display: flex;
-  flex-direction:column ;
-  
-  border:2px dashed gray;
-  padding:1em
+  flex-direction: column;
+
+  border: 2px dashed gray;
+  padding: 1em;
 }
 
-.butonTabel{
-  display:flex;
+.butonTabel {
+  display: flex;
   justify-content: center;
 }
 
-.adaugUrsitoare{
-  display:flex;
+.adaugUrsitoare {
+  display: flex;
   flex-direction: column;
-  margin:3px
+  margin: 3px;
 }
 
+.contact {
+  border-top: 2px dotted;
+  border-bottom: 2px dotted;
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
 
+.ursContainer {
+  display: flex;
+  flex-direction: column;
+  border: 5px dotted gray;
+  h3 {
+    text-transform: capitalize;
+  }
+}
+.trecut {
+  background-color: red;
+}
+.plusNume {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid black;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  max-width: 30em;
+  h1 {
+    font-size: 3em;
+    font-style: italic;
+  }
+}
 
+@media (max-width: 768px) {
+  .containerDashboard {
+    grid-template-columns: 20em;
+  }
+}

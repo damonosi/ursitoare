@@ -1,0 +1,36 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 4em;
+}
+
+.secIntroducere {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  width: 100%;
+  margin-top: 5em;
+}
+
+.imgIntroducere {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 50%;
+  height: auto;
+
+  img {
+    border-radius: 10%;
+  }
+}
+
+.textIntro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 30%;
+  border: 5px dotted gray;
+}

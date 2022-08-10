@@ -14,15 +14,18 @@ const Header = () => {
     <header>
       <nav className={styles.headerContainer}>
         <div className={styles.logo}>
-          <h2>Ursitoare Bacau</h2>
+          <h2>Logo</h2>
+        </div>
+        <div className={styles.titlu}>
+          <h1>Ursitoare Bacau</h1>
         </div>
 
         <div className={styles.board}>
           <Link href="/">
-            <a>Home</a>
+            <a>Acasa</a>
           </Link>
           <Link href="/formular">
-            <a>Programare</a>
+            <a>Faceti o Rezervare</a>
           </Link>
           {session?.user.isadmin ? (
             <Link href="/dashboard/admin">
@@ -44,11 +47,11 @@ const Header = () => {
               "Loading"
             ) : session?.user ? (
               <a href="#" className="" onClick={logoutClickHandler}>
-                Logout
+                Deconectare
               </a>
             ) : (
               <Link href="/auth/login">
-                <a className="">Login</a>
+                <a className="">Conectare</a>
               </Link>
             )}
           </div>

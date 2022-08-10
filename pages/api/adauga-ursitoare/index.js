@@ -38,6 +38,7 @@ const handler = async (req, res) => {
           nasi: eveniment.nasi,
           dataeveniment: eveniment.dataeveniment,
           oraeveniment: eveniment.oraeveniment,
+          nrcontact: eveniment.nrcontact,
         },
       },
     },

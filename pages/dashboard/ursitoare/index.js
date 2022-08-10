@@ -34,9 +34,16 @@ export default function EvenimenteleMele() {
     evenimenteleMele: [],
     error: "",
   });
-
+  const { status, data: session } = useSession();
   const router = useRouter();
+  const { redirect } = router.query;
 
+  useEffect(() => {
+    if (session?.user.isursitoare) {
+    } else {
+      router.push(redirect || "/");
+    }
+  }, [router, session, redirect]);
   useEffect(() => {
     const fetchProgramari = async () => {
       try {
@@ -92,6 +99,7 @@ export default function EvenimenteleMele() {
                 <h3>Data evenimentului {eveniment.dataeveniment}</h3>
                 <h3>Ora {eveniment.oraeveniment}.00</h3>
               </div>
+              <h4>{eveniment.nrcontact}</h4>
             </CasetaEveniment>
           ))}
         </div>

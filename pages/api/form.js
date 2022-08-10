@@ -15,6 +15,7 @@ const handler = async (req, res) => {
     nasi,
     dataeveniment,
     oraeveniment,
+    nrcontact,
   } = req.body;
 
   await db.connect();
@@ -28,6 +29,7 @@ const handler = async (req, res) => {
     nasi,
     dataeveniment,
     oraeveniment,
+    nrcontact,
   });
   const formular = await newForm.save();
   await db.disconnect();
@@ -43,6 +45,7 @@ const handler = async (req, res) => {
     nasi: formular.nasi,
     dataeveniment: formular.dataeveniment,
     oraeveniment: formular.oraeveniment,
+    nrcontact: formular.nrcontact,
   });
 };
 export default handler;

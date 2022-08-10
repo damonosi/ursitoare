@@ -17,6 +17,7 @@ export const evenimenteSchema = new mongoose.Schema(
     dataeveniment: { type: String, required: true },
     oraeveniment: { type: Number, required: true },
     ursitoare: { type: [userSchema] },
+    nrcontact: { type: Number, required: true },
   },
   {
     timestamps: true,

@@ -23,6 +23,7 @@ export default function FormularPage() {
     nasi,
     dataeveniment,
     oraeveniment,
+    nrcontact,
   }) => {
     try {
       await axios.post("/api/form", {
@@ -34,6 +35,7 @@ export default function FormularPage() {
         nasi,
         dataeveniment,
         oraeveniment,
+        nrcontact,
       });
       toast.success("Rezervare facuta !", {
         position: toast.POSITION.BOTTOM_CENTER,
@@ -171,6 +173,17 @@ export default function FormularPage() {
                 required: "Va rugam sa ora la care preferati sa venim",
               })}
               id="oraeveniment"
+              autoFocus
+            ></input>
+          </div>
+          <div className={styles.randFormular}>
+            <label htmlFor="nrcontact">Numar de Telefon : </label>
+            <input
+              type="tel"
+              {...register("nrcontact", {
+                required: "Va rugam sa ora la care preferati sa venim",
+              })}
+              id="nrcontact"
               autoFocus
             ></input>
           </div>
