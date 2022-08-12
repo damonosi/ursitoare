@@ -23,6 +23,8 @@ export default function FormularPage() {
     nasi,
     dataeveniment,
     oraeveniment,
+    localitateeveniment,
+    locatieeveniment,
     nrcontact,
   }) => {
     try {
@@ -35,6 +37,8 @@ export default function FormularPage() {
         nasi,
         dataeveniment,
         oraeveniment,
+        localitateeveniment,
+        locatieeveniment,
         nrcontact,
       });
       toast.success("Rezervare facuta !", {
@@ -46,7 +50,7 @@ export default function FormularPage() {
   };
 
   const toDay = new Date().toLocaleDateString().substring(0, 10);
-
+  console.log(toDay);
   return (
     <div className={styles.formularContainer}>
       <form onSubmit={handleSubmit(submitHandler)}>
@@ -78,7 +82,7 @@ export default function FormularPage() {
               type="date"
               defaultValue={toDay}
               {...register("datanastere", {
-                required: "Va rugam sa data cand s-a naschut copilul",
+                required: "Va rugam sa data cand s-a nascut copilul",
               })}
               className=""
               id="datanastere"
@@ -173,6 +177,32 @@ export default function FormularPage() {
                 required: "Va rugam sa ora la care preferati sa venim",
               })}
               id="oraeveniment"
+              autoFocus
+            ></input>
+          </div>
+          <div className={styles.randFormular}>
+            <label htmlFor="localitateeveniment">
+              Localitatea unde are loc petrecerea :{" "}
+            </label>
+            <input
+              type="text"
+              {...register("localitateeveniment", {
+                required:
+                  "Va rugam sa specificati localitatea unde are loc evenimentul",
+              })}
+              id="localitateeveniment"
+              autoFocus
+            ></input>
+          </div>
+          <div className={styles.randFormular}>
+            <label htmlFor="locatieeveniment">Unde are loc petrecerea : </label>
+            <input
+              type="text"
+              {...register("locatieeveniment", {
+                required:
+                  "Va rugam sa specificati locatia unde are loc evenimentul",
+              })}
+              id="locatieeveniment"
               autoFocus
             ></input>
           </div>

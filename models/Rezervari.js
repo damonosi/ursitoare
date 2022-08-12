@@ -16,8 +16,10 @@ export const evenimenteSchema = new mongoose.Schema(
     nasi: { type: String, required: true },
     dataeveniment: { type: String, required: true },
     oraeveniment: { type: Number, required: true },
-    ursitoare: { type: [userSchema] },
+    locatieeveniment: { type: String, required: true },
+    localitateeveniment: { type: String, required: true },
     nrcontact: { type: Number, required: true },
+    ursitoare: { type: [userSchema] },
   },
   {
     timestamps: true,

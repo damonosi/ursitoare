@@ -10,9 +10,8 @@ import Spinner from "../../../components/spinner/Spinner";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
-import Collapsible from "react-collapsible";
-import { BsFillArrowDownCircleFill } from "react-icons/bs";
 
+import ChangeDateOrder from "../../../utils/formatData";
 function reducer(state, action) {
   switch (action.type) {
     case "FETCH_REQUEST":
@@ -54,7 +53,7 @@ export default function AdminDashboard() {
     const datAz = new Date(astazi);
     setAzi(datAz);
   }, []);
-  console.log(azi);
+
   useEffect(() => {
     if (session?.user.isadmin) {
     } else {
@@ -99,7 +98,9 @@ export default function AdminDashboard() {
               {new Date(eveniment.dataeveniment).getTime() > azi.getTime() ? (
                 <CasetaEveniment key={eveniment._id} eveniment={eveniment}>
                   <div>
-                    <h2>Data Nasterii {eveniment.datanastere}</h2>
+                    <h2>
+                      Data Nasterii {ChangeDateOrder(eveniment.datanastere)}
+                    </h2>
                     <div>
                       <h2>Parinti</h2>
                       <div className={styles.parintiContainer}>
@@ -129,7 +130,12 @@ export default function AdminDashboard() {
                     ))}
                     <h2> Detalii eveniment</h2>
                     <div className={styles.detaliiEveniment}>
-                      <h3>Data evenimentului {eveniment.dataeveniment}</h3>
+                      <h3>Localitate : {eveniment.localitateeveniment}</h3>
+                      <h3>Restaurant/Adresa : {eveniment.locatieeveniment}</h3>
+                      <h3>
+                        Data evenimentului :
+                        {ChangeDateOrder(eveniment.dataeveniment)}
+                      </h3>
                       <h3>Ora {eveniment.oraeveniment}.00</h3>
                     </div>
                     <div className={styles.contact}>

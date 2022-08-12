@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { getError } from "../../../utils/error";
@@ -7,9 +7,9 @@ import CasetaEveniment from "../../../components/eveniment/CasetaEveniment";
 
 import styles from "../Dashboard.module.scss";
 import { useRouter } from "next/router";
-import { toast } from "react-toastify";
-import Spinner from "../../../components/spinner/Spinner";
 
+import Spinner from "../../../components/spinner/Spinner";
+import ChangeDateOrder from "../../../utils/formatData";
 function reducer(state, action) {
   switch (action.type) {
     case "FETCH_REQUEST":
@@ -34,6 +34,7 @@ export default function EvenimenteleMele() {
     evenimenteleMele: [],
     error: "",
   });
+  const [azi, setAzi] = useState(new Date());
   const { status, data: session } = useSession();
   const router = useRouter();
   const { redirect } = router.query;
@@ -57,6 +58,16 @@ export default function EvenimenteleMele() {
 
     fetchProgramari();
   }, []);
+  useEffect(() => {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var yyyy = today.getFullYear();
+
+    const astazi = mm + "/" + dd + "/" + yyyy;
+    const datAz = new Date(astazi);
+    setAzi(datAz);
+  }, []);
   const flatRez = evenimenteleMele.flatMap((num) => num);
   return (
     <div className={styles.containerDsh}>
@@ -66,41 +77,52 @@ export default function EvenimenteleMele() {
       ) : (
         <div className={styles.containerDashboard}>
           {flatRez.map((eveniment) => (
-            <CasetaEveniment key={eveniment._id}>
-              <h1>{eveniment.numecopil}</h1>
-              <h2>Data Nasterii : {eveniment.datanastere}</h2>
-              <div>
-                <h2>Parinti</h2>
-                <div className={styles.parintiContainer}>
-                  <div className={styles.parintiContainerMic}>
-                    <h3>Mama </h3>
-                    <hr />
-                    <h3> {eveniment.mama}</h3>
+            <>
+              {new Date(eveniment.dataeveniment).getTime() > azi.getTime() ? (
+                <CasetaEveniment eveniment={eveniment} key={eveniment._id}>
+                  <h1>{eveniment.numecopil}</h1>
+                  <h2>
+                    Data Nasterii : {ChangeDateOrder(eveniment.datanastere)}
+                  </h2>
+                  <div>
+                    <h2>Parinti</h2>
+                    <div className={styles.parintiContainer}>
+                      <div className={styles.parintiContainerMic}>
+                        <h3>Mama </h3>
+                        <hr />
+                        <h3> {eveniment.mama}</h3>
+                      </div>
+                      <div className={styles.parintiContainerMic}>
+                        <h3>Tata</h3>
+                        <hr />
+                        <h3> {eveniment.tata}</h3>
+                      </div>
+                    </div>
                   </div>
-                  <div className={styles.parintiContainerMic}>
-                    <h3>Tata</h3>
-                    <hr />
-                    <h3> {eveniment.tata}</h3>
-                  </div>
-                </div>
-              </div>
-              <br />
-              <h2>Frati/ Surori</h2>
+                  <br />
+                  <h2>Frati/ Surori</h2>
 
-              {eveniment.frati.map((i, index) => (
-                <div key={index} className={styles.fratiContainer}>
-                  <h3>{i.nume}</h3>
-                  <hr />
-                  <h3>{i.varsta} ani</h3>
-                </div>
-              ))}
-              <h2> Detalii eveniment</h2>
-              <div className={styles.detaliiEveniment}>
-                <h3>Data evenimentului {eveniment.dataeveniment}</h3>
-                <h3>Ora {eveniment.oraeveniment}.00</h3>
-              </div>
-              <h4>{eveniment.nrcontact}</h4>
-            </CasetaEveniment>
+                  {eveniment.frati.map((i, index) => (
+                    <div key={index} className={styles.fratiContainer}>
+                      <h3>{i.nume}</h3>
+                      <hr />
+                      <h3>{i.varsta} ani</h3>
+                    </div>
+                  ))}
+                  <h2> Detalii eveniment</h2>
+                  <div className={styles.detaliiEveniment}>
+                    <h3>
+                      Data evenimentului{" "}
+                      {ChangeDateOrder(eveniment.dataeveniment)}
+                    </h3>
+                    <h3>Ora {eveniment.oraeveniment}.00</h3>
+                  </div>
+                  <h4>{eveniment.nrcontact}</h4>
+                </CasetaEveniment>
+              ) : (
+                ""
+              )}
+            </>
           ))}
         </div>
       )}

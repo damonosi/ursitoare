@@ -8,9 +8,6 @@
   padding-left: 50px;
   padding-right: 50px;
 
-  div {
-    width: 33%;
-  }
   a {
     box-shadow: inset 0 0 0 0 #e91e63;
     color: #e91e63;
@@ -61,4 +58,44 @@
       0.03em 0.03em 0 mix(#fff, #e91e63, 70%),
       0.035em 0.035em 0 mix(#fff, #e91e63, 72%);
   }
+}
+
+.navMenu {
+  display: flex;
+  justify-content: flex-start;
+
+  flex-direction: row;
+  background-color: gray;
+  ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    justify-content: center;
+    li {
+      width: 100%;
+    }
+  }
+}
+.navCont {
+  position: relative !important;
+
+  justify-self: center;
+
+  z-index: 10;
+  nav {
+    position: absolute;
+
+    width: 20em;
+    right: 2em;
+  }
+}
+
+.meniu {
+  display: flex;
+  align-items: flex-start;
+}
+
+.hamburger-react {
+  justify-self: baseline;
 }

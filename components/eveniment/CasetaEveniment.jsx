@@ -12,7 +12,7 @@ const CasetaEveniment = ({ children, eveniment }) => {
             className={styles.buttonRez}
             onClick={() => setBorder(!border)}
           >
-            <h1> {!border ? eveniment.numecopil : "X"}</h1>
+            <h1> {!border ? eveniment?.numecopil : "X"}</h1>
           </button>
         }
       >

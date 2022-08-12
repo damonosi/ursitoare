@@ -1,4 +1,3 @@
-import bcryptjs from "bcryptjs";
 import { Rezervari } from "../../models/Rezervari";
 import db from "../../utils/db";
 
@@ -15,6 +14,8 @@ const handler = async (req, res) => {
     nasi,
     dataeveniment,
     oraeveniment,
+    localitateeveniment,
+    locatieeveniment,
     nrcontact,
   } = req.body;
 
@@ -29,6 +30,8 @@ const handler = async (req, res) => {
     nasi,
     dataeveniment,
     oraeveniment,
+    localitateeveniment,
+    locatieeveniment,
     nrcontact,
   });
   const formular = await newForm.save();
@@ -45,6 +48,8 @@ const handler = async (req, res) => {
     nasi: formular.nasi,
     dataeveniment: formular.dataeveniment,
     oraeveniment: formular.oraeveniment,
+    locatieeveniment: formular.locatieeveniment,
+    localitateeveniment: formular.localitateeveniment,
     nrcontact: formular.nrcontact,
   });
 };
