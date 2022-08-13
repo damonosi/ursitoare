@@ -9,7 +9,6 @@ const handler = async (req, res) => {
   await db.connect();
   const ursitori = await User.findById(req.body.ursitoareId);
   const eveniment = await Rezervari.findById(req.body.rezId);
-  const dateFrati = eveniment.frati[0];
 
   await Rezervari.findOneAndUpdate(
     {
@@ -32,10 +31,14 @@ const handler = async (req, res) => {
           _id: eveniment._id,
           numecopil: eveniment.numecopil,
           datanastere: eveniment.datanastere,
-          frati: { nume: dateFrati.nume, varsta: dateFrati.varsta },
+          frate1: eveniment.frate1,
+          frate2: eveniment.frate2,
+          frate2: eveniment.frate3,
           mama: eveniment.mama,
           tata: eveniment.tata,
           nasi: eveniment.nasi,
+          locatieeveniment: eveniment.locatieeveniment,
+          localitateeveniment: eveniment.localitateeveniment,
           dataeveniment: eveniment.dataeveniment,
           oraeveniment: eveniment.oraeveniment,
           nrcontact: eveniment.nrcontact,

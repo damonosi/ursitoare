@@ -34,12 +34,16 @@
 }
 
 .fratiContainer {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
 
   border: 2px dashed gray;
   padding: 1em;
   margin-bottom: 2em;
+}
+.frateContainer {
+  border: 1px solid black;
 }
 
 .detaliiEveniment {
@@ -59,6 +63,9 @@
   display: flex;
   flex-direction: column;
   margin: 3px;
+
+  z-index: 100;
+  height: 10em;
 }
 
 .contact {
@@ -96,6 +103,6 @@
 
 @media (max-width: 768px) {
   .containerDashboard {
-    grid-template-columns: 20em;
+    grid-template-columns: 1fr;
   }
 }

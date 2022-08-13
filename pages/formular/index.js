@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { getError } from "../../utils/error";
+import { useEffect, useRef, useState } from "react";
 
 export default function FormularPage() {
   const {
@@ -19,7 +20,9 @@ export default function FormularPage() {
     datanastere,
     mama,
     tata,
-    frati: { nume, varsta },
+    frate1,
+    frate2,
+    frate3,
     nasi,
     dataeveniment,
     oraeveniment,
@@ -33,7 +36,9 @@ export default function FormularPage() {
         datanastere,
         mama,
         tata,
-        frati: { nume, varsta },
+        frate1,
+        frate2,
+        frate3,
         nasi,
         dataeveniment,
         oraeveniment,
@@ -48,9 +53,34 @@ export default function FormularPage() {
       toast.error(getError(err));
     }
   };
+  const [clicked, setClicked] = useState(false);
+  const [clicked2, setClicked2] = useState(false);
+  const [clicked3, setClicked3] = useState(false);
+  const frInput1 = useRef();
+  const frInput2 = useRef();
 
   const toDay = new Date().toLocaleDateString().substring(0, 10);
-  console.log(toDay);
+  const handleAddFrate = () => {
+    frInput1.current.style.display = "flex";
+    console.log(frInput1.current.childNodes[3]);
+    setClicked(!clicked);
+  };
+  const handleRemoveFrate = () => {
+    frInput1.current.style.display = "none";
+    frInput1.current.childNodes[1].value = "";
+    frInput1.current.childNodes[3].value = "";
+    setClicked(!clicked);
+  };
+  const handleRemoveFrate2 = () => {
+    frInput2.current.style.display = "none";
+    frInput2.current.childNodes[1].value = "";
+    frInput2.current.childNodes[3].value = "";
+    setClicked2(!clicked2);
+  };
+  const handleAddFrate2 = () => {
+    frInput2.current.style.display = "flex";
+    setClicked2(!clicked2);
+  };
   return (
     <div className={styles.formularContainer}>
       <form onSubmit={handleSubmit(submitHandler)}>
@@ -114,31 +144,101 @@ export default function FormularPage() {
               autoFocus
             ></input>
           </div>
-          <div className={styles.randFormular}>
-            <label htmlFor="numeFrate">Numele Fratelui :</label>
-            <input
-              type="text"
-              {...register("frati.nume", {
-                required: "Va rugam sa bifati daca au si alti copii ; ",
-              })}
-              className=""
-              id="numeFrate"
-              autoFocus
-            ></input>
-          </div>
-          <div className={styles.randFormular}>
-            <label htmlFor="varstaFrate">Varsta fratelui :</label>
-            <input
-              type="text"
-              {...register("frati.varsta", {
-                required: "Va rugam sa bifati daca au si alti copii ; ",
-              })}
-              className=""
-              id="varstaFrate"
-              autoFocus
-            ></input>
-          </div>
+          <h1>Frati/Surori</h1>
+          <div className={styles.frati}>
+            <div className={styles.randFormularFrati}>
+              <label htmlFor="numeFrate1">Nume </label>
+              <input
+                type="text"
+                {...register("frate1.nume", {
+                  required: "Va rugam sa bifati daca au si alti copii ; ",
+                })}
+                className=""
+                id="numeFrate1"
+                autoFocus
+              ></input>
+              <label htmlFor="varstaFrate1">Varsta </label>
+              <input
+                type="text"
+                {...register("frate1.varsta", {
+                  required: "Va rugam sa bifati daca au si alti copii ; ",
+                })}
+                className=""
+                id="varstaFrate1"
+                autoFocus
+              ></input>
+              {!clicked ? (
+                <button onClick={handleAddFrate}>
+                  <span>Adauga frate/sora</span>
+                </button>
+              ) : (
+                ""
+              )}
+            </div>
 
+            <div
+              className={styles.randFormularFrati}
+              style={{ display: "none" }}
+              ref={frInput1}
+            >
+              <label htmlFor="numeFrate2">Numele </label>
+              <input
+                type="text"
+                {...register("frate2.nume")}
+                className=""
+                id="numeFrate"
+                autoFocus
+              ></input>
+              <label htmlFor="varstaFrate2">Varsta </label>
+              <input
+                type="text"
+                {...register("frate2.varsta")}
+                className=""
+                id="varstaFrate2"
+                autoFocus
+              ></input>
+              {!clicked2 ? (
+                <button onClick={handleAddFrate2}>
+                  <span>Adauga frate/sora</span>
+                </button>
+              ) : (
+                ""
+              )}
+
+              <button onClick={handleRemoveFrate}>
+                <span>X</span>
+              </button>
+            </div>
+            <div
+              className={styles.randFormularFrati}
+              style={{ display: "none" }}
+              ref={frInput2}
+            >
+              <label htmlFor="numeFrate3">Numele </label>
+              <input
+                type="text"
+                {...register("frate3.nume")}
+                className=""
+                id="numeFrate3"
+                autoFocus
+              ></input>
+              <label htmlFor="varstaFrate3">Varsta</label>
+              <input
+                type="text"
+                {...register("frate3.varsta")}
+                className=""
+                id="varstaFrate3"
+                autoFocus
+              ></input>
+              {clicked3 ? (
+                ""
+              ) : (
+                <button onClick={handleRemoveFrate2}>
+                  <span>X</span>
+                </button>
+              )}
+            </div>
+          </div>
           <div className={styles.randFormular}>
             <label htmlFor="nasi">Numele nasilor : </label>
             <input

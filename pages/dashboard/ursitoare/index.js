@@ -102,22 +102,41 @@ export default function EvenimenteleMele() {
                   <br />
                   <h2>Frati/ Surori</h2>
 
-                  {eveniment.frati.map((i, index) => (
-                    <div key={index} className={styles.fratiContainer}>
-                      <h3>{i.nume}</h3>
+                  <div className={styles.fratiContainer}>
+                    <div className={styles.frateContainer}>
+                      <h3>{eveniment.frate1.nume}</h3>
                       <hr />
-                      <h3>{i.varsta} ani</h3>
+                      <h3>{eveniment.frate1.varsta} ani</h3>
                     </div>
-                  ))}
+                    {eveniment.frate2 ? (
+                      <div className={styles.frateContainer}>
+                        <h3>{eveniment.frate2.nume}</h3>
+                        <hr />
+                        <h3>{eveniment.frate2.varsta} ani</h3>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                    {eveniment.frate3 ? (
+                      <div className={styles.frateContainer}>
+                        <h3>{eveniment.frate3.nume}</h3>
+                        <hr />
+                        <h3>{eveniment.frate3.varsta} ani</h3>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </div>
                   <h2> Detalii eveniment</h2>
                   <div className={styles.detaliiEveniment}>
+                    <h3>{eveniment.locatieeveniment}</h3>
+                    <h3>{eveniment.localitateeveniment}</h3>
                     <h3>
                       Data evenimentului{" "}
                       {ChangeDateOrder(eveniment.dataeveniment)}
                     </h3>
                     <h3>Ora {eveniment.oraeveniment}.00</h3>
                   </div>
-                  <h4>{eveniment.nrcontact}</h4>
                 </CasetaEveniment>
               ) : (
                 ""

@@ -118,16 +118,31 @@ export default function AdminDashboard() {
                     </div>
                     <br />
                     <h2>Frati/ Surori</h2>
-                    {eveniment.frati.map((i) => (
-                      <div
-                        key={eveniment._id}
-                        className={styles.fratiContainer}
-                      >
-                        <h3>{i.nume}</h3>
+                    <div className={styles.fratiContainer}>
+                      <div className={styles.frateContainer}>
+                        <h3>{eveniment.frate1.nume}</h3>
                         <hr />
-                        <h3>{i.varsta} ani</h3>
+                        <h3>{eveniment.frate1.varsta} ani</h3>
                       </div>
-                    ))}
+                      {eveniment.frate2 ? (
+                        <div className={styles.frateContainer}>
+                          <h3>{eveniment.frate2.nume}</h3>
+                          <hr />
+                          <h3>{eveniment.frate2.varsta} ani</h3>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                      {eveniment.frate3 ? (
+                        <div className={styles.frateContainer}>
+                          <h3>{eveniment.frate3.nume}</h3>
+                          <hr />
+                          <h3>{eveniment.frate3.varsta} ani</h3>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </div>
                     <h2> Detalii eveniment</h2>
                     <div className={styles.detaliiEveniment}>
                       <h3>Localitate : {eveniment.localitateeveniment}</h3>
@@ -143,8 +158,8 @@ export default function AdminDashboard() {
                       <h4>{eveniment.nrcontact}</h4>
                     </div>
                     {eveniment.ursitoare.length < 3 ? (
-                      <div>
-                        <h1>Cine Merge La Eveniment</h1>
+                      <>
+                        <h1>Adauga ursitoare</h1>
 
                         <div className={styles.adaugUrsitoare}>
                           <Select
@@ -170,7 +185,7 @@ export default function AdminDashboard() {
                             Adaga ursitoarele care merg la eveniment
                           </button>
                         </div>
-                      </div>
+                      </>
                     ) : (
                       <div className={styles.ursContainer}>
                         <h1>Ursitoare</h1>

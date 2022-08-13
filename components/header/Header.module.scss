@@ -78,16 +78,26 @@
   }
 }
 .navCont {
-  position: relative !important;
-
-  justify-self: center;
-
-  z-index: 10;
+  display: flex;
+  position: absolute;
+  top: 0;
+  margin-top: 50px;
+  right: 0;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  .hamburger-react {
+    justify-self: flex-end !important;
+  }
+  li {
+    margin: 0 1rem;
+    overflow: hidden;
+  }
   nav {
-    position: absolute;
+    position: relative;
 
-    width: 20em;
-    right: 2em;
+    width: 100vw;
   }
 }
 
@@ -98,4 +108,5 @@
 
 .hamburger-react {
   justify-self: baseline;
+  float: right !important;
 }
