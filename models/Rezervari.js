@@ -30,7 +30,7 @@ export const evenimenteSchema = new mongoose.Schema(
       },
     ],
     dataeveniment: { type: String, required: true },
-    oraeveniment: { type: Number, required: true },
+    oraeveniment: { type: String, required: true },
     locatieeveniment: { type: String, required: true },
     localitateeveniment: { type: String, required: true },
     nrcontact: { type: Number, required: true },
