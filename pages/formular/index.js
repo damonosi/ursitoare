@@ -13,7 +13,6 @@ export default function FormularPage() {
     register,
     formState: { errors },
   } = useForm();
-  const router = useRouter();
 
   const submitHandler = async ({
     numecopil,
@@ -46,6 +45,7 @@ export default function FormularPage() {
         locatieeveniment,
         nrcontact,
       });
+      setDisable(true);
       toast.success("Rezervare facuta !", {
         position: toast.POSITION.BOTTOM_CENTER,
       });
@@ -62,6 +62,8 @@ export default function FormularPage() {
   const [nasi2, setNasi2] = useState(false);
   const [nasi3, setNasi3] = useState(false);
   const [nasi4, setNasi4] = useState(false);
+
+  const [disable, setDisable] = useState(false);
 
   const frInput1 = useRef();
   const frInput2 = useRef();
@@ -295,9 +297,7 @@ export default function FormularPage() {
                 <label htmlFor="nasu">Nasul </label>
                 <input
                   type="text"
-                  {...register("perechinasi[0].nas", {
-                    required: "Va rugam sa introduceti numele nasului",
-                  })}
+                  {...register("perechinasi[0].nas")}
                   className=""
                   id="nasu"
                   autoFocus
@@ -308,9 +308,7 @@ export default function FormularPage() {
                 <label htmlFor="nasa">Nasa </label>
                 <input
                   type="text"
-                  {...register("perechinasi[0].nasa", {
-                    required: "Va rugam sa introduceti numele nasei",
-                  })}
+                  {...register("perechinasi[0].nasa")}
                   className=""
                   id="nasa"
                   autoFocus
@@ -334,9 +332,7 @@ export default function FormularPage() {
                 <label htmlFor="nasu">Nasul </label>
                 <input
                   type="text"
-                  {...register("perechinasi[1].nas", {
-                    required: "Va rugam sa introduceti numele nasului",
-                  })}
+                  {...register("perechinasi[1].nas")}
                   className=""
                   id="nasu"
                   autoFocus
@@ -346,9 +342,7 @@ export default function FormularPage() {
                 <label htmlFor="nasa">Nasa </label>
                 <input
                   type="text"
-                  {...register("perechinasi[1].nasa", {
-                    required: "Va rugam sa introduceti numele nasei",
-                  })}
+                  {...register("perechinasi[1].nasa")}
                   className=""
                   id="nasa"
                   autoFocus
@@ -375,9 +369,7 @@ export default function FormularPage() {
                 <label htmlFor="nasu">Nasul </label>
                 <input
                   type="text"
-                  {...register("perechinasi[2].nas", {
-                    required: "Va rugam sa introduceti numele nasului",
-                  })}
+                  {...register("perechinasi[2].nas")}
                   className=""
                   id="nasu"
                   autoFocus
@@ -387,9 +379,7 @@ export default function FormularPage() {
                 <label htmlFor="nasa">Nasa </label>
                 <input
                   type="text"
-                  {...register("perechinasi[2].nasa", {
-                    required: "Va rugam sa introduceti numele nasei",
-                  })}
+                  {...register("perechinasi[2].nasa")}
                   className=""
                   id="nasa"
                   autoFocus
@@ -416,9 +406,7 @@ export default function FormularPage() {
                 <label htmlFor="nasu">Nasul </label>
                 <input
                   type="text"
-                  {...register("perechinasi[3].nas", {
-                    required: "Va rugam sa introduceti numele nasului",
-                  })}
+                  {...register("perechinasi[3].nas")}
                   className=""
                   id="nasu"
                   autoFocus
@@ -428,9 +416,7 @@ export default function FormularPage() {
                 <label htmlFor="nasa">Nasa </label>
                 <input
                   type="text"
-                  {...register("perechinasi[3].nasa", {
-                    required: "Va rugam sa introduceti numele nasei",
-                  })}
+                  {...register("perechinasi[3].nasa")}
                   className=""
                   id="nasa"
                   autoFocus
@@ -513,7 +499,7 @@ export default function FormularPage() {
             ></input>
           </div>
         </div>
-        <button>Submit</button>
+        <button disabled={disable}>Submit</button>
       </form>
     </div>
   );
