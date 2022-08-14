@@ -23,7 +23,12 @@ export const evenimenteSchema = new mongoose.Schema(
     mama: { type: String, required: true },
     tata: { type: String, required: true },
 
-    nasi: { type: String, required: true },
+    perechinasi: [
+      {
+        nas: { type: String, required: false },
+        nasa: { type: String, required: false },
+      },
+    ],
     dataeveniment: { type: String, required: true },
     oraeveniment: { type: Number, required: true },
     locatieeveniment: { type: String, required: true },

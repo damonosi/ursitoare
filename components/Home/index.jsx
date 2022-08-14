@@ -1,6 +1,6 @@
 import styles from "./Home.module.scss";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   motion,
   useViewportScroll,
@@ -9,7 +9,8 @@ import {
   useTransform,
 } from "framer-motion";
 
-import Ursitoare from "../../public/images/ursitoareIntroCrop.png";
+import Ursitoare from "../../public/images/ursitoare6.jpg";
+import { useMediaQuery } from "react-responsive";
 
 const HomePage = () => {
   const controls = useAnimationControls();
@@ -21,58 +22,100 @@ const HomePage = () => {
       transition: { delay: i * 1.8 },
     }));
   }, [controls]);
+  const [mounted, setMounted] = useState(false);
+  const isDesktop = useMediaQuery({ query: "(min-width: 767px)" });
+  const isTabletPhone = useMediaQuery({ query: "(max-width: 767px)" });
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <div className={styles.homeContainer}>
-      <section className={styles.secIntroducere}>
-        <motion.div
-          custom={0}
-          initial={{ opacity: 0, x: -200 }}
-          animate={{ opacity: 1, x: 700 }}
-          transition={{ duration: 2 }}
-          className={styles.textIntro}
-        >
-          <motion.h1
-            initial={{ x: -100, opacity: 0 }}
-            custom={1}
-            animate={controls}
-            transition={{ duration: 1 }}
+      {mounted && isDesktop && (
+        <section className={styles.secIntroducere}>
+          <motion.div
+            custom={0}
+            initial={{ opacity: 0, x: -200 }}
+            animate={{ opacity: 1, x: 900 }}
+            transition={{ duration: 2 }}
+            className={styles.textIntro}
           >
-            Bucurati-va de
-          </motion.h1>
-          <motion.h2
-            initial={{ x: -100, opacity: 0 }}
-            custom={2}
-            animate={controls}
-            transition={{ duration: 1 }}
+            <motion.h1
+              initial={{ x: -100, opacity: 0 }}
+              custom={1}
+              animate={controls}
+              transition={{ duration: 1 }}
+            >
+              Bucurati-va de
+            </motion.h1>
+            <motion.h2
+              initial={{ x: -100, opacity: 0 }}
+              custom={2}
+              animate={controls}
+              transition={{ duration: 1 }}
+            >
+              momente de neuitat
+            </motion.h2>
+            <motion.h2
+              initial={{ x: -100, opacity: 0 }}
+              custom={3}
+              animate={controls}
+              transition={{ duration: 1 }}
+            >
+              impreuna cu familia
+            </motion.h2>
+            <motion.h4
+              initial={{ x: -100, opacity: 0 }}
+              custom={4}
+              animate={controls}
+              transition={{ duration: 1 }}
+            >
+              alaturi de 3 zane ursitoare
+            </motion.h4>
+          </motion.div>
+          <motion.div
+            initial={{ x: 200 }}
+            animate={{ x: -250 }}
+            transition={{ duration: 2 }}
+            className={styles.imgIntroducere}
           >
-            momente de neuitat
-          </motion.h2>
-          <motion.h2
-            initial={{ x: -100, opacity: 0 }}
-            custom={3}
-            animate={controls}
-            transition={{ duration: 1 }}
+            <Image src={Ursitoare} alt="ursitoare1" />
+          </motion.div>
+        </section>
+      )}
+
+      {mounted && isTabletPhone && (
+        <section className={styles.secIntroducere}>
+          <motion.div
+            initial={{ x: 10 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 2 }}
+            className={styles.imgIntroducere}
           >
-            impreuna cu familia
-          </motion.h2>
-          <motion.h4
-            initial={{ x: -100, opacity: 0 }}
-            custom={4}
-            animate={controls}
-            transition={{ duration: 1 }}
+            <Image src={Ursitoare} alt="ursitoare1" />
+          </motion.div>
+          <motion.div
+            custom={0}
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 2 }}
+            className={styles.textIntro}
           >
-            alaturi de 3 zane ursitoare
-          </motion.h4>
-        </motion.div>
-        <motion.div
-          initial={{ x: 200 }}
-          animate={{ x: -550 }}
-          transition={{ duration: 2 }}
-          className={styles.imgIntroducere}
-        >
-          <Image src={Ursitoare} alt="ursitoare1" />
-        </motion.div>
-      </section>
+            <motion.h1 animate={controls} transition={{ duration: 1 }}>
+              Bucurati-va de
+            </motion.h1>
+            <motion.h2 animate={controls} transition={{ duration: 1 }}>
+              momente de neuitat
+            </motion.h2>
+            <motion.h2 animate={controls} transition={{ duration: 1 }}>
+              impreuna cu familia
+            </motion.h2>
+            <motion.h4 animate={controls} transition={{ duration: 1 }}>
+              alaturi de 3 zane ursitoare
+            </motion.h4>
+          </motion.div>
+        </section>
+      )}
+
       <section>
         <h1>Sectiune despre noi</h1>
       </section>

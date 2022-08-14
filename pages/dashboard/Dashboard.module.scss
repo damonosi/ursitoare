@@ -101,6 +101,17 @@
   }
 }
 
+.nasiContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  border: 5px dotted gray;
+  padding:1em;
+  div {
+    border: 2px solid black;
+  }
+}
+
 @media (max-width: 768px) {
   .containerDashboard {
     grid-template-columns: 1fr;

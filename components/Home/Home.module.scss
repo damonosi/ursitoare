@@ -18,7 +18,7 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   height: auto;
 
   img {
@@ -31,6 +31,24 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-color: antiquewhite;
   width: 30%;
-  border: 5px dotted gray;
+  border-radius: 1em;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .homeContainer {
+    padding: 1em;
+  }
+  .secIntroducere {
+    flex-direction: column;
+    margin-top: 1em;
+  }
+  .imgIntroducere {
+  }
+
+  .textIntro {
+    width: 100%;
+  }
 }

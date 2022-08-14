@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { SessionProvider, useSession } from "next-auth/react";
 import { AnimatePresence } from "framer-motion";
+
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {

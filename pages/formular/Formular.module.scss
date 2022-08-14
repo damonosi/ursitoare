@@ -85,3 +85,19 @@
   height: auto;
   padding: 2em;
 }
+
+.nasi {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 4px dotted black;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 2em;
+  height: auto;
+  padding: 2em;
+}
+.pereche {
+  display: grid;
+  grid-template-columns: 1fr;
+}

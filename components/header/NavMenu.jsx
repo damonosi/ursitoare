@@ -21,48 +21,55 @@ const NavMenu = ({ openNavMenu, closeNavMenu }) => {
       transition={{ duration: 0.35 }}
       className={styles.meniu}
     >
-      <li onClick={() => openNavMenu && closeNavMenu()}>
-        <Link href="/">
-          <a>Acasa</a>
-        </Link>
-      </li>
-      <li onClick={() => openNavMenu && closeNavMenu()}>
-        <Link href="/formular">
-          <a>Faceti o Rezervare</a>
-        </Link>
-      </li>
-      {session?.user.isadmin ? (
+      <div className={styles.navLinks}>
         <li onClick={() => openNavMenu && closeNavMenu()}>
-          <Link href="/dashboard/admin">
-            <a>Rezervari</a>
+          <Link href="/">
+            <a>Acasa</a>
           </Link>
         </li>
-      ) : (
-        ""
-      )}
-      {session?.user.isursitoare ? (
         <li onClick={() => openNavMenu && closeNavMenu()}>
-          <Link href="/dashboard/ursitoare">
-            <a>Program</a>
-          </Link>{" "}
+          <Link href="/formular">
+            <a>Faceti o Rezervare</a>
+          </Link>
         </li>
-      ) : (
-        ""
-      )}
-
-      <li onClick={() => openNavMenu && closeNavMenu()}>
-        {status === "loading" ? (
-          "Loading"
-        ) : session?.user ? (
-          <a href="#" className="" onClick={logoutClickHandler}>
-            Deconectare
-          </a>
+      </div>
+      <hr />
+      <div className={styles.dashLinks}>
+        {session?.user.isadmin ? (
+          <li onClick={() => openNavMenu && closeNavMenu()}>
+            <Link href="/dashboard/admin">
+              <a>Rezervari</a>
+            </Link>
+          </li>
         ) : (
-          <Link href="/auth/login">
-            <a className="">Conectare</a>
-          </Link>
+          ""
         )}
-      </li>
+        {session?.user.isursitoare ? (
+          <li onClick={() => openNavMenu && closeNavMenu()}>
+            <Link href="/dashboard/ursitoare">
+              <a>Program</a>
+            </Link>{" "}
+          </li>
+        ) : (
+          ""
+        )}
+
+        <li onClick={() => openNavMenu && closeNavMenu()}>
+          {status === "loading" ? (
+            "Loading"
+          ) : session?.user ? (
+            <Link href="#">
+              <a className="" onClick={logoutClickHandler}>
+                Deconectare
+              </a>
+            </Link>
+          ) : (
+            <Link href="/auth/login">
+              <a className="">Conectare</a>
+            </Link>
+          )}
+        </li>
+      </div>
     </motion.ul>
   );
 };

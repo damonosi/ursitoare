@@ -1,6 +1,7 @@
 .headerContainer {
   display: flex;
   flex-direction: row;
+  position: relative;
   justify-content: space-between;
   align-items: center;
   height: 140px;
@@ -10,7 +11,7 @@
 
   a {
     box-shadow: inset 0 0 0 0 #e91e63;
-    color: #e91e63;
+    color: black;
     margin: 0 -0.25rem;
     padding: 0 0.25rem;
     transition: color 2s ease-in-out, box-shadow 1s ease-in-out;
@@ -61,52 +62,93 @@
 }
 
 .navMenu {
-  display: flex;
-  justify-content: flex-start;
-
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   flex-direction: row;
-  background-color: gray;
-  ul {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-    justify-content: center;
-    li {
-      width: 100%;
-    }
-  }
+  background-color: antiquewhite;
+  z-index: 1000;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 .navCont {
   display: flex;
-  position: absolute;
   top: 0;
-  margin-top: 50px;
-  right: 0;
+
   flex-direction: column;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  .hamburger-react {
-    justify-self: flex-end !important;
+
+  justify-content: space-between;
+  align-items: flex-end;
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: left;
+
+      li {
+        all: unset;
+        width: 15em;
+        margin: 1em;
+        a {
+          all: unset;
+          cursor: pointer;
+        }
+      }
+    }
+    hr {
+      height: 100%;
+      width: 2px;
+      color: black;
+    }
   }
   li {
-    margin: 0 1rem;
     overflow: hidden;
   }
   nav {
-    position: relative;
-
-    width: 100vw;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 140px;
+    width: 35em;
   }
 }
-
-.meniu {
-  display: flex;
-  align-items: flex-start;
-}
-
-.hamburger-react {
-  justify-self: baseline;
-  float: right !important;
+@media (max-width: 768px) {
+  .headerContainer {
+    padding: 0px;
+  }
+  .navMenu {
+    left: 0;
+    right: 0;
+  }
+  .meniu {
+    height: 20em;
+  }
+  .navCont {
+    nav {
+      width: 100%;
+    }
+    ul {
+      grid-template-columns: 1fr 1fr;
+      hr {
+        display: none;
+      }
+      div {
+        width: 100%;
+        text-align: center;
+        li {
+          width: 100%;
+        }
+      }
+    }
+  }
 }

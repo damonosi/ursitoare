@@ -23,7 +23,7 @@ export default function FormularPage() {
     frate1,
     frate2,
     frate3,
-    nasi,
+    perechinasi,
     dataeveniment,
     oraeveniment,
     localitateeveniment,
@@ -39,7 +39,7 @@ export default function FormularPage() {
         frate1,
         frate2,
         frate3,
-        nasi,
+        perechinasi,
         dataeveniment,
         oraeveniment,
         localitateeveniment,
@@ -53,13 +53,62 @@ export default function FormularPage() {
       toast.error(getError(err));
     }
   };
+  const toDay = new Date().toLocaleDateString().substring(0, 10);
   const [clicked, setClicked] = useState(false);
   const [clicked2, setClicked2] = useState(false);
   const [clicked3, setClicked3] = useState(false);
+
+  const [nasi, setNasi] = useState(false);
+  const [nasi2, setNasi2] = useState(false);
+  const [nasi3, setNasi3] = useState(false);
+  const [nasi4, setNasi4] = useState(false);
+
   const frInput1 = useRef();
   const frInput2 = useRef();
 
-  const toDay = new Date().toLocaleDateString().substring(0, 10);
+  const nsInput1 = useRef();
+  const nsInput2 = useRef();
+  const nsInput3 = useRef();
+  const nsInput4 = useRef();
+
+  const handleAddPerecheNasi = () => {
+    nsInput1.current.style.display = "grid";
+    console.log(nsInput1.current.childNodes[2].childNodes[1]);
+    setNasi(!nasi);
+  };
+
+  const handleAddPerecheNasi2 = () => {
+    nsInput2.current.style.display = "grid";
+    console.log(nsInput1.current.childNodes[3]);
+    setNasi2(!nasi2);
+  };
+  const handleRemoveNasi2 = () => {
+    nsInput1.current.style.display = "none";
+    nsInput1.current.childNodes[1].childNodes[1].value = "";
+    nsInput1.current.childNodes[2].childNodes[1].value = "";
+    setNasi2(!nasi2);
+    setNasi(!nasi);
+  };
+  const handleAddPerecheNasi3 = () => {
+    nsInput3.current.style.display = "grid";
+
+    setNasi3(!nasi3);
+    setNasi4(!nasi4);
+  };
+  const handleRemoveNasi3 = () => {
+    nsInput2.current.style.display = "none";
+    nsInput2.current.childNodes[1].childNodes[1].value = "";
+    nsInput2.current.childNodes[2].childNodes[1].value = "";
+    setNasi3(!nasi3);
+    
+  };
+  const handleRemoveNasi4 = () => {
+    nsInput3.current.style.display = "none";
+    nsInput3.current.childNodes[1].childNodes[1].value = "";
+    nsInput3.current.childNodes[2].childNodes[1].value = "";
+    setNasi4(!nasi4);
+  };
+
   const handleAddFrate = () => {
     frInput1.current.style.display = "flex";
     console.log(frInput1.current.childNodes[3]);
@@ -239,17 +288,162 @@ export default function FormularPage() {
               )}
             </div>
           </div>
-          <div className={styles.randFormular}>
-            <label htmlFor="nasi">Numele nasilor : </label>
-            <input
-              type="text"
-              {...register("nasi", {
-                required: "Va rugam sa introduceti numele tatalui",
-              })}
-              className=""
-              id="nasi"
-              autoFocus
-            ></input>
+          <div className={styles.nasi}>
+            <div className={styles.pereche}>
+              <h3>Pereche1</h3>
+              <div className={styles.randFormular}>
+                <label htmlFor="nasu">Nasul : </label>
+                <input
+                  type="text"
+                  {...register("perechinasi[0].nas", {
+                    required: "Va rugam sa introduceti numele nasului",
+                  })}
+                  className=""
+                  id="nasu"
+                  autoFocus
+                ></input>
+              </div>
+
+              <div className={styles.randFormular}>
+                <label htmlFor="nasa">Nasa : </label>
+                <input
+                  type="text"
+                  {...register("perechinasi[0].nasa", {
+                    required: "Va rugam sa introduceti numele nasei",
+                  })}
+                  className=""
+                  id="nasa"
+                  autoFocus
+                ></input>
+              </div>
+              {!nasi ? (
+                <button onClick={handleAddPerecheNasi}>
+                  <span>Adauga pereche nasi</span>
+                </button>
+              ) : (
+                ""
+              )}
+            </div>{" "}
+            <div
+              className={styles.pereche}
+              style={{ display: "none" }}
+              ref={nsInput1}
+            >
+              <h3>Pereche2</h3>
+              <div className={styles.randFormular}>
+                <label htmlFor="nasu">Nasul : </label>
+                <input
+                  type="text"
+                  {...register("perechinasi[1].nas", {
+                    required: "Va rugam sa introduceti numele nasului",
+                  })}
+                  className=""
+                  id="nasu"
+                  autoFocus
+                ></input>
+              </div>
+              <div className={styles.randFormular}>
+                <label htmlFor="nasa">Nasa : </label>
+                <input
+                  type="text"
+                  {...register("perechinasi[1].nasa", {
+                    required: "Va rugam sa introduceti numele nasei",
+                  })}
+                  className=""
+                  id="nasa"
+                  autoFocus
+                ></input>
+              </div>
+              {!nasi2 ? (
+                <button onClick={handleAddPerecheNasi2}>
+                  <span>Adauga pereche nasi</span>
+                </button>
+              ) : (
+                ""
+              )}
+              <button onClick={handleRemoveNasi2}>
+                <span>X</span>
+              </button>
+            </div>
+            <div
+              className={styles.pereche}
+              style={{ display: "none" }}
+              ref={nsInput2}
+            >
+              <h3>Pereche3</h3>
+              <div className={styles.randFormular}>
+                <label htmlFor="nasu">Nasul : </label>
+                <input
+                  type="text"
+                  {...register("perechinasi[2].nas", {
+                    required: "Va rugam sa introduceti numele nasului",
+                  })}
+                  className=""
+                  id="nasu"
+                  autoFocus
+                ></input>
+              </div>
+              <div className={styles.randFormular}>
+                <label htmlFor="nasa">Nasa : </label>
+                <input
+                  type="text"
+                  {...register("perechinasi[2].nasa", {
+                    required: "Va rugam sa introduceti numele nasei",
+                  })}
+                  className=""
+                  id="nasa"
+                  autoFocus
+                ></input>
+              </div>
+              {!nasi3 ? (
+                <button onClick={handleAddPerecheNasi3}>
+                  <span>Adauga pereche nasi</span>
+                </button>
+              ) : (
+                ""
+              )}
+              <button onClick={handleRemoveNasi3}>
+                <span>X</span>
+              </button>
+            </div>
+            <div
+              className={styles.pereche}
+              style={{ display: "none" }}
+              ref={nsInput3}
+            >
+              <h3>Pereche4</h3>
+              <div className={styles.randFormular}>
+                <label htmlFor="nasu">Nasul : </label>
+                <input
+                  type="text"
+                  {...register("perechinasi[3].nas", {
+                    required: "Va rugam sa introduceti numele nasului",
+                  })}
+                  className=""
+                  id="nasu"
+                  autoFocus
+                ></input>
+              </div>
+              <div className={styles.randFormular}>
+                <label htmlFor="nasa">Nasa : </label>
+                <input
+                  type="text"
+                  {...register("perechinasi[3].nasa", {
+                    required: "Va rugam sa introduceti numele nasei",
+                  })}
+                  className=""
+                  id="nasa"
+                  autoFocus
+                ></input>
+              </div>
+              {!nasi4 ? (
+                ""
+              ) : (
+                <button onClick={handleRemoveNasi4}>
+                  <span>X</span>
+                </button>
+              )}
+            </div>
           </div>
         </div>
         <div className={styles.dateEveniment}>
