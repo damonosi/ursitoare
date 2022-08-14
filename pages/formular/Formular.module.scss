@@ -1,6 +1,6 @@
 .formularContainer {
   display: flex;
-  width: 100%;
+
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -115,6 +115,9 @@
 }
 
 @media (max-width: 768px) {
+  .formularContainer {
+    margin: 1em;
+  }
   .frati {
     grid-template-columns: 1fr;
   }
