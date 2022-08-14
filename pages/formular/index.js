@@ -100,7 +100,6 @@ export default function FormularPage() {
     nsInput2.current.childNodes[1].childNodes[1].value = "";
     nsInput2.current.childNodes[2].childNodes[1].value = "";
     setNasi3(!nasi3);
-    
   };
   const handleRemoveNasi4 = () => {
     nsInput3.current.style.display = "none";
@@ -141,7 +140,7 @@ export default function FormularPage() {
         <div className={styles.dateCopil}>
           <h1>Date copil</h1>
           <div className={styles.randFormular}>
-            <label htmlFor="numecopil">Numele copilului : </label>
+            <label htmlFor="numecopil">Numele copilului </label>
             <input
               type="text"
               {...register("numecopil", {
@@ -155,7 +154,7 @@ export default function FormularPage() {
 
           <div className={styles.randFormular}>
             <label htmlFor="datanastere">
-              Data nasterii (luna / ziua / anul ) :
+              Data nasterii (luna / ziua / anul )
             </label>
             <input
               type="date"
@@ -169,7 +168,7 @@ export default function FormularPage() {
             />
           </div>
           <div className={styles.randFormular}>
-            <label htmlFor="mama">Numele mamei : </label>
+            <label htmlFor="mama">Numele mamei </label>
             <input
               type="text"
               {...register("mama", {
@@ -182,7 +181,7 @@ export default function FormularPage() {
           </div>
 
           <div className={styles.randFormular}>
-            <label htmlFor="tata">Numele tatalui : </label>
+            <label htmlFor="tata">Numele tatalui </label>
             <input
               type="text"
               {...register("tata", {
@@ -230,7 +229,7 @@ export default function FormularPage() {
               style={{ display: "none" }}
               ref={frInput1}
             >
-              <label htmlFor="numeFrate2">Numele </label>
+              <label htmlFor="numeFrate2">Nume </label>
               <input
                 type="text"
                 {...register("frate2.nume")}
@@ -263,7 +262,7 @@ export default function FormularPage() {
               style={{ display: "none" }}
               ref={frInput2}
             >
-              <label htmlFor="numeFrate3">Numele </label>
+              <label htmlFor="numeFrate3">Nume </label>
               <input
                 type="text"
                 {...register("frate3.nume")}
@@ -288,11 +287,12 @@ export default function FormularPage() {
               )}
             </div>
           </div>
+          <h1>Nasii</h1>
           <div className={styles.nasi}>
             <div className={styles.pereche}>
               <h3>Pereche1</h3>
               <div className={styles.randFormular}>
-                <label htmlFor="nasu">Nasul : </label>
+                <label htmlFor="nasu">Nasul </label>
                 <input
                   type="text"
                   {...register("perechinasi[0].nas", {
@@ -305,7 +305,7 @@ export default function FormularPage() {
               </div>
 
               <div className={styles.randFormular}>
-                <label htmlFor="nasa">Nasa : </label>
+                <label htmlFor="nasa">Nasa </label>
                 <input
                   type="text"
                   {...register("perechinasi[0].nasa", {
@@ -331,7 +331,7 @@ export default function FormularPage() {
             >
               <h3>Pereche2</h3>
               <div className={styles.randFormular}>
-                <label htmlFor="nasu">Nasul : </label>
+                <label htmlFor="nasu">Nasul </label>
                 <input
                   type="text"
                   {...register("perechinasi[1].nas", {
@@ -343,7 +343,7 @@ export default function FormularPage() {
                 ></input>
               </div>
               <div className={styles.randFormular}>
-                <label htmlFor="nasa">Nasa : </label>
+                <label htmlFor="nasa">Nasa </label>
                 <input
                   type="text"
                   {...register("perechinasi[1].nasa", {
@@ -372,7 +372,7 @@ export default function FormularPage() {
             >
               <h3>Pereche3</h3>
               <div className={styles.randFormular}>
-                <label htmlFor="nasu">Nasul : </label>
+                <label htmlFor="nasu">Nasul </label>
                 <input
                   type="text"
                   {...register("perechinasi[2].nas", {
@@ -384,7 +384,7 @@ export default function FormularPage() {
                 ></input>
               </div>
               <div className={styles.randFormular}>
-                <label htmlFor="nasa">Nasa : </label>
+                <label htmlFor="nasa">Nasa </label>
                 <input
                   type="text"
                   {...register("perechinasi[2].nasa", {
@@ -413,7 +413,7 @@ export default function FormularPage() {
             >
               <h3>Pereche4</h3>
               <div className={styles.randFormular}>
-                <label htmlFor="nasu">Nasul : </label>
+                <label htmlFor="nasu">Nasul </label>
                 <input
                   type="text"
                   {...register("perechinasi[3].nas", {
@@ -425,7 +425,7 @@ export default function FormularPage() {
                 ></input>
               </div>
               <div className={styles.randFormular}>
-                <label htmlFor="nasa">Nasa : </label>
+                <label htmlFor="nasa">Nasa </label>
                 <input
                   type="text"
                   {...register("perechinasi[3].nasa", {
@@ -450,7 +450,7 @@ export default function FormularPage() {
           <h1>Data eveniment : </h1>
           <div className={styles.randFormular}>
             <label htmlFor="dataeveniment">
-              Data evenimentului (luna / ziua / anul ) :
+              Data evenimentului (luna / ziua / anul )
             </label>
             <input
               type="date"
@@ -464,19 +464,20 @@ export default function FormularPage() {
             />
           </div>
           <div className={styles.randFormular}>
-            <label htmlFor="oraeveniment">Ora preferata : </label>
+            <label htmlFor="oraeveniment">Ora preferata </label>
             <input
-              type="number"
+              type="text"
               {...register("oraeveniment", {
                 required: "Va rugam sa ora la care preferati sa venim",
               })}
               id="oraeveniment"
+              defaultValue="22.00"
               autoFocus
             ></input>
           </div>
           <div className={styles.randFormular}>
             <label htmlFor="localitateeveniment">
-              Localitatea unde are loc petrecerea :{" "}
+              Localitatea unde are loc petrecerea
             </label>
             <input
               type="text"
@@ -489,7 +490,7 @@ export default function FormularPage() {
             ></input>
           </div>
           <div className={styles.randFormular}>
-            <label htmlFor="locatieeveniment">Unde are loc petrecerea : </label>
+            <label htmlFor="locatieeveniment">Unde are loc petrecerea </label>
             <input
               type="text"
               {...register("locatieeveniment", {
@@ -501,7 +502,7 @@ export default function FormularPage() {
             ></input>
           </div>
           <div className={styles.randFormular}>
-            <label htmlFor="nrcontact">Numar de Telefon : </label>
+            <label htmlFor="nrcontact">Numar de Telefon </label>
             <input
               type="tel"
               {...register("nrcontact", {
