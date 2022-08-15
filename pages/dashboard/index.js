@@ -1,15 +1,15 @@
 import React, { useReducer, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
-import { getError } from "../../../utils/error";
+import { getError } from "../../utils/error";
 
-import CasetaEveniment from "../../../components/eveniment/CasetaEveniment";
+import CasetaEveniment from "../../components/eveniment/CasetaEveniment";
 
-import styles from "../Dashboard.module.scss";
+import styles from "./Dashboard.module.scss";
 import { useRouter } from "next/router";
 
-import Spinner from "../../../components/spinner/Spinner";
-import ChangeDateOrder from "../../../utils/formatData";
+import Spinner from "../../components/spinner/Spinner";
+import ChangeDateOrder from "../../utils/formatData";
 function reducer(state, action) {
   switch (action.type) {
     case "FETCH_REQUEST":
@@ -18,7 +18,7 @@ function reducer(state, action) {
       return {
         ...state,
         loading: false,
-        evenimenteleMele: action.payload,
+        rezervarileMele: action.payload,
         error: "",
       };
     case "FETCH_FAIL":
@@ -28,10 +28,10 @@ function reducer(state, action) {
   }
 }
 
-export default function EvenimenteleMele() {
-  const [{ loading, error, evenimenteleMele }, dispatch] = useReducer(reducer, {
+export default function RezervarileMele() {
+  const [{ loading, error, rezervarileMele }, dispatch] = useReducer(reducer, {
     loading: true,
-    evenimenteleMele: [],
+    rezervarileMele: [],
     error: "",
   });
   const [azi, setAzi] = useState(new Date());
@@ -49,7 +49,7 @@ export default function EvenimenteleMele() {
     const fetchProgramari = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get("/api/rezervari/evenimentele-mele");
+        const { data } = await axios.get("/api/rezervari/rezervarile-mele");
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: getError(err) });
@@ -68,8 +68,8 @@ export default function EvenimenteleMele() {
     const datAz = new Date(astazi);
     setAzi(datAz);
   }, []);
-  console.log(typeof evenimenteleMele);
-  const flatRez = evenimenteleMele.flatMap((num) => num);
+
+  const flatRez = rezervarileMele.flatMap((num) => num);
   return (
     <div className={styles.containerDsh}>
       <h1>Evenimentele Mele</h1>

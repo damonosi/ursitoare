@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import { userSchema } from "./Rezervari";
 export const evenimenteSchema = new mongoose.Schema(
   {
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     numecopil: { type: String, required: true },
     datanastere: { type: String, required: true },
     frate1: {

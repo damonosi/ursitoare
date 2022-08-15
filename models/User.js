@@ -9,6 +9,7 @@ export const userSchema = new mongoose.Schema(
     isadmin: { type: Boolean, required: true, default: false },
     isursitoare: { type: Boolean, default: false },
     rezervari: { type: [evenimenteSchema] },
+    rezervarilemele: { type: [evenimenteSchema] },
   },
   {
     timestamps: true,

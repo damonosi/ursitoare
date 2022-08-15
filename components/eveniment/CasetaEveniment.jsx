@@ -7,12 +7,14 @@ const CasetaEveniment = ({ children, eveniment }) => {
   return (
     <div className={border ? styles.cuBorder : styles.casetaContainer}>
       <Collapsible
+        transitionTime={500}
+        transitionCloseTime={500}
         trigger={
           <button
-            className={styles.buttonRez}
+            className={!border ? styles.openBtn : styles.closeBtn}
             onClick={() => setBorder(!border)}
           >
-            <h1> {!border ? eveniment?.numecopil : "X"}</h1>
+            <>{!border ? <h1>{eveniment?.numecopil}</h1> : <span>X</span>}</>
           </button>
         }
       >

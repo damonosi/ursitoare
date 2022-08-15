@@ -1,0 +1,63 @@
+.nasi {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  border: 4px dotted black;
+
+  width: 100%;
+  gap: 2em;
+
+  padding: 2em;
+  text-align: center;
+}
+.nasiDoi {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 4px dotted black;
+  width: 100%;
+  gap: 2em;
+  padding: 2em;
+  text-align: center;
+}
+.pereche {
+  display: grid;
+  position: relative;
+}
+
+.randFormular {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5em;
+  border-bottom: 1px solid black;
+  label {
+    text-align: center;
+    margin-bottom: 0.2em;
+  }
+}
+.closeBtn {
+  position: absolute;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  span {
+    font-size: 1.3em;
+    color: red;
+    font-weight: bold;
+
+    &:hover {
+      font-size: 1.5em;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .formularContainer {
+    margin: 1em;
+  }
+
+  .nasi {
+    grid-template-columns: 1fr;
+  }
+}

@@ -6,6 +6,7 @@
   padding: 5em;
   padding-top: 1em;
   text-align: center;
+  transition: border 200ms ease;
 }
 
 .cuBorder {
@@ -16,18 +17,47 @@
   margin-bottom: 35px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  padding: 5em;
-  padding-top: 1em;
+  padding: 1em;
+  padding-top: 3em;
   text-align: center;
+  position: relative;
+  transition: border 200ms ease-in-out;
 }
 
-.buttonRez {
-  padding: 2em;
+.noDisplay {
+  display: none;
+}
+.openBtn {
+  padding: 1em;
   cursor: pointer;
+  background-color: transparent;
+  box-shadow: none;
+  border-color: gold;
+  width: 23em;
+  height: 10em;
+
+  &:hover {
+    h1 {
+      font-size: 2.2em;
+    }
+  }
+}
+.closeBtn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 1.5em;
   background-color: transparent;
   border: none;
 
-  h1 {
-    font-size: 2em;
+  span {
+    font-size: 1.3em;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      font-size: 1.5em;
+    }
   }
 }

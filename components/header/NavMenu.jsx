@@ -32,6 +32,11 @@ const NavMenu = ({ openNavMenu, closeNavMenu }) => {
             <a>Faceti o Rezervare</a>
           </Link>
         </li>
+        <li onClick={() => openNavMenu && closeNavMenu()}>
+          <Link href="/dashboard">
+            <a>Rezervarile Mele</a>
+          </Link>
+        </li>
       </div>
       <hr />
       <div className={styles.dashLinks}>
