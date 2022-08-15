@@ -40,7 +40,7 @@ export default function RezervarileMele() {
   const { redirect } = router.query;
 
   useEffect(() => {
-    if (session?.user.isursitoare) {
+    if (session.user) {
     } else {
       router.push(redirect || "/");
     }
@@ -72,7 +72,7 @@ export default function RezervarileMele() {
   const flatRez = rezervarileMele.flatMap((num) => num);
   return (
     <div className={styles.containerDsh}>
-      <h1>Evenimentele Mele</h1>
+      <h1>Rezervarile Mele</h1>
       {loading ? (
         <Spinner />
       ) : (
