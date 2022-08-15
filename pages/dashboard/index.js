@@ -40,7 +40,7 @@ export default function RezervarileMele() {
   const { redirect } = router.query;
 
   useEffect(() => {
-    if (session.user) {
+    if (session?.user) {
     } else {
       router.push(redirect || "/");
     }

@@ -9,8 +9,8 @@ const handler = async (req, res) => {
   const { user } = session;
   const userId = user._id;
   const userUp = await User.findById(userId);
-  let rezervarileMele = userUp.rezervarilemele;
-  res.send(rezervarileMele);
+  const rezFacute = userUp.rezervarilemele;
+  res.send(rezFacute);
 };
 
 export default handler;
