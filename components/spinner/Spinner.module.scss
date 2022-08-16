@@ -1,23 +1,19 @@
-.loader{
-  
+.loader {
   border: 10px solid #f3f3f3;
   border-top: 10px solid #3498db;
   border-radius: 50%;
   width: 80px;
   height: 80px;
   animation: spin 1s linear infinite;
-  
-
 }
-.loaderContainer{
-  display:flex;
-  
-  width:100vw;
-  height:100vh;
+.loaderContainer {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   position: relative;
-justify-self: center;
+  justify-self: center;
 }
 
 @keyframes spin {
@@ -27,4 +23,4 @@ justify-self: center;
   100% {
     transform: rotate(360deg);
   }
-} 
+}

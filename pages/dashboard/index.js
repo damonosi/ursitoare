@@ -46,17 +46,19 @@ export default function RezervarileMele() {
     }
   }, [router, session, redirect]);
   useEffect(() => {
-    const fetchProgramari = async () => {
+    const fetchRezervari = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get("/api/rezervari/rezervarile-mele");
+        const { data } = await axios.get("/api/rezervari/rezervarile-mele", {
+          headers: { _id: session.user._id },
+        });
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
     };
 
-    fetchProgramari();
+    fetchRezervari();
   }, []);
   useEffect(() => {
     var today = new Date();
@@ -78,9 +80,9 @@ export default function RezervarileMele() {
       ) : (
         <div className={styles.containerDashboard}>
           {flatRez.map((eveniment) => (
-            <>
+            <div key={eveniment._id}>
               {new Date(eveniment.dataeveniment).getTime() > azi.getTime() ? (
-                <CasetaEveniment eveniment={eveniment} key={eveniment._id}>
+                <CasetaEveniment eveniment={eveniment}>
                   <h1>{eveniment.numecopil}</h1>
                   <h2>
                     Data Nasterii : {ChangeDateOrder(eveniment.datanastere)}
@@ -152,7 +154,7 @@ export default function RezervarileMele() {
               ) : (
                 ""
               )}
-            </>
+            </div>
           ))}
         </div>
       )}
