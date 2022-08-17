@@ -86,7 +86,7 @@ const Copil = ({ register }) => {
           <label htmlFor="numeFrate1">Nume </label>
           <input
             type="text"
-            {...register("frate1.nume", {
+            {...register("frati[0].nume", {
               required: "Va rugam sa bifati daca au si alti copii ; ",
             })}
             className=""
@@ -95,7 +95,7 @@ const Copil = ({ register }) => {
           <label htmlFor="varstaFrate1">Varsta </label>
           <input
             type="text"
-            {...register("frate1.varsta", {
+            {...register("frati[0].varsta", {
               required: "Va rugam sa bifati daca au si alti copii ; ",
             })}
             className=""
@@ -118,14 +118,14 @@ const Copil = ({ register }) => {
           <label htmlFor="numeFrate2">Nume </label>
           <input
             type="text"
-            {...register("frate2.nume")}
+            {...register("frati[1].nume")}
             className=""
             id="numeFrate"
           ></input>
           <label htmlFor="varstaFrate2">Varsta </label>
           <input
             type="text"
-            {...register("frate2.varsta")}
+            {...register("frati[1].varsta")}
             className=""
             id="varstaFrate2"
           ></input>
@@ -149,14 +149,14 @@ const Copil = ({ register }) => {
           <label htmlFor="numeFrate3">Nume </label>
           <input
             type="text"
-            {...register("frate3.nume")}
+            {...register("frati[2].nume")}
             className=""
             id="numeFrate3"
           ></input>
           <label htmlFor="varstaFrate3">Varsta</label>
           <input
             type="text"
-            {...register("frate3.varsta")}
+            {...register("frati[2].varsta")}
             className=""
             id="varstaFrate3"
           ></input>

@@ -119,30 +119,50 @@ export default function AdminDashboard() {
                     <br />
                     <h2>Frati/ Surori</h2>
                     <div className={styles.fratiContainer}>
-                      <div className={styles.frateContainer}>
-                        <h3>{eveniment.frate1.nume}</h3>
-                        <hr />
-                        <h3>{eveniment.frate1.varsta} ani</h3>
-                      </div>
-                      {eveniment.frate2 ? (
-                        <div className={styles.frateContainer}>
-                          <h3>{eveniment.frate2.nume}</h3>
-                          <hr />
-                          <h3>{eveniment.frate2.varsta} ani</h3>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                      {eveniment.frate3 ? (
-                        <div className={styles.frateContainer}>
-                          <h3>{eveniment.frate3.nume}</h3>
-                          <hr />
-                          <h3>{eveniment.frate3.varsta} ani</h3>
-                        </div>
-                      ) : (
-                        ""
-                      )}
+                      {eveniment.frati.map((fr) => (
+                        <>
+                          {fr.nume ? (
+                            <div key={fr._id} className={styles.frateContainer}>
+                              <h3>{fr.nume}</h3>
+                              <hr />
+                              <h3>{fr.varsta} ani</h3>
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                        </>
+                      ))}
                     </div>
+                    <h2>Perechi de nasi</h2>
+                    <div className={styles.nasiContainer}>
+                      {eveniment.perechinasi.map((perecheNasi) => (
+                        <>
+                          {perecheNasi.nas ? (
+                            <div key={perecheNasi._id}>
+                              <h3>{perecheNasi.nas}</h3>
+                              <hr />
+                              <h3>{perecheNasi.nasa}</h3>
+                              <hr />
+                              <>
+                                {perecheNasi.aucopii ? (
+                                  perecheNasi.copii.map((cp) => (
+                                    <div key={cp._id}>
+                                      <h3>Nume{cp.nume}</h3>
+                                      <h3>Varsta{cp.varsta}</h3>
+                                    </div>
+                                  ))
+                                ) : (
+                                  <h3>Nu au copii</h3>
+                                )}
+                              </>
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                        </>
+                      ))}
+                    </div>
+
                     <h2> Detalii eveniment</h2>
                     <div className={styles.detaliiEveniment}>
                       <h3>Localitate : {eveniment.localitateeveniment}</h3>

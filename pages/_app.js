@@ -6,6 +6,7 @@ import { SessionProvider, useSession } from "next-auth/react";
 import { AnimatePresence } from "framer-motion";
 
 import "../styles/globals.css";
+import Spinner from "../components/spinner/Spinner";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
@@ -34,11 +35,10 @@ function Auth({ children }) {
     required: true,
     onUnauthenticated() {
       router.push("/unauthorized?message=login required");
-      console.log("Nu Esti logat");
     },
   });
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
   return children;
 }

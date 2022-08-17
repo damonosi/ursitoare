@@ -64,23 +64,24 @@
 }
 .meniu {
   position: absolute;
-  left: 0;
+  left: 50%;
+  right: 50%;
   display: grid;
-  width: 100vw;
-  grid-template-columns: 1fr 1fr 1fr;
+
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-content: center;
   padding: 0px;
   z-index: 100;
-  background-color: #e91e63;
-  top: 100%;
+
+  top: 90%;
 
   div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: left;
+    text-align: center;
 
     li {
       all: unset;
@@ -98,7 +99,14 @@
     color: black;
   }
 }
-
+.navLinks {
+  background-color: #ddfcf1;
+  border-radius: 10%;
+}
+.dashLinks {
+  background-color: #e91e63;
+  border-radius: 10%;
+}
 @media (max-width: 768px) {
   .headerContainer {
     padding: 0px;
@@ -108,7 +116,9 @@
     right: 0;
   }
   .meniu {
-    height: 20em;
+    left: 0;
+    right: 0;
+
     ul {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;

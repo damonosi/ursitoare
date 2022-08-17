@@ -10,6 +10,15 @@ const Nasi = ({ register }) => {
   const nsInput1 = useRef();
   const nsInput2 = useRef();
   const nsInput3 = useRef();
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = (event) => {
+    if (event.target.checked) {
+      setChecked(true);
+    } else {
+      setChecked(false);
+    }
+  };
 
   const handleAddPerecheNasi = () => {
     nsInput1.current.style.display = "grid";
@@ -73,6 +82,40 @@ const Nasi = ({ register }) => {
               id="nasa"
             ></input>
           </div>
+          <div className={styles.randFormular}>
+            <label htmlFor="nasiCopii">Au copii ? </label>
+            <input
+              type="checkbox"
+              {...register("perechinasi[0].aucopii")}
+              className=""
+              id="nasiCopii"
+              onChange={handleChange}
+            ></input>
+          </div>
+          {checked ? (
+            <>
+              <div className={styles.randFormular}>
+                <label htmlFor="numeCpNasi">Nume</label>
+                <input
+                  type="text"
+                  {...register("perechinasi[0].copii[0].nume")}
+                  className=""
+                  id="numeCpNasi"
+                ></input>
+              </div>
+              <div className={styles.randFormular}>
+                <label htmlFor="varstaCpNasi">Varsta</label>
+                <input
+                  type="text"
+                  {...register("perechinasi[0].copii[0].varsta")}
+                  className=""
+                  id="varstaCpNasi"
+                ></input>
+              </div>
+            </>
+          ) : (
+            ""
+          )}
           {!nasi ? (
             <button onClick={handleAddPerecheNasi}>
               <span>Adauga pereche nasi</span>
@@ -103,6 +146,15 @@ const Nasi = ({ register }) => {
               {...register("perechinasi[1].nasa")}
               className=""
               id="nasa"
+            ></input>
+          </div>
+          <div className={styles.randFormular}>
+            <label htmlFor="nasiCopii">Au copii ? </label>
+            <input
+              type="checkbox"
+              {...register("perechinasi[1].aucopii")}
+              className=""
+              id="nasiCopii"
             ></input>
           </div>
           {!nasi2 ? (
@@ -140,6 +192,15 @@ const Nasi = ({ register }) => {
               id="nasa"
             ></input>
           </div>
+          <div className={styles.randFormular}>
+            <label htmlFor="nasiCopii">Au copii ? </label>
+            <input
+              type="checkbox"
+              {...register("perechinasi[2].aucopii")}
+              className=""
+              id="nasiCopii"
+            ></input>
+          </div>
           {!nasi3 ? (
             <button onClick={handleAddPerecheNasi3}>
               <span>Adauga pereche nasi</span>
@@ -173,6 +234,15 @@ const Nasi = ({ register }) => {
               {...register("perechinasi[3].nasa")}
               className=""
               id="nasa"
+            ></input>
+          </div>
+          <div className={styles.randFormular}>
+            <label htmlFor="nasiCopii">Au copii ? </label>
+            <input
+              type="checkbox"
+              {...register("perechinasi[3].aucopii")}
+              className=""
+              id="nasiCopii"
             ></input>
           </div>
           {!nasi4 ? (

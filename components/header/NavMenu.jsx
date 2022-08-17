@@ -28,18 +28,24 @@ const NavMenu = ({ openNavMenu, closeNavMenu }) => {
             <a>Acasa</a>
           </Link>
         </li>
-        <li onClick={() => closeNavMenu()}>
-          <Link href="/formular">
-            <a>Faceti o Rezervare</a>
-          </Link>
-        </li>
-        <li onClick={() => closeNavMenu()}>
-          <Link href="/dashboard/user">
-            <a>Rezervarile Mele</a>
-          </Link>
-        </li>
+        {session?.user ? (
+          <>
+            <li onClick={() => closeNavMenu()}>
+              <Link href="/formular">
+                <a>Faceti o Rezervare</a>
+              </Link>
+            </li>
+            <li onClick={() => closeNavMenu()}>
+              <Link href="/dashboard/user">
+                <a>Rezervarile Mele</a>
+              </Link>
+            </li>
+          </>
+        ) : (
+          ""
+        )}
       </div>
-      <hr />
+
       <div className={styles.dashLinks}>
         {session?.user.isadmin ? (
           <li onClick={() => closeNavMenu()}>

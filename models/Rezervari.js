@@ -5,21 +5,12 @@ export const evenimenteSchema = new mongoose.Schema(
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     numecopil: { type: String, required: true },
     datanastere: { type: String, required: true },
-    frate1: {
-      required: false,
-      nume: { type: String, required: true },
-      varsta: { type: String, required: true },
-    },
-    frate2: {
-      required: false,
-      nume: { type: String, required: false },
-      varsta: { type: String, required: false },
-    },
-    frate3: {
-      required: false,
-      nume: { type: String, required: false },
-      varsta: { type: String, required: false },
-    },
+    frati: [
+      {
+        nume: { type: String, required: false },
+        varsta: { type: String, required: false },
+      },
+    ],
 
     mama: { type: String, required: true },
     tata: { type: String, required: true },
@@ -28,6 +19,13 @@ export const evenimenteSchema = new mongoose.Schema(
       {
         nas: { type: String, required: false },
         nasa: { type: String, required: false },
+        aucopii: { type: Boolean, required: false },
+        copii: [
+          {
+            nume: { type: String, required: true },
+            varsta: { type: String, required: true },
+          },
+        ],
       },
     ],
     dataeveniment: { type: String, required: true },
