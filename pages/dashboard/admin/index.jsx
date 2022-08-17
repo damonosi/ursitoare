@@ -177,9 +177,10 @@ export default function AdminDashboard() {
                                   ursitoareId,
                                   rezId,
                                 });
-
-                                toast.success("Ai optat pentru eveniment");
                               });
+                              toast.success(
+                                "Ai adaugat ursitoare pentru eveniment",
+                              );
                             }}
                           >
                             Adaga ursitoarele care merg la eveniment
