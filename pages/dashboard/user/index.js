@@ -49,7 +49,7 @@ export default function RezervarileMele() {
     const fetchRezervari = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get("/api/rezervari/rezervarile-mele", {
+        const { data } = await axios.get("/api/rezervarile-mele", {
           headers: { _id: session.user._id },
         });
         dispatch({ type: "FETCH_SUCCESS", payload: data });

@@ -1,13 +1,7 @@
 import styles from "./Home.module.scss";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import {
-  motion,
-  useViewportScroll,
-  useAnimationControls,
-  useMotionValue,
-  useTransform,
-} from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
 
 import Ursitoare from "../../public/images/ursitoare6.jpg";
 import { useMediaQuery } from "react-responsive";
