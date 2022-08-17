@@ -59,7 +59,7 @@ export default function RezervarileMele() {
     };
 
     fetchRezervari();
-  }, []);
+  }, [session?.user._id]);
   useEffect(() => {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, "0");
@@ -71,7 +71,6 @@ export default function RezervarileMele() {
     setAzi(datAz);
   }, []);
 
-  const flatRez = rezervarileMele.flatMap((num) => num);
   return (
     <div className={styles.containerDsh}>
       <h1>Rezervarile Mele</h1>
@@ -79,7 +78,7 @@ export default function RezervarileMele() {
         <Spinner />
       ) : (
         <div className={styles.containerDashboard}>
-          {flatRez.map((eveniment) => (
+          {rezervarileMele.map((eveniment) => (
             <div key={eveniment._id}>
               {new Date(eveniment.dataeveniment).getTime() > azi.getTime() ? (
                 <CasetaEveniment eveniment={eveniment}>

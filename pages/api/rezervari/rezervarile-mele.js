@@ -8,6 +8,7 @@ const handler = async (req, res) => {
   } else {
     const userId = req.headers._id;
     const userUp = await User.findById(userId);
+    console.log(userUp);
     const rezFacute = userUp.rezervarilemele;
     res.send(rezFacute);
   }

@@ -94,9 +94,9 @@ export default function AdminDashboard() {
       ) : (
         <div className={styles.containerDashboard}>
           {rezervari.map((eveniment) => (
-            <>
+            <div key={eveniment._id}>
               {new Date(eveniment.dataeveniment).getTime() > azi.getTime() ? (
-                <CasetaEveniment key={eveniment._id} eveniment={eveniment}>
+                <CasetaEveniment eveniment={eveniment}>
                   <div>
                     <h2>
                       Data Nasterii {ChangeDateOrder(eveniment.datanastere)}
@@ -201,7 +201,7 @@ export default function AdminDashboard() {
               ) : (
                 ""
               )}
-            </>
+            </div>
           ))}
         </div>
       )}

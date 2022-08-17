@@ -3,7 +3,7 @@ import Footer from "./footer/Footer";
 import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import styles from "./Layout.module.scss";
 const Layout = ({ title, children }) => {
   return (
     <>
@@ -12,9 +12,9 @@ const Layout = ({ title, children }) => {
         <meta name="description" content="Ursitoare App" />
       </Head>
       <ToastContainer position="bottom-center" limit={1} />
-      <div className="">
+      <div>
         <Header />
-        <main className="">{children}</main>
+        <main className={styles.mainContent}>{children}</main>
 
         <Footer />
       </div>

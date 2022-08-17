@@ -78,9 +78,9 @@ export default function EvenimenteleMele() {
       ) : (
         <div className={styles.containerDashboard}>
           {flatRez.map((eveniment) => (
-            <>
+            <div key={eveniment._id}>
               {new Date(eveniment.dataeveniment).getTime() > azi.getTime() ? (
-                <CasetaEveniment eveniment={eveniment} key={eveniment._id}>
+                <CasetaEveniment eveniment={eveniment}>
                   <h1>{eveniment.numecopil}</h1>
                   <h2>
                     Data Nasterii : {ChangeDateOrder(eveniment.datanastere)}
@@ -152,7 +152,7 @@ export default function EvenimenteleMele() {
               ) : (
                 ""
               )}
-            </>
+            </div>
           ))}
         </div>
       )}
