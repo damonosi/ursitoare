@@ -33,7 +33,7 @@ const NavMenu = ({ openNavMenu, closeNavMenu }) => {
           </Link>
         </li>
         <li onClick={() => openNavMenu && closeNavMenu()}>
-          <Link href="/dashboard">
+          <Link href="/dashboard/user">
             <a>Rezervarile Mele</a>
           </Link>
         </li>

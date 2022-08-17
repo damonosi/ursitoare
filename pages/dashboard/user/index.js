@@ -1,15 +1,15 @@
 import React, { useReducer, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
-import { getError } from "../../utils/error";
+import { getError } from "../../../utils/error";
 
-import CasetaEveniment from "../../components/eveniment/CasetaEveniment";
+import CasetaEveniment from "../../../components/eveniment/CasetaEveniment";
 
-import styles from "./Dashboard.module.scss";
+import styles from "../Dashboard.module.scss";
 import { useRouter } from "next/router";
 
-import Spinner from "../../components/spinner/Spinner";
-import ChangeDateOrder from "../../utils/formatData";
+import Spinner from "../../../components/spinner/Spinner";
+import ChangeDateOrder from "../../../utils/formatData";
 function reducer(state, action) {
   switch (action.type) {
     case "FETCH_REQUEST":
