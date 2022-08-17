@@ -12,7 +12,7 @@ const Layout = ({ title, children }) => {
         <meta name="description" content="Ursitoare App" />
       </Head>
       <ToastContainer position="bottom-center" limit={1} />
-      <div>
+      <div className={styles.siteContent}>
         <Header />
         <main className={styles.mainContent}>{children}</main>
 
