@@ -28,7 +28,7 @@ function reducer(state, action) {
   }
 }
 
-export default function RezervarileMele() {
+export default function RezFacute() {
   const [{ loading, error, rezervarileMele }, dispatch] = useReducer(reducer, {
     loading: true,
     rezervarileMele: [],
