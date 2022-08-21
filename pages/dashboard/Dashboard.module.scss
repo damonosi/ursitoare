@@ -4,14 +4,15 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 1em;
 }
 
 .containerDashboard {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
-  gap: 5em;
-  padding: 1em;
+  gap: 3em;
+
   width: 100%;
   h1,
   h2,

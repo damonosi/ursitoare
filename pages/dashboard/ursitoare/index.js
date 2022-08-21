@@ -71,6 +71,11 @@ export default function EvenimenteleMele() {
   }, []);
   console.log(typeof evenimenteleMele);
   const flatRez = evenimenteleMele.flatMap((num) => num);
+  const rezSort = flatRez.sort((a, b) => {
+    return (
+      new Date(a.dataeveniment).getTime() - new Date(b.dataeveniment).getTime()
+    );
+  });
   return (
     <div className={styles.containerDsh}>
       <h1>Evenimentele Mele</h1>
@@ -78,7 +83,7 @@ export default function EvenimenteleMele() {
         <Spinner />
       ) : (
         <div className={styles.containerDashboard}>
-          {flatRez.map((eveniment) => (
+          {rezSort.map((eveniment) => (
             <div key={eveniment._id}>
               {new Date(eveniment.dataeveniment).getTime() > azi.getTime() ? (
                 <CasetaEveniment eveniment={eveniment}>
