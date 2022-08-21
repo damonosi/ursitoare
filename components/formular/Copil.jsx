@@ -1,175 +1,134 @@
 import styles from "./Copil.module.scss";
-import { useRef, useState } from "react";
-const Copil = ({ register }) => {
-  const [clicked, setClicked] = useState(false);
-  const [clicked2, setClicked2] = useState(false);
-  const [clicked3, setClicked3] = useState(false);
+import { useState } from "react";
+
+import { useFieldArray } from "react-hook-form";
+
+const Copil = ({ register, control }) => {
+  const [styleUnu, setStyleDoi] = useState(false);
   const toDay = new Date().toLocaleDateString().substring(0, 10);
-  const frInput1 = useRef();
-  const frInput2 = useRef();
+  const handleChange = () => {
+    append();
+    setStyleDoi(true);
+  };
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "frati",
+  });
 
-  const handleAddFrate = () => {
-    frInput1.current.style.display = "flex";
-    console.log(frInput1.current.childNodes[3]);
-    setClicked(!clicked);
-  };
-  const handleRemoveFrate = () => {
-    frInput1.current.style.display = "none";
-    frInput1.current.childNodes[1].value = "";
-    frInput1.current.childNodes[3].value = "";
-    setClicked(!clicked);
-  };
-  const handleRemoveFrate2 = () => {
-    frInput2.current.style.display = "none";
-    frInput2.current.childNodes[1].value = "";
-    frInput2.current.childNodes[3].value = "";
-    setClicked2(!clicked2);
-  };
-  const handleAddFrate2 = () => {
-    frInput2.current.style.display = "flex";
-    setClicked2(!clicked2);
-  };
   return (
-    <div className={styles.dateCopil}>
+    <>
       <h1>Date copil</h1>
-      <div className={styles.randFormular}>
-        <label htmlFor="numecopil">Numele copilului </label>
-        <input
-          type="text"
-          {...register("numecopil", {
-            required: "Va rugam sa introduceti numele copilului",
-          })}
-          className=""
-          id="numecopil"
-          autoFocus
-        ></input>
-      </div>
+      <div className={styles.dateCopil}>
+        <div className={styles.informatiiCopil}>
+          <div className={styles.inp}>
+            <input
+              placeholder="&nbsp;"
+              type="text"
+              {...register("numecopil", {
+                required: "Va rugam sa introduceti numele copilului",
+              })}
+              className=""
+              id="numecopil"
+              autoFocus
+            />
+            <label className={styles.label} htmlFor="numecopil">
+              Numele Copilului
+            </label>
+            <span className={styles.focusBg}></span>
+          </div>
 
-      <div className={styles.randFormular}>
-        <label htmlFor="datanastere">Data nasterii (luna / ziua / anul )</label>
-        <input
-          type="date"
-          defaultValue={toDay}
-          {...register("datanastere", {
-            required: "Va rugam sa data cand s-a nascut copilul",
-          })}
-          className=""
-          id="datanastere"
-        />
-      </div>
-      <div className={styles.randFormular}>
-        <label htmlFor="mama">Numele mamei </label>
-        <input
-          type="text"
-          {...register("mama", {
-            required: "Va rugam sa introduceti numele mamei",
-          })}
-          className=""
-          id="mama"
-        ></input>
-      </div>
-
-      <div className={styles.randFormular}>
-        <label htmlFor="tata">Numele tatalui </label>
-        <input
-          type="text"
-          {...register("tata", {
-            required: "Va rugam sa introduceti numele tatalui",
-          })}
-          className=""
-          id="tata"
-        ></input>
-      </div>
-      <h1>Frati/Surori</h1>
-      <div className={clicked ? styles.frati : styles.frati2}>
-        <div className={styles.randFormularFrati}>
-          <label htmlFor="numeFrate1">Nume </label>
-          <input
-            type="text"
-            {...register("frati[0].nume", {
-              required: "Va rugam sa bifati daca au si alti copii ; ",
-            })}
-            className=""
-            id="numeFrate1"
-          ></input>
-          <label htmlFor="varstaFrate1">Varsta </label>
-          <input
-            type="text"
-            {...register("frati[0].varsta", {
-              required: "Va rugam sa bifati daca au si alti copii ; ",
-            })}
-            className=""
-            id="varstaFrate1"
-          ></input>
-          {!clicked ? (
-            <button onClick={handleAddFrate}>
-              <span>Adauga frate/sora</span>
-            </button>
-          ) : (
-            ""
-          )}
+          <div className={styles.inp}>
+            <label htmlFor="datanastere">
+              Data nasterii (luna / ziua / anul )
+            </label>
+            <input
+              type="date"
+              defaultValue="luna-ziua-anul"
+              {...register("datanastere", {
+                required: "Va rugam sa data cand s-a nascut copilul",
+              })}
+              className=""
+              id="datanastere"
+            />
+            <span className={styles.focusBg}></span>{" "}
+          </div>
+          <div className={styles.inp}>
+            <input
+              placeholder="&nbsp;"
+              type="text"
+              {...register("mama", {
+                required: "Va rugam sa introduceti numele mamei",
+              })}
+              className=""
+              id="mama"
+            />
+            <label className={styles.label} htmlFor="mama">
+              Numele Mamei
+            </label>
+            <span className={styles.focusBg}></span>
+          </div>
+          <div className={styles.inp}>
+            <input
+              placeholder="&nbsp;"
+              type="text"
+              {...register("tata", {
+                required: "Va rugam sa introduceti numele tatalui",
+              })}
+              className=""
+              id="tata"
+            />{" "}
+            <label className={styles.label} htmlFor="tata">
+              Numele Tatalui
+            </label>
+            <span className={styles.focusBg}></span>
+          </div>
         </div>
+        <h1>Frati/Surori</h1>
+        <div className={styleUnu ? styles.frati : styles.frati2}>
+          {fields.map((field, index) => (
+            <div className={styles.randFormularFrati} key={field.id}>
+              <div className={styles.inp}>
+                <input
+                  placeholder="&nbsp;"
+                  type="text"
+                  {...register(`frati[${index}].nume`)}
+                  id="numeFrate"
+                />
+                <label className={styles.label} htmlFor="numeFrate">
+                  Nume
+                </label>
+                <span className={styles.focusBg}></span>
+              </div>
 
-        <div
-          className={styles.randFormularFrati}
-          style={{ display: "none" }}
-          ref={frInput1}
-        >
-          <label htmlFor="numeFrate2">Nume </label>
-          <input
-            type="text"
-            {...register("frati[1].nume")}
-            className=""
-            id="numeFrate"
-          ></input>
-          <label htmlFor="varstaFrate2">Varsta </label>
-          <input
-            type="text"
-            {...register("frati[1].varsta")}
-            className=""
-            id="varstaFrate2"
-          ></input>
-          {!clicked2 ? (
-            <button onClick={handleAddFrate2}>
-              <span>Adauga frate/sora</span>
-            </button>
-          ) : (
-            ""
-          )}
+              <div className={styles.inp}>
+                <input
+                  placeholder="&nbsp;"
+                  type="text"
+                  {...register(`frati[${index}].varsta`)}
+                  className=""
+                  id="varstaFrate"
+                />
+                <label className={styles.label} htmlFor="varstaFrate">
+                  Varsta
+                </label>
+                <span className={styles.focusBg}></span>
+              </div>
 
-          <button className={styles.closeBtn} onClick={handleRemoveFrate}>
-            <span>X</span>
+              <button
+                className={styles.closeBtn}
+                type="button"
+                onClick={() => remove(index)}
+              >
+                <span>X</span>
+              </button>
+            </div>
+          ))}
+          <button className={styles.butonAdauga} onClick={handleChange}>
+            Adauga Frate/Sora
           </button>
         </div>
-        <div
-          className={styles.randFormularFrati}
-          style={{ display: "none" }}
-          ref={frInput2}
-        >
-          <label htmlFor="numeFrate3">Nume </label>
-          <input
-            type="text"
-            {...register("frati[2].nume")}
-            className=""
-            id="numeFrate3"
-          ></input>
-          <label htmlFor="varstaFrate3">Varsta</label>
-          <input
-            type="text"
-            {...register("frati[2].varsta")}
-            className=""
-            id="varstaFrate3"
-          ></input>
-          {clicked3 ? (
-            ""
-          ) : (
-            <button className={styles.closeBtn} onClick={handleRemoveFrate2}>
-              <span>X</span>
-            </button>
-          )}
-        </div>
       </div>
-    </div>
+    </>
   );
 };
 

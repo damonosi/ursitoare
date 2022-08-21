@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 
 import styles from "./Formular.module.scss";
 
@@ -16,7 +16,13 @@ export default function FormularPage() {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm();
+    control,
+  } = useForm({
+    defaultValues: {
+      frati: [{ nume: "", varsta: "" }],
+      perechinasi: [{ nas: "", nasa: "" }],
+    },
+  });
   const { data: session, status } = useSession();
   const user = session.user._id;
   const submitHandler = async ({
@@ -61,15 +67,18 @@ export default function FormularPage() {
   return (
     <div className={styles.formularContainer}>
       <form onSubmit={handleSubmit(submitHandler)}>
-        <h1>Vreti sa faceti o rezervare?</h1>
-        <h3>
-          Completati formularul cu datele necesare si va vom contacta in cel mai
-          scurt timp posibil
-        </h3>
-        <Copil register={register} />
-        <Nasi register={register} />
+        <div className={styles.introForm}>
+          <h1>Vreti sa faceti o rezervare?</h1>
+          <h3>
+            Completati formularul cu datele necesare <br /> si va vom contacta
+            in cel mai scurt timp posibil !
+          </h3>
+        </div>
+        <hr />
+        <Copil control={control} register={register} />
+        <Nasi control={control} register={register} />
 
-        <Eveniment register={register} />
+        <Eveniment control={control} register={register} />
         <button disabled={disable}>Submit</button>
       </form>
     </div>

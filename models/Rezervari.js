@@ -19,7 +19,7 @@ export const evenimenteSchema = new mongoose.Schema(
       {
         nas: { type: String, required: false },
         nasa: { type: String, required: false },
-        aucopii: { type: Boolean, required: false },
+        aucopii: { type: String, required: false },
         copii: [
           {
             nume: { type: String, required: true },

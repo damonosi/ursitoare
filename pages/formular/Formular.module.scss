@@ -4,47 +4,24 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  hr {
+    width: 100%;
+  }
   form {
     display: grid;
-
+    max-width: 60rem;
     gap: 1em;
+    border: 3px solid gray;
+    padding: 1em;
+    margin-top: 2em;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    grid-template-columns: 1fr;
   }
-  input {
-    outline: none;
-    max-width: 10em;
-    border: 1px solid gray;
-    border-radius: 5px;
-    text-align: center;
-  }
+
   label {
     font-size: 1em;
-  }
-
-  input[type="date"] {
-    font-family: monospace;
-    overflow: hidden;
-    padding: 10px;
-    font-size: 18px;
-    outline: none;
-    border-radius: 5px;
-  }
-  input[type="time"] {
-    display: -webkit-inline-flex;
-    font-family: monospace;
-    overflow: hidden;
-    padding: 15px;
-    font-size: 18px;
-    outline: none;
-    border-radius: 5px;
-    background-color: #7155d3;
-    border-radius: 15%;
-    color: #fff;
-    padding: 12px 13px;
-    &::-webkit-datetime-edit-hour-field {
-      background-color: red;
-      border-radius: 15%;
-      padding: 19px 13px;
-    }
   }
 }
 
