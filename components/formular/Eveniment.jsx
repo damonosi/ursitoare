@@ -80,7 +80,7 @@ const Eveniment = ({ register, control }) => {
           id="nrcontact"
         />
         <label className={styles.label} htmlFor="nrcontact">
-          In ce localitate are loc evenimentul
+          Numar de contact
         </label>
         <span className={styles.focusBg}></span>
       </div>

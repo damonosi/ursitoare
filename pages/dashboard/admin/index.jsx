@@ -85,7 +85,12 @@ export default function AdminDashboard() {
     };
     fetchProgramari();
   }, []);
-
+  const rezSort = rezervari.sort((a, b) => {
+    return (
+      new Date(a.dataeveniment).getTime() - new Date(b.dataeveniment).getTime()
+    );
+  });
+  console.log(rezSort);
   return (
     <div className={styles.containerDsh}>
       <h1>Rezervari clienti</h1>
@@ -93,7 +98,7 @@ export default function AdminDashboard() {
         <Spinner />
       ) : (
         <div className={styles.containerDashboard}>
-          {rezervari.map((eveniment) => (
+          {rezSort.map((eveniment) => (
             <div key={eveniment._id}>
               {new Date(eveniment.dataeveniment).getTime() > azi.getTime() ? (
                 <CasetaEveniment eveniment={eveniment}>
