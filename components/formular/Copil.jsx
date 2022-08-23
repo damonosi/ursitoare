@@ -38,12 +38,11 @@ const Copil = ({ register, control }) => {
           </div>
 
           <div className={styles.inp}>
-            <label htmlFor="datanastere">
-              Data nasterii (luna / ziua / anul )
-            </label>
             <input
-              type="date"
-              defaultValue="luna-ziua-anul"
+              type="text"
+              placeholder="Data nasterii (luna / ziua / anul )"
+              onFocus={(e) => (e.target.type = "date")}
+              onBlur={(e) => (e.target.type = "text")}
               {...register("datanastere", {
                 required: "Va rugam sa data cand s-a nascut copilul",
               })}

@@ -1,59 +1,20 @@
 import { useRef, useState } from "react";
 import styles from "./Nasi.module.scss";
-import { useFieldArray, Controller, useWatch } from "react-hook-form";
+import { useFieldArray } from "react-hook-form";
+import { ConditionalInput } from "./CopiiNasi";
 
-const ConditionalInput = ({ control, index, field, register }) => {
-  const value = useWatch({
-    name: "perechinasi",
-    control,
-  });
-
-  return (
-    <Controller
-      control={control}
-      name={`perechinasi[${index}].aucopii`}
-      render={() =>
-        value[index].aucopii === "on" ? (
-          <>
-            <div className={styles.inp}>
-              <input
-                placeholder="&nbsp;"
-                {...field}
-                {...register(`perechinasi[${index}].copii[0].nume`)}
-                id="mumeCp"
-              />
-              <label className={styles.label} htmlFor="mumeCp">
-                Nume
-              </label>
-              <span className={styles.focusBg}></span>
-            </div>
-
-            <div className={styles.inp}>
-              <input
-                placeholder="&nbsp;"
-                id="varstaCp"
-                {...field}
-                {...register(`perechinasi[${index}].copii[0].varsta`)}
-              />
-              <label className={styles.label} htmlFor="varstaCp">
-                Varsta
-              </label>
-              <span className={styles.focusBg}></span>
-            </div>
-          </>
-        ) : null
-      }
-    />
-  );
-};
 const Nasi = ({ register, control }) => {
   const [stil1, setStil2] = useState(false);
 
   const handleAdaugaNasi = () => {
-    append();
+    nasiAppend();
     setStil2(true);
   };
-  const { fields, append, remove } = useFieldArray({
+  const {
+    fields: nasiFields,
+    append: nasiAppend,
+    remove: removeNasi,
+  } = useFieldArray({
     control,
     name: "perechinasi",
   });
@@ -62,9 +23,8 @@ const Nasi = ({ register, control }) => {
     <div className={styles.dateNasi}>
       <h1>Nasii</h1>
       <div className={stil1 ? styles.nasi : styles.nasiDoi}>
-        {fields.map((field, index) => {
+        {nasiFields.map((field, index) => {
           const id = `perechinasi[${index}].aucopii`;
-          console.log(id);
           return (
             <div className={styles.randFormular} key={field.id}>
               <div className={styles.inp}>
@@ -76,7 +36,7 @@ const Nasi = ({ register, control }) => {
                   id="nas"
                 />
                 <label className={styles.label} htmlFor="nas">
-                  Nasul{" "}
+                  Nasul
                 </label>
                 <span className={styles.focusBg}></span>
               </div>
@@ -105,7 +65,7 @@ const Nasi = ({ register, control }) => {
               <button
                 className={styles.closeBtn}
                 type="button"
-                onClick={() => remove(index)}
+                onClick={() => removeNasi(index)}
               >
                 <span>X</span>
               </button>

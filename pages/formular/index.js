@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { getError } from "../../utils/error";
 import { useRef, useState } from "react";
 import Copil from "./../../components/formular/Copil";
-import Nasi from "../../components/formular/Nasi";
+import Nasi from "../../components/formular/nasi/Nasi";
 import Eveniment from "../../components/formular/Eveniment";
 import { useSession } from "next-auth/react";
 
@@ -17,10 +17,13 @@ export default function FormularPage() {
     register,
     formState: { errors },
     control,
+    getValues,
+    setValue,
   } = useForm({
     defaultValues: {
       frati: [{ nume: "", varsta: "" }],
       perechinasi: [{ nas: "", nasa: "" }],
+      "perechinasi.copii": [{ nume: "", varsta: "" }],
     },
   });
   const { data: session, status } = useSession();
@@ -76,7 +79,12 @@ export default function FormularPage() {
         </div>
         <hr />
         <Copil control={control} register={register} />
-        <Nasi control={control} register={register} />
+        <Nasi
+          getValues={getValues}
+          setValue={setValue}
+          control={control}
+          register={register}
+        />
 
         <Eveniment control={control} register={register} />
         <button disabled={disable}>Submit</button>

@@ -230,11 +230,16 @@
   }
 }
 
+// RESPONSIVE MOBIL
+
 @media (max-width: 768px) {
   .formularContainer {
     margin: 1em;
   }
   .frati {
+    grid-template-columns: 1fr;
+  }
+  .informatiiCopil {
     grid-template-columns: 1fr;
   }
 }
