@@ -13,7 +13,24 @@ const RudeStrainatate = ({ register, control, index }) => {
     { value: "frate/sora", label: "Frate/Sora" },
     { value: "var/verisoara", label: "Var/Verisoara" },
   ];
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      borderBottom: "1px dotted pink",
+      color: state.isSelected ? "red" : "blue",
+      padding: 20,
+    }),
+    control: () => ({
+      // none of react-select's styles are passed to <Control />
+      width: 300,
+    }),
+    singleValue: (provided, state) => {
+      const opacity = state.isDisabled ? 0.5 : 1;
+      const transition = "opacity 300ms";
 
+      return { ...provided, opacity, transition };
+    },
+  };
   const handleAdaugaRuda = () => {
     rudeAppend();
   };
@@ -31,10 +48,11 @@ const RudeStrainatate = ({ register, control, index }) => {
       <h2>
         Spuneti-ne daca sunt rude care <br /> vin din strainatate
       </h2>
+      <hr />
       {rudeFields.map((field, index) => {
         return (
           <div className={styles.rudeInput} key={index}>
-            <div>
+            <div className={styles.aranjareSelect}>
               <Controller
                 control={control}
                 name={`rudeStrainatate[${index}].gradRudenie`}
@@ -45,12 +63,19 @@ const RudeStrainatate = ({ register, control, index }) => {
                     key={index}
                     onChange={(val) => {
                       onChange(val.value);
-                      console.log(val.value, index);
                     }}
                     options={options}
+                    placeholder={<div>Rudenie</div>}
                   />
                 )}
               />
+              <button
+                className={styles.closeBtn}
+                type="button"
+                onClick={() => rudeRemove(index)}
+              >
+                <span>X</span>
+              </button>
             </div>
             <div className={styles.inp}>
               <input
