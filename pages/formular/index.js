@@ -11,6 +11,7 @@ import Nasi from "../../components/formular/nasi/Nasi";
 import Eveniment from "../../components/formular/eveniment";
 import { useSession } from "next-auth/react";
 import RudeStrainatate from "../../components/formular/rudeStrainatate";
+import UnchiMatusi from "./../../components/formular/unchiMatusi/index";
 
 export default function FormularPage() {
   const {
@@ -83,6 +84,7 @@ export default function FormularPage() {
         </div>
         <hr />
         <Copil control={control} register={register} />
+        <UnchiMatusi control={control} register={register} />
         <Nasi
           getValues={getValues}
           setValue={setValue}

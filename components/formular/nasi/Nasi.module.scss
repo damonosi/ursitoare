@@ -1,5 +1,6 @@
 $primary: #0077ff;
 $dark: #000;
+$backgroundColor: #f5f5f5;
 .dateNasi {
   display: flex;
   flex-direction: column;
@@ -39,7 +40,7 @@ $dark: #000;
   align-items: center;
   padding: 0.5em;
   position: relative;
-  background-color: #f5f5f5;
+  background-color: $backgroundColor;
 
   label {
     text-align: center;
@@ -82,6 +83,7 @@ $dark: #000;
   padding: 0.5em;
   width: 100%;
   justify-content: space-between;
+  position: relative;
 }
 
 .inp {
@@ -181,13 +183,45 @@ $dark: #000;
   padding: 0.2em;
   align-items: center;
   justify-content: space-between;
-
   position: relative;
   margin: 0.5em;
   p {
     padding: 1em;
   }
 }
+.copiiNasiContainer {
+  padding-bottom: 2em;
+  border: 3px dotted black;
+  margin-top: 2em;
+  text-align: left;
+  button {
+    max-height: 2em;
+    max-width: 5em;
+    span {
+      font-weight: bold;
+    }
+  }
+}
+.auCopiiContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  position: relative;
+}
+.copiiNasiBorder {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.copiiNasiTitlu {
+  background-color: $backgroundColor;
+
+  padding: 0.2em 0.8em;
+
+  margin-left: -0.5em;
+}
+
 @media (max-width: 768px) {
   .formularContainer {
     margin: 1em;

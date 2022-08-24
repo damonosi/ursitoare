@@ -35,6 +35,7 @@ const handler = async (req, res) => {
           mama: eveniment.mama,
           tata: eveniment.tata,
           perechinasi: eveniment.perechinasi,
+          unchiMatusi: eveniment.unchiMatusi,
           locatieeveniment: eveniment.locatieeveniment,
           localitateeveniment: eveniment.localitateeveniment,
           dataeveniment: eveniment.dataeveniment,

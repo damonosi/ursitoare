@@ -12,7 +12,8 @@ export const CopiiNasiInput = ({ index, control, register }) => {
   });
 
   return (
-    <div>
+    <div className={styles.copiiNasiContainer}>
+      <span className={styles.copiiNasiTitlu}> Copii Nasilor</span>
       {copiiFields.map((copil, k) => {
         return (
           <div className={styles.copiiNasi} key={copil.id}>
@@ -54,11 +55,11 @@ export const CopiiNasiInput = ({ index, control, register }) => {
         );
       })}
       <button
-        // className={styles.butonAdauga}
+        className={styles.butonAdauga}
         type="button"
         onClick={() => copiiAppend()}
       >
-        <span> Adauga Copil</span>
+        <span> + </span>
       </button>
     </div>
   );
@@ -71,7 +72,7 @@ export const ConditionalInput = ({ control, index, register }) => {
   });
 
   return (
-    <>
+    <div className={styles.auCopiiContainer}>
       <Controller
         control={control}
         name={`perechinasi[${index}].aucopii`}
@@ -85,6 +86,6 @@ export const ConditionalInput = ({ control, index, register }) => {
           ) : null
         }
       />
-    </>
+    </div>
   );
 };

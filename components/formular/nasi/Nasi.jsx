@@ -63,23 +63,25 @@ const Nasi = ({ register, control }) => {
                   {...register(idCasatorit)}
                 />
               </div>
-              <div className={styles.auCopii}>
-                <label htmlFor="nasiCopii">Au copii ? </label>
-                <input type="checkbox" value="on" id={id} {...register(id)} />
+              <div className={styles.copiiNasiBorder}>
+                <div className={styles.auCopii}>
+                  <label htmlFor="nasiCopii">Au copii ? </label>
+                  <input type="checkbox" value="on" id={id} {...register(id)} />
+                </div>
+
+                <ConditionalInput
+                  register={register}
+                  {...{ control, index, field }}
+                />
+
+                <button
+                  className={styles.closeBtn}
+                  type="button"
+                  onClick={() => removeNasi(index)}
+                >
+                  <span>X</span>
+                </button>
               </div>
-
-              <ConditionalInput
-                register={register}
-                {...{ control, index, field }}
-              />
-
-              <button
-                className={styles.closeBtn}
-                type="button"
-                onClick={() => removeNasi(index)}
-              >
-                <span>X</span>
-              </button>
             </div>
           );
         })}
