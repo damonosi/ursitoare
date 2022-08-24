@@ -1,20 +1,9 @@
-.dateEveniment {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-
-  width: 100%;
-}
-
-.randFormular {
+.strainatateContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 0.5em;
-  border-bottom: 1px solid black;
-  label {
-    text-align: center;
-    margin-bottom: 0.2em;
-  }
+  //   input {
+  //     height: 10em;
+  //   }
 }
 
 .inp {
@@ -47,7 +36,6 @@
     transform: scaleX(0);
     transform-origin: left;
   }
-
   input {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -109,4 +97,9 @@
       }
     }
   }
+}
+
+.rudeInput {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }

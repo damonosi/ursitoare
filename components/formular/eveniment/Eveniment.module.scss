@@ -1,87 +1,20 @@
-$primary: #0077ff;
-$dark: #000;
-.dateNasi {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.nasi {
+.dateEveniment {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border: 4px solid black;
+  gap: 1em;
   width: 100%;
-  gap: 2em;
-  position: relative;
-  padding: 1em;
-  text-align: center;
-  padding-bottom: 7em;
-}
-.nasiDoi {
-  display: grid;
-  grid-template-columns: 1fr;
-  border: 4px solid black;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 20em;
-  height: auto;
-  padding: 1em;
-  padding-bottom: 7em;
-  position: relative;
-}
-.pereche {
-  display: grid;
 }
 
-.perecheNasi {
+.randFormular {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0.5em;
-  position: relative;
-  background-color: #f5f5f5;
-
+  border-bottom: 1px solid black;
   label {
     text-align: center;
     margin-bottom: 0.2em;
   }
-}
-.butonAdauga {
-  position: absolute;
-  height: 5em;
-  width: 10em;
-  bottom: 0;
-  left: 50%;
-
-  transform: translate(-50%);
-  border-top-left-radius: 20%;
-  border-top-right-radius: 20%;
-  cursor: pointer;
-}
-.closeBtn {
-  position: absolute;
-  right: 0;
-  top: 0;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  span {
-    font-size: 1.3em;
-    color: red;
-    font-weight: bold;
-
-    &:hover {
-      font-size: 1.5em;
-    }
-  }
-}
-
-.auCopii {
-  display: flex;
-  flex-direction: row;
-  padding: 0.5em;
-  width: 100%;
-  justify-content: space-between;
 }
 
 .inp {
@@ -114,6 +47,7 @@ $dark: #000;
     transform: scaleX(0);
     transform-origin: left;
   }
+
   input {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -176,24 +110,9 @@ $dark: #000;
     }
   }
 }
-.copiiNasi {
-  display: flex;
-  padding: 0.2em;
-  align-items: center;
-  justify-content: space-between;
 
-  position: relative;
-  margin: 0.5em;
-  p {
-    padding: 1em;
-  }
-}
 @media (max-width: 768px) {
-  .formularContainer {
-    margin: 1em;
-  }
-
-  .nasi {
+  .dateEveniment {
     grid-template-columns: 1fr;
   }
 }

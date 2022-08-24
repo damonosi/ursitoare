@@ -20,12 +20,20 @@ export const evenimenteSchema = new mongoose.Schema(
         nas: { type: String, required: false },
         nasa: { type: String, required: false },
         aucopii: { type: String, required: false },
+        casatoriti: { type: String, required: false },
         copii: [
           {
             nume: { type: String, required: true },
             varsta: { type: String, required: true },
           },
         ],
+      },
+    ],
+    rudeStrainatate: [
+      {
+        nume: { type: String, required: false },
+        gradRudenie: { type: String, required: false },
+        tara: { type: String, required: false },
       },
     ],
     dataeveniment: { type: String, required: true },

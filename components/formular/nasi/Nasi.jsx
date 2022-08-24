@@ -25,8 +25,9 @@ const Nasi = ({ register, control }) => {
       <div className={stil1 ? styles.nasi : styles.nasiDoi}>
         {nasiFields.map((field, index) => {
           const id = `perechinasi[${index}].aucopii`;
+          const idCasatorit = `perechinasi[${index}].casatoriti`;
           return (
-            <div className={styles.randFormular} key={field.id}>
+            <div className={styles.perecheNasi} key={field.id}>
               <div className={styles.inp}>
                 <input
                   placeholder="&nbsp;"
@@ -54,9 +55,19 @@ const Nasi = ({ register, control }) => {
                 <span className={styles.focusBg}></span>
               </div>
               <div className={styles.auCopii}>
+                <label htmlFor="nasiCopii">Sunt Casatoriti ?</label>
+                <input
+                  type="checkbox"
+                  value="on"
+                  id={idCasatorit}
+                  {...register(idCasatorit)}
+                />
+              </div>
+              <div className={styles.auCopii}>
                 <label htmlFor="nasiCopii">Au copii ? </label>
                 <input type="checkbox" value="on" id={id} {...register(id)} />
               </div>
+
               <ConditionalInput
                 register={register}
                 {...{ control, index, field }}

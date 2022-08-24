@@ -64,12 +64,7 @@ export const CopiiNasiInput = ({ index, control, register }) => {
   );
 };
 
-export const ConditionalInput = ({
-  control,
-  index,
-
-  register,
-}) => {
+export const ConditionalInput = ({ control, index, register }) => {
   const value = useWatch({
     name: "perechinasi",
     control,
@@ -83,7 +78,7 @@ export const ConditionalInput = ({
         render={() =>
           value[index].aucopii === "on" ? (
             <div className={styles.randFormular}>
-              <div key={index.id}>
+              <div key={index}>
                 <CopiiNasiInput {...{ control, index, register }} />
               </div>
             </div>

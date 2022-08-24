@@ -6,10 +6,11 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { getError } from "../../utils/error";
 import { useRef, useState } from "react";
-import Copil from "./../../components/formular/Copil";
+import Copil from "../../components/formular/copil";
 import Nasi from "../../components/formular/nasi/Nasi";
-import Eveniment from "../../components/formular/Eveniment";
+import Eveniment from "../../components/formular/eveniment";
 import { useSession } from "next-auth/react";
+import RudeStrainatate from "../../components/formular/rudeStrainatate";
 
 export default function FormularPage() {
   const {
@@ -23,6 +24,7 @@ export default function FormularPage() {
     defaultValues: {
       frati: [{ nume: "", varsta: "" }],
       perechinasi: [{ nas: "", nasa: "" }],
+      rudeStrainatate: [{ nume: "", gradRudenie: "", tara: "" }],
       "perechinasi.copii": [{ nume: "", varsta: "" }],
     },
   });
@@ -35,6 +37,7 @@ export default function FormularPage() {
     tata,
     frati,
     perechinasi,
+    rudeStrainatate,
     dataeveniment,
     oraeveniment,
     localitateeveniment,
@@ -49,6 +52,7 @@ export default function FormularPage() {
         tata,
         frati,
         perechinasi,
+        rudeStrainatate,
         dataeveniment,
         oraeveniment,
         localitateeveniment,
@@ -85,9 +89,13 @@ export default function FormularPage() {
           control={control}
           register={register}
         />
-
+        <RudeStrainatate control={control} register={register} />
         <Eveniment control={control} register={register} />
-        <button disabled={disable}>Submit</button>
+        <button
+        // disabled={ disable }
+        >
+          Faceti Rezervarea
+        </button>
       </form>
     </div>
   );
