@@ -13,19 +13,19 @@ const UnchiMatusi = ({ register, control }) => {
   const {
     fields: unchiFields,
     append: unchiAppend,
-    remove: unchiNasi,
+    remove: removeUnchi,
   } = useFieldArray({
     control,
     name: "unchiMatusi",
   });
 
   return (
-    <div className={styles.dateNasi}>
-      <span>Unchi/Matuse</span>
+    <div className={styles.dateUnchi}>
+      <span>Unchi/Matusa</span>
       <div className={stil1 ? styles.nasi : styles.nasiDoi}>
         {unchiFields.map((field, index) => {
-          const id = `unchiMatusi[${index}].casatoriti`;
-          const idCasatorit = `unchiMatusi[${index}].casatoriti`;
+          const id = `unchiMatusi[${index}].casatorit`;
+
           return (
             <div className={styles.perecheNasi} key={field.id}>
               <div className={styles.inp}>
@@ -56,7 +56,7 @@ const UnchiMatusi = ({ register, control }) => {
                 <button
                   className={styles.closeBtn}
                   type="button"
-                  onClick={() => removeNasi(index)}
+                  onClick={() => removeUnchi(index)}
                 >
                   <span>X</span>
                 </button>

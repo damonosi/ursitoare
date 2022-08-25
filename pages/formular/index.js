@@ -37,7 +37,9 @@ export default function FormularPage() {
     mama,
     tata,
     frati,
+    unchiMatusi,
     perechinasi,
+
     rudeStrainatate,
     dataeveniment,
     oraeveniment,
@@ -51,6 +53,7 @@ export default function FormularPage() {
         datanastere,
         mama,
         tata,
+        unchiMatusi,
         frati,
         perechinasi,
         rudeStrainatate,
