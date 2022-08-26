@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, useAnimationControls } from "framer-motion";
 
-import Ursitoare from "../../public/images/padureFermecata.png";
+import Ursitoare from "../../public/images/cortina.png";
 import { useMediaQuery } from "react-responsive";
 import Oferta from "./oferta/index";
 
@@ -28,12 +28,21 @@ const HomePage = () => {
       {mounted && isDesktop && (
         <section className={styles.secIntroducere}>
           <motion.div
-            initial={{ x: 200 }}
+            initial={{ x: 400 }}
             animate={{ x: 0 }}
             transition={{ duration: 2 }}
             className={styles.imgIntroducere}
           >
-            <Image src={Ursitoare} alt="ursitoare1" />
+            <Image responsive={true} src={Ursitoare} alt="ursitoare1" />
+          </motion.div>
+          <motion.div
+            initial={{ x: 400, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 2 }}
+            className={styles.textIntro}
+          >
+            <h2>Spectacole</h2>
+            <h2>cu zane ursitoare</h2>
           </motion.div>
         </section>
       )}
@@ -55,18 +64,9 @@ const HomePage = () => {
             transition={{ duration: 2 }}
             className={styles.textIntro}
           >
-            <motion.h1 animate={controls} transition={{ duration: 1 }}>
-              Bucurati-va de
-            </motion.h1>
-            <motion.h2 animate={controls} transition={{ duration: 1 }}>
-              momente de neuitat
-            </motion.h2>
-            <motion.h2 animate={controls} transition={{ duration: 1 }}>
-              impreuna cu familia
-            </motion.h2>
-            <motion.h4 animate={controls} transition={{ duration: 1 }}>
-              alaturi de 3 zane ursitoare
-            </motion.h4>
+            <h2>Bucurati-va de</h2>
+            <h2>momente de neuitat</h2>
+            <h2>alaturi de trei zane ursitoare</h2>
           </motion.div>
         </section>
       )}
