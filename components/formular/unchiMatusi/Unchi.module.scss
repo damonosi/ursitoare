@@ -129,7 +129,20 @@
     }
   }
 }
-
+.copiiUnchiContainer {
+  padding-bottom: 2em;
+  border: 3px dotted black;
+  margin-top: 2em;
+  text-align: left;
+  position: relative;
+  button {
+    max-height: 2em;
+    max-width: 5em;
+    span {
+      font-weight: bold;
+    }
+  }
+}
 .copiiUnchi {
   display: flex;
   padding: 0.2em;

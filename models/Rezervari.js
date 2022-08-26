@@ -18,6 +18,7 @@ export const evenimenteSchema = new mongoose.Schema(
       {
         nume: { type: String, required: false },
         casatorit: { type: String, required: false },
+        areCopii: { type: String, required: false },
         numeSotieSot: { type: String, required: false },
         copii: [
           {

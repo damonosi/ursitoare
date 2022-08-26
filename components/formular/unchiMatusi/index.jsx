@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import styles from "./Unchi.module.scss";
 import { useFieldArray } from "react-hook-form";
-import { CasatoritInput } from "./CasatoritInput";
+import { CasatoritInput, CopiiUnchiInput } from "./CasatoritInput";
 
 const UnchiMatusi = ({ register, control }) => {
   const [stil1, setStil2] = useState(false);
@@ -25,6 +25,7 @@ const UnchiMatusi = ({ register, control }) => {
       <div className={stil1 ? styles.nasi : styles.nasiDoi}>
         {unchiFields.map((field, index) => {
           const id = `unchiMatusi[${index}].casatorit`;
+          const idCopii = `unchiMatusi[${index}].areCopii`;
 
           return (
             <div className={styles.perecheNasi} key={field.id}>
@@ -43,6 +44,17 @@ const UnchiMatusi = ({ register, control }) => {
               </div>
 
               <div className={styles.copiiNasiBorder}>
+                <div className={styles.auCopii}>
+                  <label htmlFor="unchiCasatorit">are copii? </label>
+                  <input
+                    type="checkbox"
+                    value="on"
+                    id={idCopii}
+                    {...register(idCopii)}
+                  />
+                  <CopiiUnchiInput {...{ control, index, register }} />
+                </div>
+
                 <div className={styles.auCopii}>
                   <label htmlFor="unchiCasatorit">Este casatorit? </label>
                   <input type="checkbox" value="on" id={id} {...register(id)} />

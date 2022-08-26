@@ -5,7 +5,7 @@ import styles from "./Formular.module.scss";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { getError } from "../../utils/error";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Copil from "../../components/formular/copil";
 import Nasi from "../../components/formular/nasi/Nasi";
 import Eveniment from "../../components/formular/eveniment";
@@ -39,7 +39,6 @@ export default function FormularPage() {
     frati,
     unchiMatusi,
     perechinasi,
-
     rudeStrainatate,
     dataeveniment,
     oraeveniment,

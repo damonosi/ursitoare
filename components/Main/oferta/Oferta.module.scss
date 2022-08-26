@@ -1,0 +1,78 @@
+.oferteContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  height: 30em;
+}
+
+.boteze {
+  display: flex;
+  border: 3px solid black;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1em;
+  overflow: hidden;
+}
+.nunti {
+  display: flex;
+  border: 3px solid black;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1em;
+  overflow: hidden;
+}
+.onomastice {
+  display: flex;
+  border: 3px solid black;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1em;
+  overflow: hidden;
+}
+
+.openBtn {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  margin-top: 20px;
+  transform: translateX(-50%);
+  padding: 1em;
+  cursor: pointer;
+  background-color: transparent;
+  box-shadow: none;
+  border-color: gray;
+  border-radius: 10%;
+  width: 23em;
+  height: 10em;
+  transition: all 0.8s ease-out;
+
+  &:hover {
+    h1 {
+      font-size: 1.7em;
+    }
+  }
+}
+.closeBtn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 1.5em;
+  background-color: transparent;
+  border: none;
+  transition: all 0.8s ease-in;
+
+  span {
+    font-size: 1.3em;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      font-size: 1.2em;
+    }
+  }
+}
