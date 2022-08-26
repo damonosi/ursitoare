@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, useAnimationControls } from "framer-motion";
 
 import Ursitoare from "../../public/images/cortina.png";
+import CortinaMobil from "../../public/images/cortina_mobil.png";
 import { useMediaQuery } from "react-responsive";
 import Oferta from "./oferta/index";
 
@@ -55,7 +56,7 @@ const HomePage = () => {
             transition={{ duration: 2 }}
             className={styles.imgIntroducere}
           >
-            <Image src={Ursitoare} alt="ursitoare1" />
+            <Image src={CortinaMobil} alt="ursitoare1" />
           </motion.div>
           <motion.div
             custom={0}
