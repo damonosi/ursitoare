@@ -33,15 +33,10 @@ export default NextAuth({
         });
         await db.disconnect();
         if (user && bcrypt.compareSync(credentials.password, user.password)) {
-          return {
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            isadmin: user.isadmin,
-            isursitoare: user.isursitoare,
-          };
+          return user;
+        } else {
+          return null;
         }
-        throw new Error("Invalid email or password");
       },
     }),
   ],

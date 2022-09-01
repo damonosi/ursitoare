@@ -44,7 +44,12 @@ const Oferta = () => {
               nulla officia neque consectetur labore aliquam culpa, corporis
               saepe nostrum.
             </p>
-            <ButonRezerva onClick={() => router.push("/formular")} />
+            <ButonRezerva
+              onClick={(e) => {
+                e.preventDefault();
+                router.push("/formular");
+              }}
+            />
           </Collapsible>
         </div>
         <div className={styles.nunti}>

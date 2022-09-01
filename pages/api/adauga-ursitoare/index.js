@@ -8,7 +8,7 @@ const handler = async (req, res) => {
   await db.connect();
   const ursitori = await User.findById(req.body.ursitoareId);
   const eveniment = await Rezervari.findById(req.body.rezId);
-  console.log(ursitori.name);
+
   await Rezervari.findOneAndUpdate(
     {
       _id: filtru,
