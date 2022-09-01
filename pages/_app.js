@@ -11,7 +11,7 @@ import Transition from "./../components/transition/index";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <SessionProvider refetchInterval={1000} session={session}>
+    <SessionProvider session={session}>
       <Layout>
         {Component.Auth ? (
           <Auth>

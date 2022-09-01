@@ -9,9 +9,9 @@ const handler = async (req, res) => {
   }
 
   const { user } = session;
-  db.connect();
+  await db.connect();
   const userConnectat = await User.findById(user._id);
-
+  await db.disconnect();
   let evenimenteleMele = userConnectat.rezervari;
   res.send(evenimenteleMele);
 };

@@ -19,7 +19,7 @@ export default NextAuth({
     async session({ session, token }) {
       if (token?._id) session.user._id = token._id;
       if (token?.isadmin) session.user.isadmin = token.isadmin;
-      session.user.isursitoare = token.isursitoare;
+      if (token?.isursitoare) session.user.isursitoare = token.isursitoare;
 
       return session;
     },
