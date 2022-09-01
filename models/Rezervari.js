@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { userSchema } from "./Rezervari";
+
 export const evenimenteSchema = new mongoose.Schema(
   {
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
@@ -57,7 +57,11 @@ export const evenimenteSchema = new mongoose.Schema(
     locatieeveniment: { type: String, required: true },
     localitateeveniment: { type: String, required: true },
     nrcontact: { type: Number, required: true },
-    ursitoare: { type: [userSchema] },
+    ursitoare: [
+      {
+        nume: { type: String, required: false },
+      },
+    ],
   },
   {
     timestamps: true,
