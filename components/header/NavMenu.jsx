@@ -7,9 +7,11 @@ import Spinner from "../spinner/Spinner";
 
 const NavMenu = ({ openNavMenu, closeNavMenu }) => {
   const { status, data: session } = useSession();
+
   const logoutClickHandler = () => {
     signOut({ callbackUrl: "/auth/login" });
   };
+  console.log(session.user);
   return (
     <motion.ul
       initial={{ opacity: 0 }}
@@ -56,7 +58,7 @@ const NavMenu = ({ openNavMenu, closeNavMenu }) => {
         ) : (
           ""
         )}
-        {session?.user.isursitoare === "true" ? (
+        {session?.user.isursitoare ? (
           <li onClick={() => closeNavMenu()}>
             <Link href="/dashboard/ursitoare">
               <a>Program</a>
