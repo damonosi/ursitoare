@@ -1,15 +1,12 @@
 import styles from "./Header.module.scss";
 import NavMenu from "./NavMenu";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Fade as Hamburger } from "hamburger-react";
 import useScrollDirection from "./../../utils/hooks/useScrollDirection";
 
 const Header = () => {
   const [openNavMenu, setOpenNavMenu] = useState(false);
-  const [animateHeader, setAnimateHeader] = useState(false);
   const closeNavMenu = () => setOpenNavMenu(false);
-  // scroll direction hook
-
   const scrollDirection = useScrollDirection();
 
   return (

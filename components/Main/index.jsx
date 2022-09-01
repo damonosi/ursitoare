@@ -7,7 +7,6 @@ import Ursitoare from "../../public/images/cortina.png";
 import CortinaMobil from "../../public/images/cortina_mobil.png";
 import { useMediaQuery } from "react-responsive";
 import Oferta from "./oferta/index";
-import Map from "./../googleMaps/index";
 
 const HomePage = () => {
   const controls = useAnimationControls();

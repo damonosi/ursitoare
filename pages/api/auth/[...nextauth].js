@@ -14,6 +14,7 @@ export default NextAuth({
       if (user?.isadmin) token.isadmin = user.isadmin;
       if (user?.isursitoare) token.isursitoare = user.isursitoare;
       if (user?.rezervari) token.rezervari = user.rezervari;
+      if (user?.rezervarilemele) token.rezervarilemele = user.rezervarilemele;
       return token;
     },
     async session({ session, token }) {
@@ -27,6 +28,7 @@ export default NextAuth({
       session.user.isadmin = user.isadmin;
       session.user.isursitoare = token.isursitoare;
       session.user.rezervari = user.rezervari;
+      session.user.rezervarilemele = user.rezervarilemele;
 
       return session;
     },
@@ -46,8 +48,8 @@ export default NextAuth({
             email: user.email,
             isadmin: user.isadmin,
             isursitoare: user.isursitoare,
-            numarevenimente: user.numarevenimente,
             rezervari: user.rezervari,
+            rezervarilemele: user.rezervari,
           };
         }
         throw new Error("Invalid email or password");
