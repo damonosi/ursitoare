@@ -56,7 +56,7 @@ const NavMenu = ({ openNavMenu, closeNavMenu }) => {
         ) : (
           ""
         )}
-        {session?.user.isursitoare ? (
+        {session?.user.isursitoare === "true" ? (
           <li onClick={() => closeNavMenu()}>
             <Link href="/dashboard/ursitoare">
               <a>Program</a>
