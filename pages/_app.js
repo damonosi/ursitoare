@@ -26,15 +26,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
             </Transition>
           </Auth>
         ) : (
-          <Transition>
-            <AnimatePresence
-              exitBeforeEnter
-              initial={false}
-              onExitComplete={() => window.scrollTo(0, 0)}
-            >
-              <Component {...pageProps} />
-            </AnimatePresence>
-          </Transition>
+          <Component {...pageProps} />
         )}
       </Layout>
     </SessionProvider>
