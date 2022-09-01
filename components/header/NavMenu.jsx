@@ -50,7 +50,7 @@ const NavMenu = ({ openNavMenu, closeNavMenu }) => {
         {session?.user.isadmin ? (
           <li onClick={() => closeNavMenu()}>
             <Link href="/dashboard/admin">
-              <a>Rezervari</a>
+              <a>Dashboard</a>
             </Link>
           </li>
         ) : (

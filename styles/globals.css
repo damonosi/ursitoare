@@ -15,3 +15,6 @@ a {
   box-sizing: border-box;
 }
 
+section {
+  padding: 1em;
+}

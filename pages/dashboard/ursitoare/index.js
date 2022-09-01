@@ -160,7 +160,6 @@ export default function EvenimenteleMele() {
                       Data evenimentului{" "}
                       {ChangeDateOrder(eveniment.dataeveniment)}
                     </h3>
-                    <h3>Ora {eveniment.oraeveniment}.00</h3>
                   </div>
                 </CasetaEveniment>
               ) : (

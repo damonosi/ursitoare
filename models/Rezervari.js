@@ -3,6 +3,7 @@ import { userSchema } from "./Rezervari";
 export const evenimenteSchema = new mongoose.Schema(
   {
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    confirmat: { type: Boolean, required: false, default: false },
     numecopil: { type: String, required: true },
     datanastere: { type: String, required: true },
     frati: [
@@ -51,7 +52,8 @@ export const evenimenteSchema = new mongoose.Schema(
       },
     ],
     dataeveniment: { type: String, required: true },
-    oraeveniment: { type: String, required: true },
+    oraInceputPetrecere: { type: String, required: true },
+    oraConfirmata: { type: String, required: false },
     locatieeveniment: { type: String, required: true },
     localitateeveniment: { type: String, required: true },
     nrcontact: { type: Number, required: true },

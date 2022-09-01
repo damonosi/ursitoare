@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { Rezervari } from "../../../models/Rezervari";
 import { User } from "../../../models/User";
 import db from "../../../utils/db";
@@ -39,7 +38,7 @@ const handler = async (req, res) => {
           locatieeveniment: eveniment.locatieeveniment,
           localitateeveniment: eveniment.localitateeveniment,
           dataeveniment: eveniment.dataeveniment,
-          oraeveniment: eveniment.oraeveniment,
+          oraInceputPetrecere: eveniment.oraInceputPetrecere,
           nrcontact: eveniment.nrcontact,
         },
       },

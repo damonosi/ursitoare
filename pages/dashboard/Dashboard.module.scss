@@ -63,15 +63,6 @@
   justify-content: center;
 }
 
-.adaugUrsitoare {
-  display: flex;
-  flex-direction: column;
-  margin: 3px;
-
-  z-index: 100;
-  height: 10em;
-}
-
 .contact {
   border-top: 2px dotted;
   border-bottom: 2px dotted;
@@ -79,14 +70,6 @@
   margin-top: 2em;
 }
 
-.ursContainer {
-  display: flex;
-  flex-direction: column;
-  border: 5px dotted gray;
-  h3 {
-    text-transform: capitalize;
-  }
-}
 .trecut {
   background-color: red;
 }

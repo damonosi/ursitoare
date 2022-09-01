@@ -7,6 +7,7 @@ import Ursitoare from "../../public/images/cortina.png";
 import CortinaMobil from "../../public/images/cortina_mobil.png";
 import { useMediaQuery } from "react-responsive";
 import Oferta from "./oferta/index";
+import Map from "./../googleMaps/index";
 
 const HomePage = () => {
   const controls = useAnimationControls();
@@ -34,7 +35,7 @@ const HomePage = () => {
             transition={{ duration: 2 }}
             className={styles.imgIntroducere}
           >
-            <Image responsive={true} src={Ursitoare} alt="ursitoare1" />
+            <Image src={Ursitoare} alt="ursitoare1" />
           </motion.div>
           <motion.div
             initial={{ x: 400, opacity: 0 }}
@@ -81,9 +82,7 @@ const HomePage = () => {
       <section>
         <Oferta />
       </section>
-      <section>
-        <h1>Sectiune echipa</h1>
-      </section>
+      <section></section>
     </div>
   );
 };

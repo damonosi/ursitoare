@@ -2,28 +2,22 @@ import styles from "./Header.module.scss";
 import NavMenu from "./NavMenu";
 import { useState, useRef, useEffect } from "react";
 import { Fade as Hamburger } from "hamburger-react";
+import useScrollDirection from "./../../utils/hooks/useScrollDirection";
 
 const Header = () => {
   const [openNavMenu, setOpenNavMenu] = useState(false);
   const [animateHeader, setAnimateHeader] = useState(false);
   const closeNavMenu = () => setOpenNavMenu(false);
-  useEffect(() => {
-    const listener = () => {
-      if (window.scrollY > 40) {
-        setAnimateHeader(true);
-      } else setAnimateHeader(false);
-    };
+  // scroll direction hook
 
-    window.addEventListener("scroll", listener);
+  const scrollDirection = useScrollDirection();
 
-    return () => {
-      window.removeEventListener("scroll", listener);
-    };
-  }, []);
   return (
     <header
       className={
-        animateHeader ? styles.headerContainer : styles.headerContainer2
+        scrollDirection === "down"
+          ? styles.headerContainer2
+          : styles.headerContainer
       }
     >
       <div className={styles.logo}>

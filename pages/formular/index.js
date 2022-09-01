@@ -13,7 +13,7 @@ import { useSession } from "next-auth/react";
 import RudeStrainatate from "../../components/formular/rudeStrainatate";
 import UnchiMatusi from "./../../components/formular/unchiMatusi/index";
 
-export default function FormularPage() {
+const FormularPage = () => {
   const {
     handleSubmit,
     register,
@@ -41,7 +41,7 @@ export default function FormularPage() {
     perechinasi,
     rudeStrainatate,
     dataeveniment,
-    oraeveniment,
+    oraInceputPetrecere,
     localitateeveniment,
     locatieeveniment,
     nrcontact,
@@ -57,7 +57,7 @@ export default function FormularPage() {
         perechinasi,
         rudeStrainatate,
         dataeveniment,
-        oraeveniment,
+        oraInceputPetrecere,
         localitateeveniment,
         locatieeveniment,
         nrcontact,
@@ -103,5 +103,7 @@ export default function FormularPage() {
       </form>
     </div>
   );
-}
+};
 FormularPage.Auth = true;
+
+export default FormularPage;

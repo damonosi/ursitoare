@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import styles from "./Eveniment.module.scss";
+import Map from "./../../googleMaps/index";
 
 const Eveniment = ({ register, control }) => {
   const toDay = new Date().toLocaleDateString().substring(0, 10);
@@ -29,13 +30,13 @@ const Eveniment = ({ register, control }) => {
           <input
             placeholder="&nbsp;"
             type="text"
-            {...register("oraeveniment", {
-              required: "Va rugam sa ora la care preferati sa venim",
+            {...register("oraInceputPetrecere", {
+              required: "Va rugam sa ora la ce ora incepe petrecerea",
             })}
-            id="oraeveniment"
+            id="oraInceputPetrecere"
           />
-          <label className={styles.label} htmlFor="oraeveniment">
-            La ce ora doriti sa venim?
+          <label className={styles.label} htmlFor="oraInceputPetrecere">
+            La ce ora incepe petrecerea?
           </label>
           <span className={styles.focusBg}></span>
         </div>
@@ -77,7 +78,7 @@ const Eveniment = ({ register, control }) => {
             placeholder="&nbsp;"
             type="tel"
             {...register("nrcontact", {
-              required: "Va rugam sa ora la care preferati sa venim",
+              required: "Va rugam adaugati numarul de contact",
             })}
             id="nrcontact"
           />
@@ -86,6 +87,7 @@ const Eveniment = ({ register, control }) => {
           </label>
           <span className={styles.focusBg}></span>
         </div>
+        <Map />
       </div>
     </>
   );

@@ -2,6 +2,7 @@ import Header from "./header/Header";
 import Footer from "./footer/Footer";
 import Head from "next/head";
 import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import styles from "./Layout.module.scss";
 const Layout = ({ title, children }) => {

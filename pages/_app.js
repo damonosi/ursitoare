@@ -7,6 +7,7 @@ import { AnimatePresence } from "framer-motion";
 
 import "../styles/globals.css";
 import Spinner from "../components/spinner/Spinner";
+import Transition from "./../components/transition/index";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
@@ -14,6 +15,18 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       <Layout>
         {Component.Auth ? (
           <Auth>
+            <Transition>
+              <AnimatePresence
+                exitBeforeEnter
+                initial={false}
+                onExitComplete={() => window.scrollTo(0, 0)}
+              >
+                <Component {...pageProps} />
+              </AnimatePresence>
+            </Transition>
+          </Auth>
+        ) : (
+          <Transition>
             <AnimatePresence
               exitBeforeEnter
               initial={false}
@@ -21,9 +34,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
             >
               <Component {...pageProps} />
             </AnimatePresence>
-          </Auth>
-        ) : (
-          <Component {...pageProps} />
+          </Transition>
         )}
       </Layout>
     </SessionProvider>
