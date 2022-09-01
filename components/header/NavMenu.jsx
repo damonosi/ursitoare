@@ -11,7 +11,7 @@ const NavMenu = ({ openNavMenu, closeNavMenu }) => {
   const logoutClickHandler = () => {
     signOut({ callbackUrl: "/auth/login" });
   };
-  console.log(session.user);
+
   return (
     <motion.ul
       initial={{ opacity: 0 }}
@@ -71,15 +71,15 @@ const NavMenu = ({ openNavMenu, closeNavMenu }) => {
         <li onClick={() => closeNavMenu()}>
           {status === "loading" ? (
             <Spinner />
-          ) : session?.user ? (
+          ) : !session?.user ? (
+            <Link href="/auth/login">
+              <a className="">Conectare</a>
+            </Link>
+          ) : (
             <Link href="#">
               <a className="" onClick={logoutClickHandler}>
                 Deconectare
               </a>
-            </Link>
-          ) : (
-            <Link href="/auth/login">
-              <a className="">Conectare</a>
             </Link>
           )}
         </li>

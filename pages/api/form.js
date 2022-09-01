@@ -26,7 +26,7 @@ const handler = async (req, res) => {
   } = req.body;
 
   await db.connect();
-  console.log("db connected");
+
   const newForm = new Rezervari({
     user,
     numecopil,

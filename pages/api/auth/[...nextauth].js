@@ -13,14 +13,14 @@ export default NextAuth({
       if (user?._id) token._id = user._id;
       if (user?.isadmin) token.isadmin = user.isadmin;
       if (user?.isursitoare) token.isursitoare = user.isursitoare;
-      console.log(token);
+
       return token;
     },
     async session({ session, token }) {
       if (token?._id) session.user._id = token._id;
       if (token?.isadmin) session.user.isadmin = token.isadmin;
       session.user.isursitoare = token.isursitoare;
-      console.log(session);
+
       return session;
     },
   },

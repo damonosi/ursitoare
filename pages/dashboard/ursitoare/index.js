@@ -69,7 +69,7 @@ export default function EvenimenteleMele() {
     const datAz = new Date(astazi);
     setAzi(datAz);
   }, []);
-  console.log(typeof evenimenteleMele);
+
   const flatRez = evenimenteleMele.flatMap((num) => num);
   const rezSort = flatRez.sort((a, b) => {
     return (
@@ -83,7 +83,7 @@ export default function EvenimenteleMele() {
         <Spinner />
       ) : (
         <div className={styles.containerDashboard}>
-          {rezSort.map((eveniment) => (
+          {rezSort.map((eveniment, index) => (
             <div key={eveniment._id}>
               {new Date(eveniment.dataeveniment).getTime() > azi.getTime() ? (
                 <CasetaEveniment eveniment={eveniment}>
@@ -110,9 +110,9 @@ export default function EvenimenteleMele() {
                   <h2>Frati/ Surori</h2>
                   <div className={styles.fratiContainer}>
                     {eveniment.frati.map((fr) => (
-                      <>
+                      <div key={fr._id}>
                         {fr.nume ? (
-                          <div key={fr._id} className={styles.frateContainer}>
+                          <div className={styles.frateContainer}>
                             <h3>{fr.nume}</h3>
                             <hr />
                             <h3>{fr.varsta} ani</h3>
@@ -120,13 +120,13 @@ export default function EvenimenteleMele() {
                         ) : (
                           ""
                         )}
-                      </>
+                      </div>
                     ))}
                   </div>
                   <h2>Perechi de nasi</h2>
                   <div className={styles.nasiContainer}>
                     {eveniment.perechinasi.map((perecheNasi) => (
-                      <>
+                      <div key={perecheNasi._id}>
                         {perecheNasi.nas ? (
                           <div key={perecheNasi._id}>
                             <h3>{perecheNasi.nas}</h3>
@@ -149,7 +149,7 @@ export default function EvenimenteleMele() {
                         ) : (
                           ""
                         )}
-                      </>
+                      </div>
                     ))}
                   </div>
                   <h2> Detalii eveniment</h2>

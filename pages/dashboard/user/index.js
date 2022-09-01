@@ -78,8 +78,8 @@ export default function RezFacute() {
         <Spinner />
       ) : (
         <div className={styles.containerDashboard}>
-          {rezervarileMele.map((eveniment) => (
-            <div key={eveniment._id}>
+          {rezervarileMele.map((eveniment, index) => (
+            <div key={index}>
               {new Date(eveniment.dataeveniment).getTime() > azi.getTime() ? (
                 <CasetaEveniment eveniment={eveniment}>
                   <h1>{eveniment.numecopil}</h1>
@@ -105,7 +105,7 @@ export default function RezFacute() {
                   <h2>Frati/ Surori</h2>
                   <div className={styles.fratiContainer}>
                     {eveniment.frati.map((fr) => (
-                      <>
+                      <div key={fr._id}>
                         {fr.nume ? (
                           <div key={fr._id} className={styles.frateContainer}>
                             <h3>{fr.nume}</h3>
@@ -115,13 +115,13 @@ export default function RezFacute() {
                         ) : (
                           ""
                         )}
-                      </>
+                      </div>
                     ))}
                   </div>
                   <h2>Perechi de nasi</h2>
                   <div className={styles.nasiContainer}>
                     {eveniment.perechinasi.map((perecheNasi) => (
-                      <>
+                      <div key={perecheNasi._id}>
                         {perecheNasi.nas ? (
                           <div key={perecheNasi._id}>
                             <h3>{perecheNasi.nas}</h3>
@@ -144,7 +144,7 @@ export default function RezFacute() {
                         ) : (
                           ""
                         )}
-                      </>
+                      </div>
                     ))}
                   </div>
                   <h2> Detalii eveniment</h2>
