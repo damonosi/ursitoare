@@ -6,7 +6,13 @@ import { motion, useAnimationControls } from "framer-motion";
 import Ursitoare from "../../public/images/cortina.png";
 import CortinaMobil from "../../public/images/cortina_mobil.png";
 import { useMediaQuery } from "react-responsive";
-import Oferta from "./oferta/index";
+
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+const DynamicOferta = dynamic(() => import("./oferta/index"), {
+  suspense: true,
+});
 
 const HomePage = () => {
   const controls = useAnimationControls();
@@ -79,7 +85,9 @@ const HomePage = () => {
         <h1>Sectiune echipa</h1>
       </section>
       <section>
-        <Oferta />
+        <Suspense fallback={`Loading...`}>
+          <DynamicOferta />
+        </Suspense>
       </section>
       <section></section>
     </div>
