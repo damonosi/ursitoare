@@ -43,9 +43,10 @@ const LoginScreen = () => {
       toast.error(getError(err));
     }
   };
-  if (loading) {
+  if (status === "loading") {
     return <Spinner />;
   }
+  console.log(status);
   return (
     <div className={styles.loginContainer}>
       <form
