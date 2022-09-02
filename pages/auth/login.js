@@ -46,7 +46,7 @@ const LoginScreen = () => {
   if (status === "loading") {
     return <Spinner />;
   }
-  console.log(status);
+
   return (
     <div className={styles.loginContainer}>
       <form
