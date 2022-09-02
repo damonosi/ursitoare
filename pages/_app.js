@@ -13,21 +13,21 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
       <Layout>
-        {Component.Auth ? (
-          <Auth>
-            <Transition>
-              <AnimatePresence
-                exitBeforeEnter
-                initial={false}
-                onExitComplete={() => window.scrollTo(0, 0)}
-              >
+        <AnimatePresence
+          exitBeforeEnter
+          initial={false}
+          onExitComplete={() => window.scrollTo(0, 0)}
+        >
+          <Transition>
+            {Component.Auth ? (
+              <Auth>
                 <Component {...pageProps} />
-              </AnimatePresence>
-            </Transition>
-          </Auth>
-        ) : (
-          <Component {...pageProps} />
-        )}
+              </Auth>
+            ) : (
+              <Component {...pageProps} />
+            )}
+          </Transition>
+        </AnimatePresence>
       </Layout>
     </SessionProvider>
   );
