@@ -47,17 +47,15 @@ const Transition = ({ children }) => {
   const shouldReduceMotion = useReducedMotion();
   return (
     <div className={styles.effect}>
-      <AnimatePresence initial={false} exitBeforeEnter>
-        <motion.div
-          key={asPath}
-          variants={!shouldReduceMotion ? variants : null}
-          initial="in"
-          animate={["center", "scaleUp"]}
-          exit={["scaleDown", "out"]}
-        >
-          {children}
-        </motion.div>
-      </AnimatePresence>
+      <motion.div
+        key={asPath}
+        variants={!shouldReduceMotion ? variants : null}
+        initial="in"
+        animate={["center", "scaleUp"]}
+        exit={["scaleDown", "out"]}
+      >
+        {children}
+      </motion.div>
     </div>
   );
 };
