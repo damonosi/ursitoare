@@ -39,7 +39,7 @@ const NavMenu = ({ openNavMenu, closeNavMenu }) => {
             </li>
             <li onClick={() => closeNavMenu()}>
               <Link href="/dashboard/user">
-                <a>Rezervarile Mele</a>
+                <a>Rezervari Facute</a>
               </Link>
             </li>
           </>
@@ -52,7 +52,7 @@ const NavMenu = ({ openNavMenu, closeNavMenu }) => {
         {session?.user.isadmin ? (
           <li onClick={() => closeNavMenu()}>
             <Link href="/dashboard/admin">
-              <a>Dashboard</a>
+              <a>Panou de Comanda</a>
             </Link>
           </li>
         ) : (
@@ -61,7 +61,7 @@ const NavMenu = ({ openNavMenu, closeNavMenu }) => {
         {session?.user.isursitoare ? (
           <li onClick={() => closeNavMenu()}>
             <Link href="/dashboard/ursitoare">
-              <a>Program</a>
+              <a>Evenimentele Mele</a>
             </Link>{" "}
           </li>
         ) : (

@@ -6,13 +6,13 @@ import styles from "./Acceptate.module.scss";
 import Select from "react-select";
 import { toast } from "react-toastify";
 
-const AccepaCerere = () => {
-  const [neconfirmate, setNeconfirmate] = useState([]);
+const ConfirmaRezervarea = () => {
+  const [confirmate, setConfirmate] = useState([]);
   const [userChoice, setUserChoice] = useState("");
   useEffect(() => {
     const fetchEvNeconfirmnate = async () => {
       await axios.get("/api/rezervari/confirmate").then((res) => {
-        setNeconfirmate(res.data);
+        setConfirmate(res.data);
       });
     };
     fetchEvNeconfirmnate();
@@ -20,7 +20,7 @@ const AccepaCerere = () => {
   const handleChange = (chioce) => {
     setUserChoice(chioce);
   };
-  const neconfirmateSort = neconfirmate.sort((a, b) => {
+  const confirmateSort = confirmate.sort((a, b) => {
     return (
       new Date(a.dataeveniment).getTime() - new Date(b.dataeveniment).getTime()
     );
@@ -35,9 +35,8 @@ const AccepaCerere = () => {
   }));
 
   return (
-    <div className={styles.neconfirmateContainer}>
-      <h1> Evenimente Confirmate</h1>
-      {neconfirmateSort.map((eveniment, index) => (
+    <div className={styles.confirmateContainer}>
+      {confirmateSort.map((eveniment, index) => (
         <div className={styles.confirmatContainer} key={index}>
           <h1>Eveniment #{index + 1}</h1>
           <hr />
@@ -54,7 +53,7 @@ const AccepaCerere = () => {
             />
             <button
               onClick={async () => {
-                const oraValue = userChoice.value;
+                const oraValue = userChoice;
                 const evenimentId = eveniment._id;
                 axios.post("/api/rezervari/confirmare-rezervare", {
                   oraValue,
@@ -72,5 +71,5 @@ const AccepaCerere = () => {
   );
 };
 
-AccepaCerere.Admin = true;
-export default AccepaCerere;
+ConfirmaRezervarea.Admin = true;
+export default ConfirmaRezervarea;
