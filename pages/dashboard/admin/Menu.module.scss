@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  padding: 2em;
 
   ul {
     display: grid;
@@ -124,6 +125,22 @@
       top: 14px;
       opacity: 0;
       transition: 0.2s ease-in all;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .adminMenuContainer {
+    padding: 0em;
+    ul {
+      border-top-right-radius: 0%;
+      border-bottom-right-radius: 0%;
+      padding: 0;
+      text-align: center;
+
+      hr {
+        width: 65%;
+      }
     }
   }
 }

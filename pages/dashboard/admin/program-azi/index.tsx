@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./ProgramAzi.module.scss";
+import { useDate } from "./../../../../utils/hooks/useDate";
 
 const ProgramulDeAzi = () => {
   const [rezervariAzi, setEvenimenteAzi] = useState([]);
-  let data = new Date();
-  let ziAzi = data.getDay();
-
-  let lunaAzi = data.getMonth();
-
-  let anAzi = data.getFullYear();
-  let dataAzi = ziAzi + "/" + lunaAzi + "/" + anAzi;
+  const { date } = useDate();
+  console.log(date);
 
   useEffect(() => {
     const fetchRezervari = async () => {
@@ -25,7 +21,7 @@ const ProgramulDeAzi = () => {
   });
   return (
     <div className={styles.programAziContainer}>
-      <h1>Evenimente {dataAzi}</h1>
+      <h1>Evenimente {date}</h1>
       {evenimenteAziSortate.map((evAzi, index) => (
         <div key={evAzi._id} className={styles.casetaProgramAzi}>
           <h1>Eveniment #{index + 1}</h1>
@@ -59,7 +55,13 @@ const ProgramulDeAzi = () => {
 
           <div className={styles.containerInformatii}>
             <h2>Cu ce ursitoare merg </h2>
-            <h3>{evAzi.ursitoare}</h3>
+            <h3>
+              {evAzi.ursitoare.map((urs, index) => (
+                <div key={index}>
+                  <span>{urs.nume}</span>
+                </div>
+              ))}
+            </h3>
           </div>
         </div>
       ))}

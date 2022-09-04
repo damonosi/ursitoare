@@ -1,13 +1,18 @@
 import Link from "next/link";
+
+import { useRouter } from "next/router";
+
 import styles from "./Menu.module.scss";
 
 const AdminMenu = () => {
+  const router = useRouter();
   return (
     <div className={styles.adminMenuContainer}>
       <ul>
         <li>
-          <h1>Meniu admin</h1>
+          <h1>Panou de Comanda</h1>
         </li>
+        <hr />
         <li>
           <Link href="/dashboard/admin/creati-un-eveniment">
             <a>
@@ -86,6 +91,7 @@ const AdminMenu = () => {
             </a>
           </Link>
         </li>
+        <button onClick={() => router.back()}>Innapoi</button>
       </ul>
     </div>
   );
