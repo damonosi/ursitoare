@@ -10,6 +10,7 @@
   padding-left: 50px;
   padding-right: 50px;
   z-index: 10000;
+  max-width: 1920px;
 
   transition: all 0.8s ease-in-out;
   top: 0;
@@ -48,7 +49,7 @@
   z-index: 10000;
   top: 0;
   visibility: hidden;
-
+  max-width: 1920px;
   transition: all 0.8s ease-in-out;
   a {
     box-shadow: inset 0 0 0 0 #e91e63;
@@ -137,16 +138,26 @@
   }
 }
 .navLinks {
-  background-color: #ddfcf1;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border-radius: 10%;
 }
 .dashLinks {
-  background-color: #e91e63;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border-radius: 10%;
 }
 @media (max-width: 768px) {
   .headerContainer {
     padding: 0.5em;
+  }
+  .headerContainer2 {
+    height: 140px;
+    padding: 0.3em;
   }
   .navMenu {
     left: 0;
