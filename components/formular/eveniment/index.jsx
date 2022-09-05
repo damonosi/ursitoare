@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import styles from "./Eveniment.module.scss";
-import Map from "./../../googleMaps/index";
+import MapaRezervare from "../../googleMaps/locatie-rezervare/index";
 
 const Eveniment = ({ register, control }) => {
   const toDay = new Date().toLocaleDateString().substring(0, 10);
@@ -44,38 +44,6 @@ const Eveniment = ({ register, control }) => {
         <div className={styles.inp}>
           <input
             placeholder="&nbsp;"
-            type="text"
-            {...register("localitateeveniment", {
-              required:
-                "Va rugam sa specificati localitatea unde are loc evenimentul",
-            })}
-            id="localitateeveniment"
-          />
-          <label className={styles.label} htmlFor="localitateeveniment">
-            Localitate
-          </label>
-          <span className={styles.focusBg}></span>
-        </div>
-
-        <div className={styles.inp}>
-          <input
-            placeholder="&nbsp;"
-            type="text"
-            {...register("locatieeveniment", {
-              required:
-                "Va rugam sa specificati locatia unde are loc evenimentul",
-            })}
-            id="locatieeveniment"
-          />
-          <label className={styles.label} htmlFor="locatieeveniment">
-            Restaurant/Adresa
-          </label>
-          <span className={styles.focusBg}></span>
-        </div>
-
-        <div className={styles.inp}>
-          <input
-            placeholder="&nbsp;"
             type="tel"
             {...register("nrcontact", {
               required: "Va rugam adaugati numarul de contact",
@@ -87,7 +55,9 @@ const Eveniment = ({ register, control }) => {
           </label>
           <span className={styles.focusBg}></span>
         </div>
-        <Map />
+        <div>
+          <MapaRezervare register={register} control={control} />
+        </div>
       </div>
     </>
   );

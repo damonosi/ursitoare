@@ -1,12 +1,20 @@
+/*global google*/
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./ProgramAzi.module.scss";
 import { useDate } from "./../../../../utils/hooks/useDate";
-
+import Directii from "../../../../components/googleMaps/directii";
+import Geocode from "react-geocode";
+import { useJsApiLoader } from "@react-google-maps/api";
+import Spinner from "./../../../../components/spinner/Spinner";
 const ProgramulDeAzi = () => {
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`,
+    libraries: ["places"],
+  });
   const [rezervariAzi, setEvenimenteAzi] = useState([]);
   const { date } = useDate();
-  console.log(date);
 
   useEffect(() => {
     const fetchRezervari = async () => {
@@ -19,6 +27,27 @@ const ProgramulDeAzi = () => {
   const evenimenteAziSortate = rezervariAzi.sort((a, b) => {
     return a.oraConfirmata - b.oraConfirmata;
   });
+  Geocode.setApiKey(`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`);
+  Geocode.setLanguage("ro");
+  Geocode.setRegion("es");
+  Geocode.setLocationType("ROOFTOP");
+
+  const getGeocode = (adresa) =>
+    Geocode.fromAddress(adresa).then(
+      (response) => {
+        const { lat, lng } = response.results[0].geometry.location;
+        const destinatie = { lat: null, lng: null };
+        destinatie.lat = lat;
+        destinatie.lng = lng;
+        return destinatie;
+      },
+      (error) => {
+        console.error(error);
+      },
+    );
+  if (!isLoaded) {
+    return <Spinner />;
+  }
   return (
     <div className={styles.programAziContainer}>
       <h1>Evenimente {date}</h1>
@@ -44,11 +73,6 @@ const ProgramulDeAzi = () => {
           </div>
 
           <div className={styles.containerInformatii}>
-            <h2>Localitatea unde are loc petrecerea</h2>
-            <h3>{evAzi.localitateeveniment}</h3>
-          </div>
-
-          <div className={styles.containerInformatii}>
             <h2>Numar de Contact </h2>
             <h3>{evAzi.nrcontact}</h3>
           </div>
@@ -62,6 +86,9 @@ const ProgramulDeAzi = () => {
                 </div>
               ))}
             </h3>
+          </div>
+          <div className={styles.containerMapa}>
+            <Directii destinatie={getGeocode(evAzi.locatieeveniment)} />
           </div>
         </div>
       ))}

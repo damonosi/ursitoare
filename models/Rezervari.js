@@ -55,7 +55,6 @@ export const evenimenteSchema = new mongoose.Schema(
     oraInceputPetrecere: { type: String, required: true },
     oraConfirmata: { type: String, required: false },
     locatieeveniment: { type: String, required: true },
-    localitateeveniment: { type: String, required: true },
     nrcontact: { type: Number, required: true },
     ursitoare: [
       {

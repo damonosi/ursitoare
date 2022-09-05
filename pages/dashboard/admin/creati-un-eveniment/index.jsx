@@ -7,7 +7,7 @@ const CreatiEveniment = ({ data }) => {
       {data.map((petrecere, index) => (
         <div key={index}>
           <h1>{petrecere.locatieeveniment}</h1>
-          <h1>{petrecere.localitateeveniment}</h1>
+
           <h1>{petrecere.nrcontact}</h1>
           <h1>{petrecere.oraConfirmata}</h1>
         </div>

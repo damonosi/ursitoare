@@ -2,8 +2,14 @@ import { Rezervari } from "../../models/Rezervari";
 import { User } from "../../models/User";
 
 import db from "../../utils/db";
+import { getSession } from "next-auth/react";
 
 const handler = async (req, res) => {
+  const session = await getSession({ req });
+
+  if (!session) {
+    return res.status(401).send("ruta pentru admin");
+  }
   if (req.method !== "POST") {
     return;
   }
@@ -19,7 +25,6 @@ const handler = async (req, res) => {
     rudeStrainatate,
     dataeveniment,
     oraInceputPetrecere,
-    localitateeveniment,
     locatieeveniment,
     nrcontact,
     user,
@@ -39,7 +44,6 @@ const handler = async (req, res) => {
     rudeStrainatate,
     dataeveniment,
     oraInceputPetrecere,
-    localitateeveniment,
     locatieeveniment,
     nrcontact,
   });
@@ -61,7 +65,7 @@ const handler = async (req, res) => {
           perechinasi: formular.perechinasi,
           rudeStrainatate: formular.rudeStrainatate,
           locatieeveniment: formular.locatieeveniment,
-          localitateeveniment: formular.localitateeveniment,
+
           dataeveniment: formular.dataeveniment,
           oraInceputPetrecere: formular.oraInceputPetrecere,
           nrcontact: formular.nrcontact,
@@ -83,7 +87,7 @@ const handler = async (req, res) => {
     dataeveniment: formular.dataeveniment,
     oraInceputPetrecere: formular.oraInceputPetrecere,
     locatieeveniment: formular.locatieeveniment,
-    localitateeveniment: formular.localitateeveniment,
+
     nrcontact: formular.nrcontact,
     user: formular.user,
   });

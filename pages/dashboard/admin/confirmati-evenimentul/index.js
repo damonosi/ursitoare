@@ -42,7 +42,7 @@ const AccepaCerere = () => {
           <h1>Cerere #{index + 1}</h1>
           <hr />
           <h2> {ChangeDateOrder(eveniment.dataeveniment)}</h2>
-          <h2> Localitate {eveniment.localitateeveniment}</h2>
+
           <h2> Restaurant {eveniment.locatieeveniment}</h2>
           <h2> La ce ora incepe petrecerea {eveniment.oraInceputPetrecere}</h2>
           <div className={styles.adaugOra}>

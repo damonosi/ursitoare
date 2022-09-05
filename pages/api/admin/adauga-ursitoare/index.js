@@ -1,6 +1,6 @@
-import { Rezervari } from "../../../models/Rezervari";
-import { User } from "../../../models/User";
-import db from "../../../utils/db";
+import { Rezervari } from "../../../../models/Rezervari";
+import { User } from "../../../../models/User";
+import db from "../../../../utils/db";
 
 const handler = async (req, res) => {
   const filtru = req.body.rezId;
@@ -36,7 +36,7 @@ const handler = async (req, res) => {
           perechinasi: eveniment.perechinasi,
           unchiMatusi: eveniment.unchiMatusi,
           locatieeveniment: eveniment.locatieeveniment,
-          localitateeveniment: eveniment.localitateeveniment,
+
           dataeveniment: eveniment.dataeveniment,
           oraInceputPetrecere: eveniment.oraInceputPetrecere,
           nrcontact: eveniment.nrcontact,

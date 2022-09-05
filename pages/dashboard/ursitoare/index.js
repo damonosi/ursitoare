@@ -155,7 +155,7 @@ export default function EvenimenteleMele() {
                   <h2> Detalii eveniment</h2>
                   <div className={styles.detaliiEveniment}>
                     <h3>Restaurant/adresa : {eveniment.locatieeveniment}</h3>
-                    <h3>Orasul : {eveniment.localitateeveniment}</h3>
+
                     <h3>
                       Data evenimentului{" "}
                       {ChangeDateOrder(eveniment.dataeveniment)}

@@ -91,7 +91,14 @@ const AdminMenu = () => {
             </a>
           </Link>
         </li>
-        <button onClick={() => router.back()}>Innapoi</button>
+        <button onClick={() => router.back()}>
+          {" "}
+          Innapoi
+          <span
+            className={`${styles.iconRight} ${styles.after}`}
+            data-before="Innapoi"
+          ></span>{" "}
+        </button>
       </ul>
     </div>
   );

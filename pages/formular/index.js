@@ -42,7 +42,7 @@ const FormularPage = () => {
     rudeStrainatate,
     dataeveniment,
     oraInceputPetrecere,
-    localitateeveniment,
+
     locatieeveniment,
     nrcontact,
   }) => {
@@ -58,7 +58,7 @@ const FormularPage = () => {
         rudeStrainatate,
         dataeveniment,
         oraInceputPetrecere,
-        localitateeveniment,
+
         locatieeveniment,
         nrcontact,
         user,

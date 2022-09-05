@@ -47,7 +47,7 @@ const AdaugaUrsitoare = () => {
             <h1>la ce ora incepe petrecerea {eveniment.oraInceputPetrecere}</h1>
             <h1>La ce ora ajungem la eveniment {eveniment.oraConfirmata}</h1>
             <h1>Restaurant {eveniment.locatieeveniment}</h1>
-            <h1>Localitatea {eveniment.localitateeveniment}</h1>
+
             {eveniment.ursitoare.length < 3 ? (
               <>
                 <h1>Adauga ursitoare</h1>
@@ -64,7 +64,7 @@ const AdaugaUrsitoare = () => {
                       userChoice.map((op) => {
                         const ursitoareId = op.value;
                         const rezId = eveniment._id;
-                        axios.post("/api/adauga-ursitoare", {
+                        axios.post("/api/admin/adauga-ursitoare", {
                           ursitoareId,
                           rezId,
                         });
