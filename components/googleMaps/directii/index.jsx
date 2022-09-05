@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import {
   useJsApiLoader,
   GoogleMap,
-  Marker,
+  MarkerF,
   DirectionsRenderer,
 } from "@react-google-maps/api";
 
@@ -71,7 +71,7 @@ function Directii({ destinatie }) {
           }}
           onLoad={(map) => setMap(map)}
         >
-          <Marker position={center} />
+          <MarkerF position={center} />
           {directionsResponse && (
             <DirectionsRenderer directions={directionsResponse} />
           )}
