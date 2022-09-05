@@ -15,7 +15,7 @@ const center = {
   lng: 26.91409,
 };
 
-function MapaRezervare({ register, control }) {
+function MapaRezervare({ register }) {
   const [libraries] = useState(["places"]);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
