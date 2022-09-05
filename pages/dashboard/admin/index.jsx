@@ -27,13 +27,13 @@ const AdminMenu = () => {
           </Link>
         </li>
         <li>
-          <Link href="/dashboard/admin/cereri-de-rezervare">
+          <Link href="/dashboard/admin/confirmati-evenimentul">
             <a>
               <button className="explore">
-                Cereri de Rezervare<span className={styles.iconRight}></span>
+                Confirmati Evenimentul<span className={styles.iconRight}></span>
                 <span
                   className={`${styles.iconRight} ${styles.after}`}
-                  data-before="CERERI"
+                  data-before="Confirma"
                 ></span>
               </button>
             </a>
