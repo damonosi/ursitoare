@@ -5,7 +5,7 @@ export const evenimenteSchema = new mongoose.Schema(
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     confirmat: { type: Boolean, required: false, default: false },
     numecopil: { type: String, required: true },
-    datanastere: { type: String, required: true },
+    datanastere: { type: String, required: false },
     frati: [
       {
         nume: { type: String, required: false },
@@ -13,8 +13,8 @@ export const evenimenteSchema = new mongoose.Schema(
       },
     ],
 
-    mama: { type: String, required: true },
-    tata: { type: String, required: true },
+    mama: { type: String, required: false },
+    tata: { type: String, required: false },
     unchiMatusi: [
       {
         nume: { type: String, required: false },

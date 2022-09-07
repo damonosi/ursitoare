@@ -5,14 +5,18 @@ import ChangeDateOrder from "../../../../utils/formatData";
 import styles from "./Acceptate.module.scss";
 import Select from "react-select";
 import { toast } from "react-toastify";
+import Spinner from "./../../../../components/spinner/Spinner";
 
 const ConfirmaRezervarea = () => {
   const [confirmate, setConfirmate] = useState([]);
   const [userChoice, setUserChoice] = useState("");
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchEvNeconfirmnate = async () => {
+      setLoading(true);
       await axios.get("/api/rezervari/confirmate").then((res) => {
         setConfirmate(res.data);
+        setLoading(false);
       });
     };
     fetchEvNeconfirmnate();
@@ -33,7 +37,9 @@ const ConfirmaRezervarea = () => {
     value: u,
     label: u,
   }));
-
+  if (loading) {
+    return <Spinner />;
+  }
   return (
     <div className={styles.confirmateContainer}>
       {confirmateSort.map((eveniment, index) => (

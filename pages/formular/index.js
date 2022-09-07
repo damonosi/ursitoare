@@ -91,7 +91,7 @@ const FormularPage = () => {
   };
 
   const [disable, setDisable] = useState(false);
-  console.log(status);
+
   return (
     <div className={styles.formularContainer}>
       <form onSubmit={handleSubmit(submitHandler)}>
