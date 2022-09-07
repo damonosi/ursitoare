@@ -62,7 +62,6 @@ const FormularPage = () => {
     rudeStrainatate,
     dataeveniment,
     oraInceputPetrecere,
-
     locatieeveniment,
     nrcontact,
   }) => {
@@ -78,7 +77,6 @@ const FormularPage = () => {
         rudeStrainatate,
         dataeveniment,
         oraInceputPetrecere,
-
         locatieeveniment,
         nrcontact,
         user,
@@ -93,7 +91,7 @@ const FormularPage = () => {
   };
 
   const [disable, setDisable] = useState(false);
-
+  console.log(status);
   return (
     <div className={styles.formularContainer}>
       <form onSubmit={handleSubmit(submitHandler)}>

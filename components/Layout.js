@@ -7,6 +7,7 @@ import styles from "./Layout.module.scss";
 
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+import Spinner from "./spinner/Spinner";
 const Header = dynamic(() => import("./header/Header"), {
   suspense: true,
 });
@@ -19,7 +20,7 @@ const Layout = ({ title, children }) => {
       </Head>
       <ToastContainer position="bottom-center" limit={1} />
       <div className={styles.siteContent}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Spinner />}>
           <Header />
         </Suspense>
         <main className={styles.mainContent}>{children}</main>

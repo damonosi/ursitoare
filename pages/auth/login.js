@@ -43,7 +43,7 @@ const LoginScreen = () => {
       toast.error(getError(err));
     }
   };
-  if (status === "loading") {
+  if (loading) {
     return <Spinner />;
   }
 
