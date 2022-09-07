@@ -2,10 +2,17 @@ import { useRef, useState } from "react";
 
 import styles from "./Eveniment.module.scss";
 import MapaRezervare from "../../googleMaps/locatie-rezervare/index";
+import { useJsApiLoader } from "@react-google-maps/api";
+import Spinner from "./../../spinner/Spinner";
 
 const Eveniment = ({ register, control }) => {
   const toDay = new Date().toLocaleDateString().substring(0, 10);
   const [startDate, setStartDate] = useState(new Date());
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`,
+    libraries: ["places"],
+  });
 
   return (
     <>
@@ -56,7 +63,11 @@ const Eveniment = ({ register, control }) => {
           <span className={styles.focusBg}></span>
         </div>
         <div>
-          <MapaRezervare register={register} control={control} />
+          {!isLoaded ? (
+            <Spinner />
+          ) : (
+            <MapaRezervare register={register} control={control} />
+          )}
         </div>
       </div>
     </>

@@ -6,12 +6,32 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { getError } from "../../utils/error";
 import { useState } from "react";
-import Copil from "../../components/formular/copil";
-import Nasi from "../../components/formular/nasi/Nasi";
-import Eveniment from "../../components/formular/eveniment";
 import { useSession } from "next-auth/react";
-import RudeStrainatate from "../../components/formular/rudeStrainatate";
-import UnchiMatusi from "./../../components/formular/unchiMatusi/index";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import Spinner from "../../components/spinner/Spinner";
+
+const Copil = dynamic(() => import("../../components/formular/copil"), {
+  suspense: true,
+});
+const Nasi = dynamic(() => import("../../components/formular/nasi/Nasi"), {
+  suspense: true,
+});
+const Eveniment = dynamic(() => import("../../components/formular/eveniment"), {
+  suspense: true,
+});
+const RudeStrainatate = dynamic(
+  () => import("../../components/formular/rudeStrainatate"),
+  {
+    suspense: true,
+  },
+);
+const UnchiMatusi = dynamic(
+  () => import("./../../components/formular/unchiMatusi/index"),
+  {
+    suspense: true,
+  },
+);
 
 const FormularPage = () => {
   const {
@@ -85,16 +105,18 @@ const FormularPage = () => {
           </h3>
         </div>
         <hr />
-        <Copil control={control} register={register} />
-        <UnchiMatusi control={control} register={register} />
-        <Nasi
-          getValues={getValues}
-          setValue={setValue}
-          control={control}
-          register={register}
-        />
-        <RudeStrainatate control={control} register={register} />
-        <Eveniment control={control} register={register} />
+        <Suspense fallback={<Spinner />}>
+          <Copil control={control} register={register} />
+          <UnchiMatusi control={control} register={register} />
+          <Nasi
+            getValues={getValues}
+            setValue={setValue}
+            control={control}
+            register={register}
+          />
+          <RudeStrainatate control={control} register={register} />
+          <Eveniment control={control} register={register} />
+        </Suspense>
         <button
         // disabled={ disable }
         >

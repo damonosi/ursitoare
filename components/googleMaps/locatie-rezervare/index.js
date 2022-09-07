@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useJsApiLoader } from "@react-google-maps/api";
 
 import usePlacesAutocomplete, {
   getGeocode,
@@ -16,12 +15,6 @@ const center = {
 };
 
 function MapaRezervare({ register }) {
-
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`,
-    libraries: ["places"],
-  });
   const {
     ready,
     value,
@@ -75,33 +68,29 @@ function MapaRezervare({ register }) {
       );
     });
 
-  if (!isLoaded) {
-    return <Spinner />;
-  } else {
-    return (
-      <div className={styles.inp} ref={ref}>
-        <input
-          placeholder="&nbsp;"
-          {...register("locatieeveniment", {
-            required: "Va rugam sa ne spuneti unde are loc petrecerea",
-          })}
-          value={value}
-          onChange={handleInput}
-          disabled={!ready}
-          name="locatieeveniment"
-        />
-        <label className={styles.label} htmlFor="locatieeveniment">
-          Unde are loc petrecerea
-        </label>
-        <span className={styles.focusBg}></span>
-        <div className={styles.sustinereSugestii}>
-          {status === "OK" && (
-            <ul className={styles.sugestii}>{renderSuggestions()}</ul>
-          )}
-        </div>
+  return (
+    <div className={styles.inp} ref={ref}>
+      <input
+        placeholder="&nbsp;"
+        {...register("locatieeveniment", {
+          required: "Va rugam sa ne spuneti unde are loc petrecerea",
+        })}
+        value={value}
+        onChange={handleInput}
+        disabled={!ready}
+        name="locatieeveniment"
+      />
+      <label className={styles.label} htmlFor="locatieeveniment">
+        Unde are loc petrecerea
+      </label>
+      <span className={styles.focusBg}></span>
+      <div className={styles.sustinereSugestii}>
+        {status === "OK" && (
+          <ul className={styles.sugestii}>{renderSuggestions()}</ul>
+        )}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default React.memo(MapaRezervare);

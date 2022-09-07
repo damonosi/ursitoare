@@ -65,7 +65,6 @@ const handler = async (req, res) => {
           perechinasi: formular.perechinasi,
           rudeStrainatate: formular.rudeStrainatate,
           locatieeveniment: formular.locatieeveniment,
-
           dataeveniment: formular.dataeveniment,
           oraInceputPetrecere: formular.oraInceputPetrecere,
           nrcontact: formular.nrcontact,
@@ -87,7 +86,6 @@ const handler = async (req, res) => {
     dataeveniment: formular.dataeveniment,
     oraInceputPetrecere: formular.oraInceputPetrecere,
     locatieeveniment: formular.locatieeveniment,
-
     nrcontact: formular.nrcontact,
     user: formular.user,
   });

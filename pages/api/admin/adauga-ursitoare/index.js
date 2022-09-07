@@ -36,7 +36,7 @@ const handler = async (req, res) => {
           perechinasi: eveniment.perechinasi,
           unchiMatusi: eveniment.unchiMatusi,
           locatieeveniment: eveniment.locatieeveniment,
-
+          confirmat: eveniment.confirmat,
           dataeveniment: eveniment.dataeveniment,
           oraInceputPetrecere: eveniment.oraInceputPetrecere,
           nrcontact: eveniment.nrcontact,

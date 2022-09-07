@@ -13,7 +13,19 @@ const handler = async (req, res) => {
   const userConnectat = await User.findById(user._id);
   await db.disconnect();
   let evenimenteleMele = userConnectat.rezervari;
-  res.send(evenimenteleMele);
+  let evenimenteValabile = new Array();
+  let dataAzi = new Date();
+  evenimenteleMele.map((eveniment) => {
+    let dataEveniment = new Date(eveniment.dataeveniment);
+    if (
+      dataEveniment.getDate() >= dataAzi.getDate() &&
+      eveniment.confirmat === true
+    ) {
+      evenimenteValabile.push(eveniment);
+    }
+  });
+
+  res.send(evenimenteValabile);
 };
 
 export default handler;
