@@ -1,14 +1,23 @@
 import styles from "./Header.module.scss";
 import NavMenu from "./NavMenu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Fade as Hamburger } from "hamburger-react";
 import useScrollDirection from "./../../utils/hooks/useScrollDirection";
+import useOnclickOutside from "react-cool-onclickoutside";
 
 const Header = () => {
   const [openNavMenu, setOpenNavMenu] = useState(false);
   const closeNavMenu = () => setOpenNavMenu(false);
   const scrollDirection = useScrollDirection();
-
+  const ref = useOnclickOutside(() => {
+    closeNavMenu();
+  });
+  useEffect(() => {
+    window.addEventListener("scroll", closeNavMenu);
+    return () => {
+      window.removeEventListener("scroll", closeNavMenu); // clean up
+    };
+  }, []);
   return (
     <header
       className={
@@ -24,7 +33,7 @@ const Header = () => {
         <h1>Ursitoare Bacau</h1>
       </div>
 
-      <div className={styles.navCont}>
+      <div ref={ref} className={styles.navCont}>
         <Hamburger
           toggled={openNavMenu}
           onToggle={() => setOpenNavMenu(!openNavMenu)}
