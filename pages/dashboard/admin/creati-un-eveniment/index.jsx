@@ -7,28 +7,22 @@ import { useSession } from "next-auth/react";
 import styles from "./CreatiEveniment.module.scss";
 import { getError } from "../../../../utils/error";
 import Eveniment from "./../../../../components/formular/eveniment/index";
+import ButonInnapoi from "./../../../../components/butoane/ButonInnapoi";
 
 const CreatiEveniment = () => {
   const [disable, setDisable] = useState(false);
-  const {
-    handleSubmit,
-    register,
-    formState: { errors },
-    control,
-    getValues,
-    setValue,
-  } = useForm();
+  const { handleSubmit, register, reset } = useForm();
   const { data: session, status } = useSession();
   const user = session?.user._id;
   const submitHandler = async ({
     numecopil,
-
     dataeveniment,
     oraInceputPetrecere,
     locatieeveniment,
     nrcontact,
   }) => {
     try {
+      setDisable(true);
       await axios.post("/api/form", {
         numecopil,
         dataeveniment,
@@ -37,7 +31,7 @@ const CreatiEveniment = () => {
         nrcontact,
         user,
       });
-      setDisable(true);
+
       toast.success("Adaugat Evenimen Nou !", {
         position: toast.POSITION.BOTTOM_CENTER,
       });
@@ -47,26 +41,43 @@ const CreatiEveniment = () => {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit(submitHandler)}>
-        <div className={styles.inp}>
-          <input
-            placeholder="&nbsp;"
-            type="text"
-            {...register("numecopil", {
-              required: "Va rugam sa introduceti numele copilului",
-            })}
-            className=""
-            id="numecopil"
-            autoFocus
-          />
-          <label className={styles.label} htmlFor="numecopil">
-            Numele Copilului
-          </label>
-          <span className={styles.focusBg}></span>
-        </div>
-        <Eveniment register={register} />
-        <button disabled={disable}>Adaugati Eveniment Nou</button>
-      </form>
+      <div className={styles.creatiEveniment}>
+        <h1>Creati un eveniment nou</h1>
+        <form onSubmit={handleSubmit(submitHandler)}>
+          <div className={styles.inp}>
+            <input
+              placeholder="&nbsp;"
+              type="text"
+              {...register("numecopil", {
+                required: "Va rugam sa introduceti numele copilului",
+              })}
+              className=""
+              id="numecopil"
+              autoFocus
+            />
+            <label className={styles.label} htmlFor="numecopil">
+              Numele Copilului
+            </label>
+            <span className={styles.focusBg}></span>
+          </div>
+          <Eveniment register={register} />
+          <div>
+            <button disabled={disable}>
+              <span>Adaugati Eveniment Nou</span>{" "}
+            </button>
+          </div>
+        </form>
+        <button
+          onClick={() => {
+            setDisable(false);
+            reset();
+          }}
+        >
+          <span>Vreau sa adaug inca un eveniment</span>
+        </button>
+      </div>
+
+      <ButonInnapoi />
     </div>
   );
 };

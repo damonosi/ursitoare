@@ -5,6 +5,7 @@ import ChangeDateOrder from "../../../../utils/formatData";
 import styles from "./cereri.module.scss";
 import Select from "react-select";
 import { toast } from "react-toastify";
+import ButonInnapoi from "./../../../../components/butoane/ButonInnapoi";
 
 const AccepaCerere = () => {
   const [neconfirmate, setNeconfirmate] = useState([]);
@@ -70,6 +71,7 @@ const AccepaCerere = () => {
           </div>
         </div>
       ))}
+      <ButonInnapoi />
     </div>
   );
 };

@@ -90,3 +90,25 @@
     }
   }
 }
+
+.creatiEveniment {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid black;
+  padding: 1em;
+  text-align: center;
+  form {
+    padding: 1.5em;
+  }
+  button {
+    padding: 1.5em;
+    margin-top: 1em;
+    border-radius: 5%;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: #000;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.35);
+    }
+  }
+}

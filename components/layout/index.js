@@ -1,4 +1,4 @@
-import Footer from "./footer/Footer";
+import Footer from "../footer/Footer";
 import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 
@@ -7,8 +7,8 @@ import styles from "./Layout.module.scss";
 
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import Spinner from "./spinner/Spinner";
-const Header = dynamic(() => import("./header/Header"), {
+import Spinner from "../spinner/Spinner";
+const Header = dynamic(() => import("../header/Header"), {
   suspense: true,
 });
 const Layout = ({ title, children }) => {

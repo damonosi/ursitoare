@@ -1,11 +1,8 @@
 import Link from "next/link";
 
-import { useRouter } from "next/router";
-
 import styles from "./Menu.module.scss";
 
 const AdminMenu = () => {
-  const router = useRouter();
   return (
     <div className={styles.adminMenuContainer}>
       <ul>
@@ -91,14 +88,6 @@ const AdminMenu = () => {
             </a>
           </Link>
         </li>
-        <button onClick={() => router.back()}>
-          {" "}
-          Innapoi
-          <span
-            className={`${styles.iconRight} ${styles.after}`}
-            data-before="Innapoi"
-          ></span>{" "}
-        </button>
       </ul>
     </div>
   );

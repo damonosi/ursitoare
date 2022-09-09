@@ -7,6 +7,7 @@ import Directii from "../../../../components/googleMaps/directii";
 import Geocode from "react-geocode";
 import { useJsApiLoader } from "@react-google-maps/api";
 import Spinner from "./../../../../components/spinner/Spinner";
+import ButonInnapoi from "./../../../../components/butoane/ButonInnapoi";
 
 const ProgramulDeAzi = () => {
   const [loading, setLoading] = useState(false);
@@ -97,6 +98,7 @@ const ProgramulDeAzi = () => {
           </div>
         </div>
       ))}
+      <ButonInnapoi />
     </div>
   );
 };
