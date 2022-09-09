@@ -40,7 +40,7 @@ const CreatiEveniment = () => {
     }
   };
   return (
-    <div>
+    <div className={styles.creatiEvenimentContainer}>
       <div className={styles.creatiEveniment}>
         <h1>Creati un eveniment nou</h1>
         <form onSubmit={handleSubmit(submitHandler)}>

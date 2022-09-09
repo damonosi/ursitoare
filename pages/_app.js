@@ -1,13 +1,14 @@
-import Layout from "../components/Layout";
 import React from "react";
 
 import { useRouter } from "next/router";
 import { SessionProvider, useSession } from "next-auth/react";
 import { AnimatePresence } from "framer-motion";
 
-import "../styles/globals.css";
 import Spinner from "../components/spinner/Spinner";
 import Transition from "./../components/transition/index";
+import Layout from "./../components/layout/index";
+
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
