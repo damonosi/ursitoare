@@ -37,7 +37,7 @@ const AccepaCerere = () => {
 
   return (
     <div className={styles.neconfirmateContainer}>
-      <h1> Evenimente Neconfirmate</h1>
+      <h1> Confirmati ora la care veti ajunge</h1>
       {neconfirmateSort.map((eveniment, index) => (
         <div className={styles.neconfirmatContainer} key={index}>
           <h1>Cerere #{index + 1}</h1>

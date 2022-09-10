@@ -8,6 +8,7 @@ import styles from "./CreatiEveniment.module.scss";
 import { getError } from "../../../../utils/error";
 import Eveniment from "./../../../../components/formular/eveniment/index";
 import ButonInnapoi from "./../../../../components/butoane/ButonInnapoi";
+import { useRouter } from "next/router";
 
 const CreatiEveniment = () => {
   const [disable, setDisable] = useState(false);
@@ -39,6 +40,7 @@ const CreatiEveniment = () => {
       toast.error(getError(err));
     }
   };
+  const router = useRouter();
   return (
     <div className={styles.creatiEvenimentContainer}>
       <div className={styles.creatiEveniment}>
@@ -76,8 +78,22 @@ const CreatiEveniment = () => {
           <span>Vreau sa adaug inca un eveniment</span>
         </button>
       </div>
-
-      <ButonInnapoi />
+      <div className={styles.containerButoane}>
+        <ButonInnapoi />
+        <div className={styles.butonNextConfirmatiContainer}>
+          <button
+            onClick={() =>
+              router.push("/dashboard/admin/confirmati-evenimentul")
+            }
+          >
+            Confirmati Ora &gt;Evenimente
+            <span
+              className={`${styles.iconRight} ${styles.after}`}
+              data-before="Confirma ora"
+            ></span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

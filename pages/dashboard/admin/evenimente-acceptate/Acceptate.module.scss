@@ -8,6 +8,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 1em;
   position: relative;
+  padding: 2em;
 }
 .confirmatContainer {
   display: flex;
@@ -15,4 +16,10 @@
   align-items: center;
   border: 5px solid black;
   height: 30em;
+}
+
+@media (max-width: 768px) {
+  .confirmateContainer {
+    grid-template-columns: 1fr;
+  }
 }
