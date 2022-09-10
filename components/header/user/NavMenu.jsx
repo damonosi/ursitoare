@@ -3,7 +3,7 @@ import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 
 import styles from "./Header.module.scss";
-import Spinner from "../spinner/Spinner";
+import Spinner from "../../spinner/Spinner";
 
 const NavMenu = ({ openNavMenu, closeNavMenu }) => {
   const { status, data: session } = useSession();

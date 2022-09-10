@@ -8,10 +8,10 @@ import styles from "./Layout.module.scss";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import Spinner from "../spinner/Spinner";
-const Header = dynamic(() => import("../header/user/Header"), {
+const AdminMenu = dynamic(() => import("../header/admin/index.jsx"), {
   suspense: true,
 });
-const Layout = ({ title, children }) => {
+const AdminLayout = ({ title, children }) => {
   return (
     <>
       <Head>
@@ -21,13 +21,13 @@ const Layout = ({ title, children }) => {
       <ToastContainer position="bottom-center" limit={1} />
       <div className={styles.siteContent}>
         <Suspense fallback={<Spinner />}>
-          <Header />
+          <AdminMenu />
         </Suspense>
-        <main className={styles.mainContent}>{children}</main>
+        <main className={styles.mainContentAdmin}>{children}</main>
         <Footer />
       </div>
     </>
   );
 };
 
-export default Layout;
+export default AdminLayout;

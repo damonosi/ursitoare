@@ -9,27 +9,38 @@ import Transition from "./../components/transition/index";
 import Layout from "./../components/layout/index";
 
 import "../styles/globals.css";
+import AdminLayout from "./../components/layout/adminLayout";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
-      <Layout>
-        <AnimatePresence
-          exitBeforeEnter
-          initial={false}
-          onExitComplete={() => window.scrollTo(0, 0)}
-        >
-          <Transition>
-            {Component.Auth ? (
-              <Auth>
-                <Component {...pageProps} />
-              </Auth>
-            ) : (
+      <AnimatePresence
+        exitBeforeEnter
+        initial={false}
+        onExitComplete={() => window.scrollTo(0, 0)}
+      >
+        <Transition>
+          {Component.Auth ? (
+            <Auth>
+              {Component.Admin ? (
+                <Admin>
+                  <AdminLayout>
+                    <Component {...pageProps} />
+                  </AdminLayout>
+                </Admin>
+              ) : (
+                <Layout>
+                  <Component {...pageProps} />
+                </Layout>
+              )}
+            </Auth>
+          ) : (
+            <Layout>
               <Component {...pageProps} />
-            )}
-          </Transition>
-        </AnimatePresence>
-      </Layout>
+            </Layout>
+          )}
+        </Transition>
+      </AnimatePresence>
     </SessionProvider>
   );
 }
@@ -45,6 +56,20 @@ function Auth({ children }) {
     return <Spinner />;
   }
   return children;
+}
+function Admin({ children }) {
+  const router = useRouter();
+  const { status, data: session } = useSession();
+  console.log(session.user.isadmin);
+  if (session.user.isadmin)
+    if (status === "loading") {
+      return <Spinner />;
+    }
+  if (session.user.isadmin === true) {
+    return children;
+  } else {
+    router.push("/unauthorized?message=login required");
+  }
 }
 
 export default MyApp;

@@ -97,5 +97,6 @@ const CreatiEveniment = () => {
     </div>
   );
 };
-
+CreatiEveniment.Auth = true;
+CreatiEveniment.Admin = true;
 export default CreatiEveniment;

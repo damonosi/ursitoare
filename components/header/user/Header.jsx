@@ -2,8 +2,9 @@ import styles from "./Header.module.scss";
 import NavMenu from "./NavMenu";
 import { useEffect, useState } from "react";
 import { Fade as Hamburger } from "hamburger-react";
-import useScrollDirection from "./../../utils/hooks/useScrollDirection";
+
 import useOnclickOutside from "react-cool-onclickoutside";
+import useScrollDirection from "./../../../utils/hooks/useScrollDirection";
 
 const Header = () => {
   const [openNavMenu, setOpenNavMenu] = useState(false);

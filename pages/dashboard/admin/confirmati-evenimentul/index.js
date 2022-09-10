@@ -76,5 +76,6 @@ const AccepaCerere = () => {
   );
 };
 
+AccepaCerere.Auth = true;
 AccepaCerere.Admin = true;
 export default AccepaCerere;

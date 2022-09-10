@@ -102,5 +102,6 @@ const ProgramulDeAzi = () => {
     </div>
   );
 };
-
+ProgramulDeAzi.Auth = true;
+ProgramulDeAzi.Admin = true;
 export default ProgramulDeAzi;

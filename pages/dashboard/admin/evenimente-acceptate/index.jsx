@@ -77,5 +77,6 @@ const ConfirmaRezervarea = () => {
   );
 };
 
+ConfirmaRezervarea.Auth = true;
 ConfirmaRezervarea.Admin = true;
 export default ConfirmaRezervarea;

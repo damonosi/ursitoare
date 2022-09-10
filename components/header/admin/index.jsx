@@ -5,11 +5,10 @@ import styles from "./Menu.module.scss";
 const AdminMenu = () => {
   return (
     <div className={styles.adminMenuContainer}>
+      <h1>Panou de Comanda</h1>
+
+      <hr />
       <ul>
-        <li>
-          <h1>Panou de Comanda</h1>
-        </li>
-        <hr />
         <li>
           <Link href="/dashboard/admin/creati-un-eveniment">
             <a>
@@ -94,4 +93,5 @@ const AdminMenu = () => {
 };
 
 AdminMenu.Admin = true;
+AdminMenu.Auth = true;
 export default AdminMenu;

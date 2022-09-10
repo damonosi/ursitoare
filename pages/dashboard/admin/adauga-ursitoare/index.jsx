@@ -96,5 +96,6 @@ const AdaugaUrsitoare = () => {
   );
 };
 
+AdaugaUrsitoare.Auth = true;
 AdaugaUrsitoare.Admin = true;
 export default AdaugaUrsitoare;
