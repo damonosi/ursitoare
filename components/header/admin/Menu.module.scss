@@ -143,10 +143,55 @@
     }
   }
 }
+.closeArrow {
+  display: none;
+}
+.closedAdminMenu {
+  display: none;
+}
+.openArrow {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  bottom: 50%;
+  translate: transform(50%, 0);
+  &:hover {
+    .tooltiptext {
+      visibility: visible;
+    }
+  }
+}
+.tooltiptext {
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  visibility: hidden;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  cursor: pointer;
+  &:hover {
+    .tooltiptext {
+      visibility: visible;
+    }
+  }
+}
 
 @media (max-width: 768px) {
   .adminMenuContainer {
     padding: 0em;
+    width: 100%;
+    background-color: black;
+    z-index: 1000;
+
     ul {
       border-top-right-radius: 0%;
       border-bottom-right-radius: 0%;
@@ -156,6 +201,18 @@
       hr {
         width: 65%;
       }
+    }
+  }
+  .closeArrow {
+    position: fixed;
+    display: block;
+    color: #fff;
+    right: 0;
+    width: 3em;
+    cursor: pointer;
+    button {
+      all: unset;
+      cursor: pointer;
     }
   }
 }

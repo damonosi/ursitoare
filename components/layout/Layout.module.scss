@@ -14,3 +14,9 @@
 .mainContentAdmin {
   margin-left: 22em;
 }
+
+@media (max-width: 768px) {
+  .mainContentAdmin {
+    margin-left: 0em;
+  }
+}
