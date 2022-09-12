@@ -1,16 +1,10 @@
 /*global google*/
 import React, { useState, useRef, useEffect } from "react";
-import {
-  useJsApiLoader,
-  GoogleMap,
-  MarkerF,
-  DirectionsRenderer,
-} from "@react-google-maps/api";
+import { GoogleMap, MarkerF, DirectionsRenderer } from "@react-google-maps/api";
 
 import { FaLocationArrow } from "react-icons/fa";
 
 import styles from "./maps.module.scss";
-import Spinner from "./../../spinner/Spinner";
 
 const center = {
   lat: 46.56444,

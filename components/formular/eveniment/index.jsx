@@ -1,6 +1,5 @@
 import styles from "./Eveniment.module.scss";
 
-import { useJsApiLoader } from "@react-google-maps/api";
 import Spinner from "./../../spinner/Spinner";
 
 import dynamic from "next/dynamic";
@@ -14,12 +13,6 @@ const MapaRezervare = dynamic(
 );
 
 const Eveniment = ({ register, control }) => {
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`,
-    libraries: ["places"],
-  });
-
   return (
     <>
       <h1>Detalii Eveniment </h1>
@@ -69,13 +62,9 @@ const Eveniment = ({ register, control }) => {
           <span className={styles.focusBg}></span>
         </div>
         <div>
-          {!isLoaded ? (
-            <Spinner />
-          ) : (
-            <Suspense fallback={<Spinner />}>
-              <MapaRezervare register={register} control={control} />
-            </Suspense>
-          )}
+          <Suspense fallback={<Spinner />}>
+            <MapaRezervare register={register} control={control} />
+          </Suspense>
         </div>
       </div>
     </>

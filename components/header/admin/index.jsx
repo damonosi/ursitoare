@@ -59,10 +59,10 @@ const AdminMenu = () => {
             </Link>
           </li>
           <li>
-            <Link href="/dashboard/admin/confirmati-evenimentul">
+            <Link href="/dashboard/admin/organizati-traseul">
               <a>
                 <button className="explore">
-                  Confirmati Evenimentul
+                  Organizeaza Traseul
                   <span className={styles.iconRight}></span>
                   <span
                     className={`${styles.iconRight} ${styles.after}`}

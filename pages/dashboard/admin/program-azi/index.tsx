@@ -5,17 +5,13 @@ import styles from "./ProgramAzi.module.scss";
 import { useDate } from "./../../../../utils/hooks/useDate";
 import Directii from "../../../../components/googleMaps/directii";
 import Geocode from "react-geocode";
-import { useJsApiLoader } from "@react-google-maps/api";
+
 import Spinner from "./../../../../components/spinner/Spinner";
 import ButonInnapoi from "./../../../../components/butoane/ButonInnapoi";
 
 const ProgramulDeAzi = () => {
   const [loading, setLoading] = useState(false);
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`,
-    libraries: ["places"],
-  });
+
   const [rezervariAzi, setEvenimenteAzi] = useState([]);
   const { date } = useDate();
 

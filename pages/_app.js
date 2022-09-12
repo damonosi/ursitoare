@@ -10,8 +10,17 @@ import Layout from "./../components/layout/index";
 
 import "../styles/globals.css";
 import AdminLayout from "./../components/layout/adminLayout";
+import { useJsApiLoader } from "@react-google-maps/api";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`,
+    libraries: ["places"],
+  });
+  if (!isLoaded) {
+    return <Spinner />;
+  }
   return (
     <SessionProvider session={session}>
       <AnimatePresence

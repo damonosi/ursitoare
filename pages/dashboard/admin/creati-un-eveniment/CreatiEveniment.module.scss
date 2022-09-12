@@ -114,6 +114,10 @@
 }
 
 .creatiEvenimentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 1em;
 }
 
@@ -123,6 +127,7 @@
 }
 
 .butonNextConfirmatiContainer {
+  width: 50%;
   button {
     font-family: "Space Mono", monospace;
     letter-spacing: 1px;
@@ -132,7 +137,7 @@
     outline: none;
     border: none;
     height: 50px;
-    width: 18em;
+
     font-size: 14px;
     z-index: 2;
     transition: 0.01s 0.23s ease-out all;
@@ -215,4 +220,18 @@
   display: flex;
   padding: 2em;
   gap: 1em;
+}
+@media (max-width: 768px) {
+  .creatiEveniment {
+    width: 20em;
+  }
+  .containerButoane {
+    padding: 2em 15em;
+  }
+  .butonNextConfirmatiContainer {
+    width: 50%;
+  }
+  .butonInnapoi {
+    width: 50%;
+  }
 }

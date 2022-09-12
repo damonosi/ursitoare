@@ -44,7 +44,9 @@ const CreatiEveniment = () => {
   return (
     <div className={styles.creatiEvenimentContainer}>
       <div className={styles.creatiEveniment}>
-        <h1>Creati un eveniment nou</h1>
+        <h1>
+          Creati un <br /> eveniment nou
+        </h1>
         <form onSubmit={handleSubmit(submitHandler)}>
           <div className={styles.inp}>
             <input
@@ -82,9 +84,7 @@ const CreatiEveniment = () => {
         <ButonInnapoi />
         <div className={styles.butonNextConfirmatiContainer}>
           <button
-            onClick={() =>
-              router.push("/dashboard/admin/confirmati-evenimentul")
-            }
+            onClick={() => router.push("/dashboard/admin/organizati-traseul")}
           >
             Confirmati Ora &gt;Evenimente
             <span
