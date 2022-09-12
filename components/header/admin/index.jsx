@@ -1,20 +1,28 @@
 import Link from "next/link";
 
 import styles from "./Menu.module.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+import useOnclickOutside from "react-cool-onclickoutside";
+
 const AdminMenu = () => {
   const [mobileMenu, setCloseMobileMenu] = useState(false);
+  const ref = useOnclickOutside(() => {
+    setCloseMobileMenu();
+  });
+
   return (
     <>
       {!mobileMenu ? (
-        <div className={styles.openArrow}>
-          <div className={styles.tooltip}>
-            <AiOutlineArrowRight
-              size={"2em"}
-              onClick={() => setCloseMobileMenu(!mobileMenu)}
-            />
-            <span className={styles.tooltiptext}>Deschide Meniu</span>
+        <div
+          onClick={() => setCloseMobileMenu(!mobileMenu)}
+          className={styles.arrowBackground}
+        >
+          <div className={styles.openArrow}>
+            <div className={styles.tooltip}>
+              <AiOutlineArrowRight size={"2em"} />
+              <span className={styles.tooltiptext}>Deschide Meniul</span>
+            </div>
           </div>
         </div>
       ) : (
@@ -22,6 +30,7 @@ const AdminMenu = () => {
       )}
 
       <div
+        ref={ref}
         className={
           mobileMenu ? styles.adminMenuContainer : styles.closedAdminMenu
         }

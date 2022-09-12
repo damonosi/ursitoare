@@ -51,7 +51,7 @@ const NavMenu = ({ openNavMenu, closeNavMenu }) => {
       <div className={styles.dashLinks}>
         {session?.user.isadmin ? (
           <li onClick={() => closeNavMenu()}>
-            <Link href="/dashboard/admin">
+            <Link href="/dashboard/admin/creati-un-eveniment">
               <a>Panou de Comanda</a>
             </Link>
           </li>

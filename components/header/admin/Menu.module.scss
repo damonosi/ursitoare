@@ -149,13 +149,20 @@
 .closedAdminMenu {
   display: none;
 }
+
 .openArrow {
   position: fixed;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  background-color: #202020;
+  opacity: 0.5;
+  width: 2em;
+  cursor: pointer;
   left: 0;
-  top: 50%;
-  bottom: 50%;
-  translate: transform(50%, 0);
+
   &:hover {
+    opacity: 0.8;
     .tooltiptext {
       visibility: visible;
     }
@@ -167,17 +174,18 @@
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 5px 0;
+
   visibility: hidden;
   /* Position the tooltip */
   position: absolute;
+
+  padding: 0 0.5em;
   z-index: 1;
 }
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black;
-  cursor: pointer;
+
   &:hover {
     .tooltiptext {
       visibility: visible;
@@ -202,6 +210,12 @@
         width: 65%;
       }
     }
+  }
+  .openArrow {
+    height: 20vh;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
   }
   .closeArrow {
     position: fixed;

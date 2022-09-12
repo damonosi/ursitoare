@@ -68,7 +68,7 @@ function Admin({ children }) {
   if (session.user.isadmin === true) {
     return children;
   } else {
-    router.push("/unauthorized?message=login required");
+    router.push("/unauthorized?message=admin required");
   }
 }
 
