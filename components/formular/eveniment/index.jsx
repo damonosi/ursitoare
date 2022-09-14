@@ -12,7 +12,7 @@ const MapaRezervare = dynamic(
   },
 );
 
-const Eveniment = ({ register, control }) => {
+const Eveniment = ({ register, control, watch, setValue }) => {
   return (
     <>
       <h1>Detalii Eveniment </h1>
@@ -63,7 +63,12 @@ const Eveniment = ({ register, control }) => {
         </div>
         <div>
           <Suspense fallback={<Spinner />}>
-            <MapaRezervare register={register} control={control} />
+            <MapaRezervare
+              watch={watch}
+              register={register}
+              control={control}
+              setValue={setValue}
+            />
           </Suspense>
         </div>
       </div>

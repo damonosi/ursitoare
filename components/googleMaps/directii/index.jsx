@@ -23,24 +23,24 @@ function Directii({ destinatie }) {
   /** @type React.MutableRefObject<HTMLInputElement> */
   const destiantionRef = useRef();
 
-  async function calculateRoute({ destinatie }) {
-    // eslint-disable-next-line no-undef
-    const directionsService = new google.maps.DirectionsService();
-
-    const results = await directionsService.route({
-      origin: await originPoint,
-      destination: await destinatie,
-
-      // eslint-disable-next-line no-undef
-      travelMode: google.maps.TravelMode.DRIVING,
-    });
-    setDirectionsResponse(results);
-    setDistance(results.routes[0].legs[0].distance.text);
-    setDuration(results.routes[0].legs[0].duration.text);
-  }
   useEffect(() => {
+    async function calculateRoute({ destinatie }) {
+      // eslint-disable-next-line no-undef
+      const directionsService = new google.maps.DirectionsService();
+
+      const results = await directionsService.route({
+        origin: await originPoint,
+        destination: await destinatie,
+
+        // eslint-disable-next-line no-undef
+        travelMode: google.maps.TravelMode.DRIVING,
+      });
+      setDirectionsResponse(results);
+      setDistance(results.routes[0].legs[0].distance.text);
+      setDuration(results.routes[0].legs[0].duration.text);
+    }
     calculateRoute({ destinatie });
-  }, [destinatie]);
+  }, [destinatie, originPoint]);
 
   function clearRoute() {
     setDirectionsResponse(null);
@@ -75,15 +75,6 @@ function Directii({ destinatie }) {
       <div>
         <p>Distanta: {distance} </p>
         <p>Durata: {duration} </p>
-        <button
-          aria-label="center back"
-          onClick={() => {
-            map.panTo(center);
-            map.setZoom(15);
-          }}
-        >
-          Locatie Plecare <FaLocationArrow />
-        </button>
       </div>
     </>
   );

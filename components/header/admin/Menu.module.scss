@@ -6,10 +6,12 @@
   position: fixed;
   left: 0;
   top: 0;
-  background: #151515d3;
+  background: #151515;
   text-align: center;
   width: 22em;
   height: 100vh;
+  z-index: 1000;
+
   hr {
     width: 80%;
   }

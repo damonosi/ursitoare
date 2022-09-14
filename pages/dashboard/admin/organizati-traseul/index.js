@@ -45,7 +45,7 @@ const OrganizariTraseul = () => {
   }));
   Geocode.setApiKey(`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`);
   Geocode.setLanguage("ro");
-  Geocode.setRegion("es");
+  Geocode.setRegion("ro");
   Geocode.setLocationType("ROOFTOP");
 
   const getGeocode = (adresa) =>
@@ -82,49 +82,60 @@ const OrganizariTraseul = () => {
   }
 
   return (
-    <div className={styles.neconfirmateContainer}>
-      <h1> Pe ce data vreti sa Construiti traseul</h1>
-      <Select options={optiuniSelect} onChange={handleChangeDate} />
-      {neconfirmateSort.map((eveniment, index) => {
-        if (eveniment.dataeveniment === selectedDate.value) {
-          return (
-            <div className={styles.neconfirmatContainer} key={index}>
-              <hr />
-              <h2> {ChangeDateOrder(eveniment.dataeveniment)}</h2>
+    <div className={styles.organizareContainer}>
+      <div
+        style={{
+          maxWidth: "30em",
+          padding: "3em",
+          textAlign: "center",
+        }}
+      >
+        <h1> Pe ce data vreti sa Construiti traseul</h1>
+        <Select options={optiuniSelect} onChange={handleChangeDate} />
+      </div>
 
-              <h2> Restaurant {eveniment.locatieeveniment}</h2>
-              <h2>Eventul incepe la ora {eveniment.oraInceputPetrecere}</h2>
-              <div className={styles.adaugOra}>
-                <Select
-                  isMulti={false}
-                  onChange={handleChange}
-                  options={optiuniOre}
-                  name="ora"
-                />
-                <button
-                  onClick={async () => {
-                    const oraValue = userChoice.value;
-                    const evenimentId = eveniment._id;
-                    axios.post("/api/rezervari/confirmare-rezervare", {
-                      oraValue,
-                      evenimentId,
-                    });
-                    toast.success(
-                      "Ai confirmat evenimentu si adaugat ora de sosire",
-                    );
-                  }}
-                >
-                  Adaga intervalul orar in care putem ajunge
-                </button>
+      <div className={styles.neconfirmateContainer}>
+        {neconfirmateSort.map((eveniment, index) => {
+          if (eveniment.dataeveniment === selectedDate.value) {
+            return (
+              <div className={styles.evenimentNeconfirmat} key={index}>
+                <h2> {eveniment.locatieeveniment.toUpperCase()}</h2>
+                <hr />
+                <p>Eventul incepe la ora {eveniment.oraInceputPetrecere}.00</p>
+                <div className={styles.containerMapa}>
+                  <Directii
+                    destinatie={getGeocode(eveniment.locatieeveniment)}
+                  />
+                </div>
+                <div className={styles.adaugOra}>
+                  <Select
+                    isMulti={false}
+                    onChange={handleChange}
+                    options={optiuniOre}
+                    name="ora"
+                  />
+                  <button
+                    className={styles.butonAdaugaOra}
+                    onClick={async () => {
+                      const oraValue = userChoice.value;
+                      const evenimentId = eveniment._id;
+                      axios.post("/api/rezervari/confirmare-rezervare", {
+                        oraValue,
+                        evenimentId,
+                      });
+                      toast.success(
+                        "Ai confirmat evenimentu si adaugat ora de sosire",
+                      );
+                    }}
+                  >
+                    <span> Adauga intervalul orar in care putem ajunge</span>
+                  </button>
+                </div>
               </div>
-              <div className={styles.containerMapa}>
-                <Directii destinatie={getGeocode(eveniment.locatieeveniment)} />
-              </div>
-            </div>
-          );
-        }
-      })}
-      <ButonInnapoi />
+            );
+          }
+        })}
+      </div>
     </div>
   );
 };

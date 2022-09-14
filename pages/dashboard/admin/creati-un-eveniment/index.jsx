@@ -11,8 +11,7 @@ import ButonInnapoi from "./../../../../components/butoane/ButonInnapoi";
 import { useRouter } from "next/router";
 
 const CreatiEveniment = () => {
-  const [disable, setDisable] = useState(false);
-  const { handleSubmit, register, reset } = useForm();
+  const { handleSubmit, register, reset, watch, setValue } = useForm();
   const { data: session, status } = useSession();
   const user = session?.user._id;
   const submitHandler = async ({
@@ -23,7 +22,6 @@ const CreatiEveniment = () => {
     nrcontact,
   }) => {
     try {
-      setDisable(true);
       await axios.post("/api/form", {
         numecopil,
         dataeveniment,
@@ -32,6 +30,7 @@ const CreatiEveniment = () => {
         nrcontact,
         user,
       });
+      reset();
 
       toast.success("Adaugat Evenimen Nou !", {
         position: toast.POSITION.BOTTOM_CENTER,
@@ -64,21 +63,13 @@ const CreatiEveniment = () => {
             </label>
             <span className={styles.focusBg}></span>
           </div>
-          <Eveniment register={register} />
+          <Eveniment setValue={setValue} watch={watch} register={register} />
           <div>
-            <button disabled={disable}>
+            <button>
               <span>Adaugati Eveniment Nou</span>{" "}
             </button>
           </div>
         </form>
-        <button
-          onClick={() => {
-            setDisable(false);
-            reset();
-          }}
-        >
-          <span>Vreau sa adaug inca un eveniment</span>
-        </button>
       </div>
       <div className={styles.containerButoane}>
         <ButonInnapoi />

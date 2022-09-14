@@ -1,1 +1,44 @@
+.organizareContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.neconfirmateContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2em;
+
+  position: relative;
+  padding: 3em;
+}
+.evenimentNeconfirmat {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 2em;
+  text-align: center;
+  border: 5px solid black;
+  border-radius: 1em;
+
+  hr {
+    width: 70%;
+    height: 0.2em;
+    color: rgb(218, 64, 64);
+  }
+}
+.containerMapa {
+  padding: 2em;
+}
+
+.butonAdaugaOra {
+  padding: 1em 0.5em;
+  cursor: pointer;
+  margin-top: 0.5;
+}
+
+@media (max-width: 768px) {
+  .neconfirmateContainer {
+    grid-template-columns: 1fr;
+  }
+}
