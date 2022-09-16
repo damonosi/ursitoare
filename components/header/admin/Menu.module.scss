@@ -9,7 +9,7 @@
   background: #151515;
   text-align: center;
   width: 22em;
-  height: 100vh;
+  height: 100%;
   z-index: 1000;
 
   hr {
@@ -29,7 +29,7 @@
     border-bottom-right-radius: 7%;
     align-items: center;
     width: 22em;
-    height: 100vh;
+    height: 100%;
     overflow: scroll;
 
     li {
@@ -154,8 +154,11 @@
 
 .openArrow {
   position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
   display: flex;
-  height: 100vh;
+
   align-items: center;
   background-color: #202020;
   opacity: 0.5;

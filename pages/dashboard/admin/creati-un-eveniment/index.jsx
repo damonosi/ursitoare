@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 
 const CreatiEveniment = () => {
   const { handleSubmit, register, reset, watch, setValue } = useForm();
+  const [borderColor, addBorder] = useState(false);
   const { data: session, status } = useSession();
   const user = session?.user._id;
   const submitHandler = async ({
@@ -30,11 +31,6 @@ const CreatiEveniment = () => {
         nrcontact,
         user,
       });
-      reset();
-
-      toast.success("Adaugat Evenimen Nou !", {
-        position: toast.POSITION.BOTTOM_CENTER,
-      });
     } catch (err) {
       toast.error(getError(err));
     }
@@ -42,7 +38,9 @@ const CreatiEveniment = () => {
   const router = useRouter();
   return (
     <div className={styles.creatiEvenimentContainer}>
-      <div className={styles.creatiEveniment}>
+      <div
+        className={borderColor ? styles.evenimentCreat : styles.creatiEveniment}
+      >
         <h1>
           Creati un <br /> eveniment nou
         </h1>
@@ -65,7 +63,18 @@ const CreatiEveniment = () => {
           </div>
           <Eveniment setValue={setValue} watch={watch} register={register} />
           <div>
-            <button>
+            <button
+              className={styles.adaugaEvenimentButon}
+              onClick={() => {
+                toast.success("Ai adaugat un Nou eveniment !", {
+                  position: toast.POSITION.BOTTOM_CENTER,
+                });
+                addBorder(true);
+                setTimeout(() => {
+                  router.reload();
+                }, 2000);
+              }}
+            >
               <span>Adaugati Eveniment Nou</span>{" "}
             </button>
           </div>

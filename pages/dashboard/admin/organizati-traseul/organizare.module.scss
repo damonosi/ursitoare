@@ -28,13 +28,18 @@
   }
 }
 .containerMapa {
-  padding: 2em;
+  display: flex;
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
-
-.butonAdaugaOra {
-  padding: 1em 0.5em;
-  cursor: pointer;
-  margin-top: 0.5;
+.firstInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em;
+  border-bottom: 5px dotted black;
+  height: 15em;
 }
 
 @media (max-width: 768px) {

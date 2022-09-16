@@ -47,6 +47,7 @@ const FormularPage = () => {
       perechinasi: [{ nas: "", nasa: "" }],
       rudeStrainatate: [{ nume: "", gradRudenie: "", tara: "" }],
       "perechinasi.copii": [{ nume: "", varsta: "" }],
+      locatieeveniment: { nume: "bacau", lat: "", lngL: "" },
     },
   });
   const { data: session, status } = useSession();

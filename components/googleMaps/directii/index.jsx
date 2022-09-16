@@ -72,9 +72,14 @@ function Directii({ destinatie }) {
         </GoogleMap>
       </div>
 
-      <div>
-        <p>Distanta: {distance} </p>
-        <p>Durata: {duration} </p>
+      <div className={styles.infoHarta}>
+        <p>
+          Distanta <br /> {distance}{" "}
+        </p>
+        <hr />
+        <p>
+          Durata <br /> {duration}{" "}
+        </p>
       </div>
     </>
   );

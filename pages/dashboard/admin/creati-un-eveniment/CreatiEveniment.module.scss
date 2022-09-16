@@ -90,26 +90,40 @@
     }
   }
 }
-
+.adaugaEvenimentButon {
+  padding: 1.5em;
+  margin-top: 1em;
+  border-radius: 5%;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: #000;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+  }
+}
 .creatiEveniment {
   display: flex;
   flex-direction: column;
-  border: 5px solid black;
+
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   padding: 1em;
   text-align: center;
   form {
     padding: 1.5em;
   }
-  button {
+}
+.evenimentCreat {
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 120, 0, 0.25) 0px 54px 55px,
+    rgba(0, 120, 0, 0.12) 0px -12px 30px, rgba(0, 120, 0, 0.12) 0px 4px 6px,
+    rgba(0, 120, 0, 0.17) 0px 12px 13px, rgba(0, 120, 0, 0.09) 0px -3px 5px;
+  padding: 1em;
+  text-align: center;
+  form {
     padding: 1.5em;
-    margin-top: 1em;
-    border-radius: 5%;
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.15);
-    box-shadow: #000;
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.35);
-    }
   }
 }
 

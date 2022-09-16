@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 
-import usePlacesAutocomplete from "use-places-autocomplete";
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 
 import styles from "./maps.module.scss";
@@ -37,15 +40,26 @@ function MapaRezervare({ register, watch, setValue }) {
 
     adaugaValoare(e.target.value);
   };
-
-  const watchLocati = watch("locatieeveniment");
+  const latitudine = watch("locatieeveniment.lat");
+  const longitudine = watch("locatieeveniment.lng");
+  const nume = watch("locatieeveniment.nume");
 
   const handleSelect =
     ({ description }) =>
     () => {
       adaugaValoare(description, false);
-      setValue("locatieeveniment", description);
+      setValue("locatieeveniment.nume", description);
       clearSuggestions();
+
+      getGeocode({ address: description })
+        .then((results) => getLatLng(results[0]))
+        .then(({ lat, lng }) => {
+          setValue("locatieeveniment.lat", lat);
+          setValue("locatieeveniment.lng", lng);
+        })
+        .catch((error) => {
+          console.log("😱 Error: ", error);
+        });
     };
 
   const renderSuggestions = () =>
@@ -65,23 +79,46 @@ function MapaRezervare({ register, watch, setValue }) {
   return (
     <div className={styles.inp} ref={ref}>
       <input
-        value={valoare}
-        {...register("locatieeveniment", {
+        {...register("locatieeveniment.nume", {
           required: "Va rugam sa ne spuneti unde are loc petrecerea",
         })}
+        value={valoare || ""}
         type="text"
         onChange={handleInput}
         disabled={!ready}
-        name="locatieeveniment"
+        name="locatieeveniment.nume"
       />
       <label className={styles.label} htmlFor="locatieeveniment">
         Unde are loc petrecerea
       </label>
       <span className={styles.focusBg}></span>
+
       <div className={styles.sustinereSugestii}>
         {status === "OK" && (
           <ul className={styles.sugestii}>{renderSuggestions()}</ul>
         )}
+      </div>
+      <div className={styles.latLngContainer}>
+        <input
+          {...register("locatieeveniment.lat", {
+            required: "Va rugam sa ne spuneti unde are loc petrecerea",
+          })}
+          value={latitudine || ""}
+          type="text"
+          onChange={handleInput}
+          disabled={!ready}
+          name="locatieeveniment.lat"
+        />
+        <input
+          {...register("locatieeveniment.lng", {
+            required: "Va rugam sa ne spuneti unde are loc petrecerea",
+          })}
+          value={longitudine || ""}
+          type="text"
+          onChange={handleInput}
+          disabled={!ready}
+          name="locatieeveniment.lng"
+        />
       </div>
     </div>
   );

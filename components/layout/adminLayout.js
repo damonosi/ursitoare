@@ -19,13 +19,13 @@ const AdminLayout = ({ title, children }) => {
         <meta name="description" content="Ursitoare App" />
       </Head>
       <ToastContainer position="bottom-center" limit={1} />
+      <Suspense fallback={<Spinner />}>
+        <AdminMenu />
+      </Suspense>
       <div className={styles.siteContent}>
-        <Suspense fallback={<Spinner />}>
-          <AdminMenu />
-        </Suspense>
         <main className={styles.mainContentAdmin}>{children}</main>
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };

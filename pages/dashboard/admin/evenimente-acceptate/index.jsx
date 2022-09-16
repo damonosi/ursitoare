@@ -43,7 +43,7 @@ const ConfirmaRezervarea = () => {
   return (
     <div className={styles.confirmateContainer}>
       {confirmateSort.map((eveniment, index) => (
-        <div className={styles.confirmatContainer} key={index}>
+        <div className={styles.confirmatContainer} key={eveniment._id}>
           <h1>Eveniment #{index + 1}</h1>
           <hr />
           <h2> {ChangeDateOrder(eveniment.dataeveniment)}</h2>
