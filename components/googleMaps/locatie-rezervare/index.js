@@ -14,7 +14,7 @@ const center = {
   lng: 26.91409,
 };
 
-function MapaRezervare({ register, watch, setValue }) {
+function MapaRezervare({ register, watch, setValue, errors }) {
   const {
     ready,
     value: valoare,
@@ -80,7 +80,7 @@ function MapaRezervare({ register, watch, setValue }) {
       <input
         placeholder="&nbsp;"
         {...register("locatieeveniment.nume", {
-          required: "Va rugam sa ne spuneti unde are loc petrecerea",
+          required: true,
         })}
         value={valoare || ""}
         type="text"
@@ -120,6 +120,9 @@ function MapaRezervare({ register, watch, setValue }) {
           name="locatieeveniment.lng"
         />
       </div>
+      {errors.nrcontact && errors.nrcontact.type === "required" && (
+        <span className={styles.errorText}>Adaugati o locatie</span>
+      )}
     </div>
   );
 }

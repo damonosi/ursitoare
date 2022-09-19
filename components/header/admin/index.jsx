@@ -70,19 +70,7 @@ const AdminMenu = () => {
               </a>
             </Link>
           </li>
-          <li>
-            <Link href="/dashboard/admin/evenimente-acceptate">
-              <a>
-                <button className="explore">
-                  EVENIMENTE ACCEPTATE<span className={styles.iconRight}></span>
-                  <span
-                    className={`${styles.iconRight} ${styles.after}`}
-                    data-before="EVENIMENTE"
-                  ></span>
-                </button>
-              </a>
-            </Link>
-          </li>
+
           <li>
             <Link href="/dashboard/admin/adauga-ursitoare">
               <a>

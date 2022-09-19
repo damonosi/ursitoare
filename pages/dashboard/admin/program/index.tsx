@@ -10,6 +10,9 @@ import ButonInnapoi from "../../../../components/butoane/ButonInnapoi";
 import Select from "react-select";
 import ChangeDateOrder from "./../../../../utils/formatData";
 import ContainerEveniment from "./../../../../components/eveniment/ContainerEveniment";
+import ModificaOra from "./../../../../components/organizati-traseul/ModificaOra";
+import { BiPhoneCall } from "react-icons/bi";
+import { MdLocationOn } from "react-icons/md";
 
 const Programul = () => {
   const [loading, setLoading] = useState(false);
@@ -83,39 +86,42 @@ const Programul = () => {
           };
           if (evAzi.dataeveniment === selectedDate.value) {
             return (
-              <div key={evAzi._id}>
-                <h1>Eveniment #{index + 1}</h1>
+              <div className={styles.cuTitle} key={evAzi._id}>
+                <div className={styles.numarEveniment}>
+                  <h1>#{index + 1}</h1>
+                </div>
                 <ContainerEveniment>
                   <div className={styles.faraHarta}>
                     <div className={styles.containerInformatii}>
-                      <h2>Ajungem la ora</h2>
-                      <h3>{evAzi.oraConfirmata}.00</h3>
+                      <h2>Copil {evAzi.numecopil}</h2>
                     </div>
                     <div className={styles.containerInformatii}>
-                      <h2>Data</h2>
-                      <h3>{evAzi.dataeveniment}</h3>
-                    </div>
-                    <div className={styles.containerInformatii}>
-                      <h2>Numele Copilului </h2>
-                      <h3>{evAzi.numecopil}</h3>
-                    </div>
-                    <div className={styles.containerInformatii}>
-                      <h2>Petrecerea a inceput la ora </h2>
-                      <h3>{evAzi.oraInceputPetrecere}.00</h3>
+                      <h2>Ajungem la ora {evAzi.oraConfirmata}.00</h2>
+
+                      <ModificaOra evenimentId={evAzi._id} />
                     </div>
 
                     <div className={styles.containerInformatii}>
-                      <h2>La ce restaurant are loc petrecerea</h2>
-                      <h3>{evAzi.locatieeveniment.nume}</h3>
+                      <h3>
+                        <MdLocationOn />
+                        {evAzi.locatieeveniment.nume}
+                      </h3>
                     </div>
 
                     <div className={styles.containerInformatii}>
-                      <h2>Numar de Contact </h2>
-                      <h3>{evAzi.nrcontact}</h3>
+                      <h2>
+                        Petrecerea a inceput la ora {evAzi.oraInceputPetrecere}
+                        .00
+                      </h2>
                     </div>
 
                     <div className={styles.containerInformatii}>
-                      <h2>Cu ce ursitoare merg </h2>
+                      <h3>
+                        <BiPhoneCall /> {evAzi.nrcontact}
+                      </h3>
+                    </div>
+
+                    <div className={styles.containerInformatii}>
                       <h3>
                         {evAzi.ursitoare.map((urs, index) => (
                           <div key={index}>
@@ -133,7 +139,6 @@ const Programul = () => {
           }
         })}
       </div>
-      <ButonInnapoi />
     </div>
   );
 };

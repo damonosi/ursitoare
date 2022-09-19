@@ -12,7 +12,13 @@ import { useRouter } from "next/router";
 import ContainerEveniment from "../../../../components/eveniment/ContainerEveniment";
 
 const CreatiEveniment = () => {
-  const { handleSubmit, register, reset, watch, setValue } = useForm();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+    watch,
+    setValue,
+  } = useForm();
   const [borderColor, addBorder] = useState(false);
   const { data: session, status } = useSession();
   const user = session?.user._id;
@@ -32,11 +38,20 @@ const CreatiEveniment = () => {
         nrcontact,
         user,
       });
+      addBorder(true);
+      toast.success("Ai adaugat un Nou eveniment !", {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+      setTimeout(() => {
+        router.reload();
+      }, 1000);
     } catch (err) {
       toast.error(getError(err));
     }
   };
+
   const router = useRouter();
+  const regText = new RegExp("[a-zA-Z]");
   return (
     <div className={styles.creatiEvenimentContainer}>
       <div
@@ -52,31 +67,39 @@ const CreatiEveniment = () => {
                 placeholder="&nbsp;"
                 type="text"
                 {...register("numecopil", {
-                  required: "Va rugam sa introduceti numele copilului",
+                  required: true,
+                  pattern: {
+                    value: regText,
+                  },
                 })}
                 className=""
                 id="numecopil"
                 autoFocus
               />
+
               <label className={styles.label} htmlFor="numecopil">
                 Numele Copilului
               </label>
               <span className={styles.focusBg}></span>
+              {errors.numecopil && errors.numecopil.type === "required" && (
+                <span role="alert" className={styles.errorText}>
+                  Adaugati Numele Copilului
+                </span>
+              )}
+              {errors.numecopil && errors.numecopil.type === "pattern" && (
+                <span role="alert" className={styles.errorText}>
+                  Adaugati un nume valid
+                </span>
+              )}
             </div>
-            <Eveniment setValue={setValue} watch={watch} register={register} />
+            <Eveniment
+              errors={errors}
+              setValue={setValue}
+              watch={watch}
+              register={register}
+            />
             <div>
-              <button
-                className={styles.adaugaEvenimentButon}
-                onClick={() => {
-                  toast.success("Ai adaugat un Nou eveniment !", {
-                    position: toast.POSITION.BOTTOM_CENTER,
-                  });
-                  addBorder(true);
-                  setTimeout(() => {
-                    router.reload();
-                  }, 2000);
-                }}
-              >
+              <button className={styles.adaugaEvenimentButon}>
                 <span>Adaugati Eveniment Nou</span>{" "}
               </button>
             </div>

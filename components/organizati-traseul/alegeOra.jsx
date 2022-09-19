@@ -30,12 +30,11 @@ const AlegeOra = ({ eveniment }) => {
         className={styles.butonAdaugaOra}
         onClick={async () => {
           const oraValue = userChoice.value;
-          const evenimentId = eveniment._id;
-          console.log("ora", oraValue);
-          console.log("id", evenimentId);
+          const evId = eveniment._id;
+
           axios.post("/api/rezervari/confirmare-rezervare", {
             oraValue,
-            evenimentId,
+            evId,
           });
           toast.success("Ai confirmat evenimentu si adaugat ora de sosire");
         }}

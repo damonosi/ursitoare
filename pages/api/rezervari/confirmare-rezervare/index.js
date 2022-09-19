@@ -10,7 +10,7 @@ const handler = async (req, res) => {
   }
   const { user } = session;
   await db.connect();
-  const rezervareId = req.body.evenimentId;
+  const rezervareId = req.body.evId;
   const rezervareDeConfirmat = await Rezervari.findById(rezervareId);
 
   const oraAjungem = req.body.oraValue;

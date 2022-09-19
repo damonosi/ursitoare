@@ -11,8 +11,9 @@ const MapaRezervare = dynamic(
     suspense: true,
   },
 );
+const regNumar = new RegExp("^[0-9]+$");
 
-const Eveniment = ({ register, control, watch, setValue }) => {
+const Eveniment = ({ register, control, watch, setValue, errors }) => {
   return (
     <>
       <h1>Detalii Eveniment </h1>
@@ -20,9 +21,10 @@ const Eveniment = ({ register, control, watch, setValue }) => {
         <div className={styles.inp}>
           <input
             placeholder="Data Evenimentului (luna / ziua / anul )"
+            required
             onFocus={(e) => (e.target.type = "date")}
             {...register("dataeveniment", {
-              required: "Va rugam sa data cand are loc evenimentul",
+              required: true,
             })}
             className=""
             id="dataeveniment"
@@ -36,7 +38,10 @@ const Eveniment = ({ register, control, watch, setValue }) => {
             placeholder="&nbsp;"
             type="text"
             {...register("oraInceputPetrecere", {
-              required: "Va rugam sa ora la ce ora incepe petrecerea",
+              required: true,
+              pattern: {
+                value: regNumar,
+              },
             })}
             id="oraInceputPetrecere"
           />
@@ -44,6 +49,16 @@ const Eveniment = ({ register, control, watch, setValue }) => {
             La ce ora incepe petrecerea?
           </label>
           <span className={styles.focusBg}></span>
+          {errors.oraInceputPetrecere &&
+            errors.oraInceputPetrecere.type === "required" && (
+              <span className={styles.errorText}>
+                Adaugati la ce ora a inceput petrecerea
+              </span>
+            )}
+          {errors.oraInceputPetrecere &&
+            errors.oraInceputPetrecere.type === "pattern" && (
+              <span className={styles.errorText}>Adaugati o ora valida</span>
+            )}
         </div>
 
         <div className={styles.inp}>
@@ -51,18 +66,31 @@ const Eveniment = ({ register, control, watch, setValue }) => {
             placeholder="&nbsp;"
             type="tel"
             {...register("nrcontact", {
-              required: "Va rugam adaugati numarul de contact",
+              required: true,
+              pattern: {
+                value: regNumar,
+              },
             })}
             id="nrcontact"
           />
+
           <label className={styles.label} htmlFor="nrcontact">
             Numar de contact
           </label>
           <span className={styles.focusBg}></span>
+          {errors.nrcontact && errors.nrcontact.type === "required" && (
+            <span className={styles.errorText}>
+              Adaugati un numar pe care va putem contacta
+            </span>
+          )}
+          {errors.nrcontact && errors.nrcontact.type === "pattern" && (
+            <span className={styles.errorText}>Adaugati un numar valid</span>
+          )}
         </div>
         <div>
           <Suspense fallback={<Spinner />}>
             <MapaRezervare
+              errors={errors}
               watch={watch}
               register={register}
               control={control}
