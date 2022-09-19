@@ -3,6 +3,12 @@
   width: 100%;
   height: 20em;
 }
+.containerMapa {
+  display: flex;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  width: 100%;
+}
 .infoHarta {
   display: flex;
   flex-direction: column;
@@ -12,6 +18,13 @@
   background-color: bisque;
   border-bottom-right-radius: 50%;
   border-top-right-radius: 50%;
+  background: rgba(67, 170, 211, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
   hr {
     width: 100%;
   }

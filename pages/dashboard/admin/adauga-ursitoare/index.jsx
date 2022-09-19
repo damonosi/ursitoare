@@ -47,7 +47,7 @@ const AdaugaUrsitoare = () => {
             <h1>pe ce data are loc evenimentul {eveniment.dataeveniment}</h1>
             <h1>la ce ora incepe petrecerea {eveniment.oraInceputPetrecere}</h1>
             <h1>La ce ora ajungem la eveniment {eveniment.oraConfirmata}</h1>
-            <h1>Restaurant {eveniment.locatieeveniment}</h1>
+            <h1>Restaurant {eveniment.locatieeveniment.nume}</h1>
 
             {eveniment.ursitoare.length < 3 ? (
               <>

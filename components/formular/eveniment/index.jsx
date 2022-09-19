@@ -21,7 +21,6 @@ const Eveniment = ({ register, control, watch, setValue }) => {
           <input
             placeholder="Data Evenimentului (luna / ziua / anul )"
             onFocus={(e) => (e.target.type = "date")}
-            onBlur={(e) => (e.target.type = "text")}
             {...register("dataeveniment", {
               required: "Va rugam sa data cand are loc evenimentul",
             })}

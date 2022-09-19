@@ -32,7 +32,12 @@
   margin: 1em;
   width: 12em;
 }
-
-.containerMapa {
-  width: 100%;
+.programContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #202124;
+}
+.selectDate {
+  width: 10em;
 }

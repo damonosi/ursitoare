@@ -9,7 +9,7 @@ import ButonInnapoi from "../../../../components/butoane/ButonInnapoi";
 import { Suspense } from "react";
 import Spinner from "./../../../../components/spinner/Spinner";
 import AlegeOra from "./../../../../components/organizati-traseul/alegeOra";
-
+import ContainerEveniment from "./../../../../components/eveniment/ContainerEveniment";
 import dynamic from "next/dynamic";
 const Directii = dynamic(
   () => import("../../../../components/googleMaps/directii"),
@@ -81,7 +81,7 @@ const OrganizariTraseul = () => {
               lng: Number(eveniment.locatieeveniment.lng),
             };
             return (
-              <div className={styles.evenimentNeconfirmat} key={index}>
+              <ContainerEveniment key={index}>
                 <div className={styles.firstInfo}>
                   <h2> {eveniment.locatieeveniment.nume}</h2>
                   <hr />
@@ -90,15 +90,11 @@ const OrganizariTraseul = () => {
                   </p>
                   <p> {eveniment.nrcontact}.00</p>
                 </div>
-                <div className={styles.containerMapa}>
-                  <Suspense fallback={<Spinner />}>
-                    <Directii destinatie={destinatie} />
-                  </Suspense>
-                </div>
-                <div className={styles.adaugOra}>
-                  <AlegeOra eveniment={eveniment} />{" "}
-                </div>
-              </div>
+                <Suspense fallback={<Spinner />}>
+                  <Directii destinatie={destinatie} />
+                </Suspense>
+                <AlegeOra eveniment={eveniment} />{" "}
+              </ContainerEveniment>
             );
           }
         })}

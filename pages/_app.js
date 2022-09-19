@@ -28,27 +28,25 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         initial={false}
         onExitComplete={() => window.scrollTo(0, 0)}
       >
-        <Transition>
-          {Component.Auth ? (
-            <Auth>
-              {Component.Admin ? (
-                <Admin>
-                  <AdminLayout>
-                    <Component {...pageProps} />
-                  </AdminLayout>
-                </Admin>
-              ) : (
-                <Layout>
+        {Component.Auth ? (
+          <Auth>
+            {Component.Admin ? (
+              <Admin>
+                <AdminLayout>
                   <Component {...pageProps} />
-                </Layout>
-              )}
-            </Auth>
-          ) : (
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          )}
-        </Transition>
+                </AdminLayout>
+              </Admin>
+            ) : (
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            )}
+          </Auth>
+        ) : (
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        )}
       </AnimatePresence>
     </SessionProvider>
   );

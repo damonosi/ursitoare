@@ -9,6 +9,7 @@ import { getError } from "../../../../utils/error";
 import Eveniment from "./../../../../components/formular/eveniment/index";
 import ButonInnapoi from "./../../../../components/butoane/ButonInnapoi";
 import { useRouter } from "next/router";
+import ContainerEveniment from "../../../../components/eveniment/ContainerEveniment";
 
 const CreatiEveniment = () => {
   const { handleSubmit, register, reset, watch, setValue } = useForm();
@@ -41,45 +42,48 @@ const CreatiEveniment = () => {
       <div
         className={borderColor ? styles.evenimentCreat : styles.creatiEveniment}
       >
-        <h1>
-          Creati un <br /> eveniment nou
-        </h1>
-        <form onSubmit={handleSubmit(submitHandler)}>
-          <div className={styles.inp}>
-            <input
-              placeholder="&nbsp;"
-              type="text"
-              {...register("numecopil", {
-                required: "Va rugam sa introduceti numele copilului",
-              })}
-              className=""
-              id="numecopil"
-              autoFocus
-            />
-            <label className={styles.label} htmlFor="numecopil">
-              Numele Copilului
-            </label>
-            <span className={styles.focusBg}></span>
-          </div>
-          <Eveniment setValue={setValue} watch={watch} register={register} />
-          <div>
-            <button
-              className={styles.adaugaEvenimentButon}
-              onClick={() => {
-                toast.success("Ai adaugat un Nou eveniment !", {
-                  position: toast.POSITION.BOTTOM_CENTER,
-                });
-                addBorder(true);
-                setTimeout(() => {
-                  router.reload();
-                }, 2000);
-              }}
-            >
-              <span>Adaugati Eveniment Nou</span>{" "}
-            </button>
-          </div>
-        </form>
+        <ContainerEveniment>
+          <h1>
+            Creati un <br /> eveniment nou
+          </h1>
+          <form onSubmit={handleSubmit(submitHandler)}>
+            <div className={styles.inp}>
+              <input
+                placeholder="&nbsp;"
+                type="text"
+                {...register("numecopil", {
+                  required: "Va rugam sa introduceti numele copilului",
+                })}
+                className=""
+                id="numecopil"
+                autoFocus
+              />
+              <label className={styles.label} htmlFor="numecopil">
+                Numele Copilului
+              </label>
+              <span className={styles.focusBg}></span>
+            </div>
+            <Eveniment setValue={setValue} watch={watch} register={register} />
+            <div>
+              <button
+                className={styles.adaugaEvenimentButon}
+                onClick={() => {
+                  toast.success("Ai adaugat un Nou eveniment !", {
+                    position: toast.POSITION.BOTTOM_CENTER,
+                  });
+                  addBorder(true);
+                  setTimeout(() => {
+                    router.reload();
+                  }, 2000);
+                }}
+              >
+                <span>Adaugati Eveniment Nou</span>{" "}
+              </button>
+            </div>
+          </form>
+        </ContainerEveniment>
       </div>
+
       <div className={styles.containerButoane}>
         <ButonInnapoi />
         <div className={styles.butonNextConfirmatiContainer}>

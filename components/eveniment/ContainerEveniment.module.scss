@@ -1,0 +1,21 @@
+.evenimentContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 2em;
+  text-align: center;
+  border: 5px solid black;
+  border-radius: 1em;
+  background: rgba(67, 170, 211, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  hr {
+    width: 70%;
+    height: 0.2em;
+    color: rgb(218, 64, 64);
+  }
+}

@@ -19,7 +19,7 @@ const AlegeOra = ({ eveniment }) => {
   }));
 
   return (
-    <>
+    <div className={styles.adaugOra}>
       <Select
         isMulti={false}
         onChange={handleChange}
@@ -42,7 +42,7 @@ const AlegeOra = ({ eveniment }) => {
       >
         <span> Adauga intervalul orar in care putem ajunge</span>
       </button>
-    </>
+    </div>
   );
 };
 

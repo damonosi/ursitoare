@@ -48,7 +48,7 @@ const ConfirmaRezervarea = () => {
           <hr />
           <h2> {ChangeDateOrder(eveniment.dataeveniment)}</h2>
 
-          <h2> Restaurant {eveniment.locatieeveniment}</h2>
+          <h2> Restaurant {eveniment.locatieeveniment.nume}</h2>
           <h2> Ajungem la ora {eveniment.oraConfirmata}</h2>
           <div className={styles.adaugOra}>
             <Select

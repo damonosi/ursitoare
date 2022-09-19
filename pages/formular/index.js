@@ -41,6 +41,7 @@ const FormularPage = () => {
     control,
     getValues,
     setValue,
+    watch,
   } = useForm({
     defaultValues: {
       frati: [{ nume: "", varsta: "" }],
@@ -114,7 +115,7 @@ const FormularPage = () => {
             register={register}
           />
           <RudeStrainatate control={control} register={register} />
-          <Eveniment control={control} register={register} />
+          <Eveniment watch={watch} control={control} register={register} />
         </Suspense>
         <button
         // disabled={ disable }

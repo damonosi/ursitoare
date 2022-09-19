@@ -51,7 +51,7 @@ function Directii({ destinatie }) {
   }
 
   return (
-    <>
+    <div className={styles.containerMapa}>
       <div className={styles.mapContainer}>
         <GoogleMap
           center={center}
@@ -81,7 +81,7 @@ function Directii({ destinatie }) {
           Durata <br /> {duration}{" "}
         </p>
       </div>
-    </>
+    </div>
   );
 }
 

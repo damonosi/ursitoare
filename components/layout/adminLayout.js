@@ -8,12 +8,13 @@ import styles from "./Layout.module.scss";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import Spinner from "../spinner/Spinner";
+import Transition from "./../transition/index";
 const AdminMenu = dynamic(() => import("../header/admin/index.jsx"), {
   suspense: true,
 });
 const AdminLayout = ({ title, children }) => {
   return (
-    <>
+    <div className={styles.adminLayout}>
       <Head>
         <title>{title ? title + "- Ursitoare" : "Ursitoare"}</title>
         <meta name="description" content="Ursitoare App" />
@@ -23,10 +24,12 @@ const AdminLayout = ({ title, children }) => {
         <AdminMenu />
       </Suspense>
       <div className={styles.siteContent}>
-        <main className={styles.mainContentAdmin}>{children}</main>
+        <Transition>
+          <main className={styles.mainContentAdmin}>{children}</main>
+        </Transition>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

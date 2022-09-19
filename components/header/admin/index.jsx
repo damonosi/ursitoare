@@ -15,14 +15,12 @@ const AdminMenu = () => {
     <>
       {!mobileMenu ? (
         <div
-          onClick={() => setCloseMobileMenu(!mobileMenu)}
           className={styles.arrowBackground}
+          onClick={() => setCloseMobileMenu(!mobileMenu)}
         >
-          <div className={styles.openArrow}>
-            <div className={styles.tooltip}>
-              <AiOutlineArrowRight size={"2em"} />
-              <span className={styles.tooltiptext}>Deschide Meniul</span>
-            </div>
+          <div className={styles.tooltip}>
+            <AiOutlineArrowRight size={"2em"} />
+            <span className={styles.tooltiptext}>Deschide Meniul</span>
           </div>
         </div>
       ) : (
@@ -99,27 +97,13 @@ const AdminMenu = () => {
             </Link>
           </li>
           <li>
-            <Link href="/dashboard/admin/program-azi">
+            <Link href="/dashboard/admin/program">
               <a>
                 <button className="explore">
-                  PROGRAM ASTAZI<span className={styles.iconRight}></span>
+                  PROGRAM<span className={styles.iconRight}></span>
                   <span
                     className={`${styles.iconRight} ${styles.after}`}
-                    data-before="AZI"
-                  ></span>
-                </button>
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/dashboard/admin/cereri-de-rezervare">
-              <a>
-                <button className="explore">
-                  PROGRAM SAPTAMANA ASTA
-                  <span className={styles.iconRight}></span>
-                  <span
-                    className={`${styles.iconRight} ${styles.after}`}
-                    data-before="SAPTAMANA ASTA"
+                    data-before="PROGRAM"
                   ></span>
                 </button>
               </a>

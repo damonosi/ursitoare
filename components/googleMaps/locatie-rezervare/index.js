@@ -42,7 +42,6 @@ function MapaRezervare({ register, watch, setValue }) {
   };
   const latitudine = watch("locatieeveniment.lat");
   const longitudine = watch("locatieeveniment.lng");
-  const nume = watch("locatieeveniment.nume");
 
   const handleSelect =
     ({ description }) =>
@@ -79,6 +78,7 @@ function MapaRezervare({ register, watch, setValue }) {
   return (
     <div className={styles.inp} ref={ref}>
       <input
+        placeholder="&nbsp;"
         {...register("locatieeveniment.nume", {
           required: "Va rugam sa ne spuneti unde are loc petrecerea",
         })}
