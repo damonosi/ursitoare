@@ -20,12 +20,14 @@ const Eveniment = dynamic(
   },
 );
 const CreatiEveniment = () => {
+  const [loading, setLoading] = useState(false);
   const {
     handleSubmit,
     register,
     formState: { errors },
     watch,
     setValue,
+    reset,
   } = useForm();
   const [borderColor, addBorder] = useState(false);
   const { data: session, status } = useSession();
@@ -38,6 +40,7 @@ const CreatiEveniment = () => {
     nrcontact,
   }) => {
     try {
+      setLoading(true);
       await axios.post("/api/form", {
         numecopil,
         dataeveniment,
@@ -46,13 +49,12 @@ const CreatiEveniment = () => {
         nrcontact,
         user,
       });
-      addBorder(true);
+      setLoading(false);
+
+      reset();
       toast.success("Ai adaugat un Nou eveniment !", {
         position: toast.POSITION.BOTTOM_CENTER,
       });
-      setTimeout(() => {
-        router.reload();
-      }, 1000);
     } catch (err) {
       toast.error(getError(err));
     }
@@ -60,60 +62,57 @@ const CreatiEveniment = () => {
 
   const router = useRouter();
   const regText = new RegExp("[a-zA-Z]");
+  if (loading) return <Spinner />;
   return (
     <div className={styles.creatiEvenimentContainer}>
-      <div
-        className={borderColor ? styles.evenimentCreat : styles.creatiEveniment}
-      >
-        <ContainerEveniment>
-          <h2>Eveniment nou</h2>
-          <form onSubmit={handleSubmit(submitHandler)}>
-            <div className={styles.inp}>
-              <input
-                placeholder="&nbsp;"
-                type="text"
-                {...register("numecopil", {
-                  required: true,
-                  pattern: {
-                    value: regText,
-                  },
-                })}
-                className=""
-                id="numecopil"
-                autoFocus
-              />
+      <ContainerEveniment>
+        <h2>Eveniment nou</h2>
+        <form onSubmit={handleSubmit(submitHandler)}>
+          <div className={styles.inp}>
+            <input
+              placeholder="&nbsp;"
+              type="text"
+              {...register("numecopil", {
+                required: true,
+                pattern: {
+                  value: regText,
+                },
+              })}
+              className=""
+              id="numecopil"
+              autoFocus
+            />
 
-              <label className={styles.label} htmlFor="numecopil">
-                Numele Copilului
-              </label>
-              <span className={styles.focusBg}></span>
-              {errors.numecopil && errors.numecopil.type === "required" && (
-                <span role="alert" className={styles.errorText}>
-                  adaugati numele copilului
-                </span>
-              )}
-              {errors.numecopil && errors.numecopil.type === "pattern" && (
-                <span role="alert" className={styles.errorText}>
-                  adaugati un nume valid
-                </span>
-              )}
-            </div>
-            <Suspense fallback={<Spinner />}>
-              <Eveniment
-                errors={errors}
-                setValue={setValue}
-                watch={watch}
-                register={register}
-              />
-            </Suspense>
-            <div>
-              <button className={styles.adaugaEvenimentButon}>
-                <span>Adaugati Eveniment Nou</span>{" "}
-              </button>
-            </div>
-          </form>
-        </ContainerEveniment>
-      </div>
+            <label className={styles.label} htmlFor="numecopil">
+              Numele Copilului
+            </label>
+            <span className={styles.focusBg}></span>
+            {errors.numecopil && errors.numecopil.type === "required" && (
+              <span role="alert" className={styles.errorText}>
+                adaugati numele copilului
+              </span>
+            )}
+            {errors.numecopil && errors.numecopil.type === "pattern" && (
+              <span role="alert" className={styles.errorText}>
+                adaugati un nume valid
+              </span>
+            )}
+          </div>
+          <Suspense fallback={<Spinner />}>
+            <Eveniment
+              errors={errors}
+              setValue={setValue}
+              watch={watch}
+              register={register}
+            />
+          </Suspense>
+          <div>
+            <button className={styles.adaugaEvenimentButon}>
+              <span>Adaugati Eveniment Nou</span>{" "}
+            </button>
+          </div>
+        </form>
+      </ContainerEveniment>
     </div>
   );
 };

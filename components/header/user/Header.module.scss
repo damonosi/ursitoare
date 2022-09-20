@@ -111,6 +111,7 @@
   }
 }
 .navLinks {
+  transition: all 0.8s ease-in-out;
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(25px);
@@ -120,9 +121,9 @@
   padding: 1em;
   font-size: 1em;
   height: 15em;
-  z-index: 10000;
 }
 .dashLinks {
+  transition: all 0.8s ease-in-out;
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(25px);
@@ -133,7 +134,6 @@
   padding: 1em;
   height: 15em;
   font-size: 1em;
-  z-index: 10000;
 }
 @media (max-width: 768px) {
   .headerContainer {

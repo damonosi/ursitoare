@@ -46,17 +46,16 @@ const Transition = ({ children }) => {
   const { asPath } = useRouter();
   const shouldReduceMotion = useReducedMotion();
   return (
-    <div className={styles.effect}>
-      <motion.div
-        key={asPath}
-        variants={!shouldReduceMotion ? variants : null}
-        initial="in"
-        animate={["center", "scaleUp"]}
-        exit={["scaleDown", "out"]}
-      >
-        {children}
-      </motion.div>
-    </div>
+    <motion.div
+      className={styles.effect}
+      key={asPath}
+      variants={!shouldReduceMotion ? variants : null}
+      initial="in"
+      animate={["center", "scaleUp"]}
+      exit={["scaleDown", "out"]}
+    >
+      {children}
+    </motion.div>
   );
 };
 
