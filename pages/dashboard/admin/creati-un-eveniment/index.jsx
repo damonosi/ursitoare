@@ -106,21 +106,6 @@ const CreatiEveniment = () => {
           </form>
         </ContainerEveniment>
       </div>
-
-      <div className={styles.containerButoane}>
-        <ButonInnapoi />
-        <div className={styles.butonNextConfirmatiContainer}>
-          <button
-            onClick={() => router.push("/dashboard/admin/organizati-traseul")}
-          >
-            Confirmati Ora &gt;Evenimente
-            <span
-              className={`${styles.iconRight} ${styles.after}`}
-              data-before="Confirma ora"
-            ></span>
-          </button>
-        </div>
-      </div>
     </div>
   );
 };

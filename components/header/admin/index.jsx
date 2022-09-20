@@ -20,7 +20,7 @@ const AdminMenu = () => {
         >
           <div className={styles.tooltip}>
             <AiOutlineArrowRight size={"2em"} />
-            <span className={styles.tooltiptext}>Deschide Meniul</span>
+            <span className={styles.tooltiptext}>Meniu</span>
           </div>
         </div>
       ) : (

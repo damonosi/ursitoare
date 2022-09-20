@@ -52,7 +52,6 @@ const AdaugaUrsitoare = () => {
             {eveniment.ursitoare.length < 3 ? (
               <>
                 <h1>Adauga ursitoare</h1>
-
                 <div className={styles.adaugUrsitoare}>
                   <Select
                     isMulti
@@ -82,8 +81,7 @@ const AdaugaUrsitoare = () => {
                 <h1>Ursitoare</h1>
                 {eveniment.ursitoare.map((ur) => (
                   <div key={ur._id}>
-                    <h3>{ur.name}</h3>
-                    <button>Schimba ursitoarea</button>
+                    <h3>{ur.nume}</h3>
                   </div>
                 ))}
               </div>
@@ -91,7 +89,6 @@ const AdaugaUrsitoare = () => {
           </CasetaEveniment>
         </div>
       ))}
-      <ButonInnapoi />
     </div>
   );
 };
