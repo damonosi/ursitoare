@@ -80,9 +80,10 @@ const OrganizariTraseul = () => {
           maxWidth: "30em",
           padding: "3em",
           textAlign: "center",
+          zIndex: "1000",
         }}
       >
-        <h1> Pe ce data vreti sa Construiti traseul</h1>
+        <h3> Pe ce data vreti sa Construiti traseul</h3>
         <Select options={optiuniSelect} onChange={handleChangeDate} />
       </div>
 
@@ -101,7 +102,7 @@ const OrganizariTraseul = () => {
                   <p>
                     Eventul incepe la ora {eveniment.oraInceputPetrecere}.00
                   </p>
-                  <p> {eveniment.nrcontact}.00</p>
+                  <p> {eveniment.nrcontact}</p>
                 </div>
                 <Suspense fallback={<Spinner />}>
                   <Directii destinatie={destinatie} />

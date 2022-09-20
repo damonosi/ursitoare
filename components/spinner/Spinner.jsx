@@ -12,7 +12,7 @@ const Spinner = () => {
   let [color, setColor] = useState("#3440eb");
   return (
     <div className={styles.loaderContainer}>
-      <CircleLoader color={color} cssOverride={override} size={150} />
+      <CircleLoader color={color} cssOverride={override} size={100} />
     </div>
   );
 };
