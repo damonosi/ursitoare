@@ -40,10 +40,7 @@ const AdminMenu = () => {
 
         <hr />
         <div className={styles.closeArrow}>
-          <AiOutlineArrowLeft
-            size={"2em"}
-            onClick={() => setCloseMobileMenu(!mobileMenu)}
-          />
+          <span>x</span>
         </div>
         <ul>
           <li onClick={() => closeNavMenu()}>

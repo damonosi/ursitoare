@@ -217,9 +217,12 @@
   .closeArrow {
     position: fixed;
     display: block;
-    color: #fff;
+    color: red;
+    font-weight: bold;
     right: 0;
-    width: 3em;
+    margin-right: 0.3em;
+    top: 0;
+    font-size: 30px;
     cursor: pointer;
     button {
       all: unset;
