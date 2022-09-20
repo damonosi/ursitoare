@@ -16,7 +16,7 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
 const ModificaOra = dynamic(
-  () => import("./../../../../components/organizati-traseul/ModificaOra"),
+  () => import("../../../../components/admin/organizati-traseul/ModificaOra"),
   {
     suspense: true,
   },
@@ -32,10 +32,10 @@ const Programul = () => {
     const fetchRezervari = async () => {
       await axios.get("/api/admin/program").then((res) => {
         setEvenimenteAzi(res.data);
-        setLoading(false);
       });
     };
     fetchRezervari();
+    setLoading(false);
   }, []);
   const evenimenteAziSortate = rezervariAzi.sort((a, b) => {
     return (
@@ -104,7 +104,7 @@ const Programul = () => {
                       <h2>Copil {evAzi.numecopil}</h2>
                     </div>
                     <div className={styles.containerInformatii}>
-                      <h2>Ajungem la ora {evAzi.oraConfirmata}.00</h2>
+                      <h2>Ajungem la {evAzi.oraConfirmata}.00</h2>
                       <Suspense fallback={<Spinner />}>
                         <ModificaOra evenimentId={evAzi._id} />
                       </Suspense>
@@ -126,7 +126,7 @@ const Programul = () => {
 
                     <div className={styles.containerInformatii}>
                       <h3>
-                        <BiPhoneCall /> {evAzi.nrcontact}
+                        <BiPhoneCall /> <br /> {evAzi.nrcontact}
                       </h3>
                     </div>
 

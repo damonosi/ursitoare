@@ -85,19 +85,6 @@ const AdminMenu = () => {
           </li>
 
           <li onClick={() => closeNavMenu()}>
-            <Link href="/dashboard/admin/adauga-ursitoare">
-              <a>
-                <button className="explore">
-                  ADAUGA URSITOARE<span className={styles.iconRight}></span>
-                  <span
-                    className={`${styles.iconRight} ${styles.after}`}
-                    data-before="URSITOARE"
-                  ></span>
-                </button>
-              </a>
-            </Link>
-          </li>
-          <li onClick={() => closeNavMenu()}>
             <Link href="/dashboard/admin/program">
               <a>
                 <button className="explore">

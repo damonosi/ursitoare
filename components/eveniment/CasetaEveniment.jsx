@@ -1,6 +1,7 @@
 import styles from "./CasetaEveniment.module.scss";
 import Collapsible from "react-collapsible";
 import { useState } from "react";
+import ChangeDateOrder from "../../utils/formatData";
 
 const CasetaEveniment = ({ children, eveniment }) => {
   const [border, setBorder] = useState(false);
@@ -14,7 +15,13 @@ const CasetaEveniment = ({ children, eveniment }) => {
             className={!border ? styles.openBtn : styles.closeBtn}
             onClick={() => setBorder(!border)}
           >
-            <>{!border ? <h1>{eveniment?.numecopil}</h1> : <span>X</span>}</>
+            <>
+              {!border ? (
+                <h1>{ChangeDateOrder(eveniment?.dataeveniment)}</h1>
+              ) : (
+                <span>X</span>
+              )}
+            </>
           </button>
         }
       >

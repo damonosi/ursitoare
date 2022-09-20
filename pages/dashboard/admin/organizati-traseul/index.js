@@ -12,7 +12,14 @@ import ContainerEveniment from "./../../../../components/eveniment/ContainerEven
 import dynamic from "next/dynamic";
 
 const AlegeOra = dynamic(
-  () => import("./../../../../components/organizati-traseul/alegeOra"),
+  () => import("./../../../../components/admin/organizati-traseul/alegeOra"),
+  {
+    suspense: true,
+  },
+);
+
+const AdaugaUrsitoare = dynamic(
+  () => import("./../../../../components/admin/adaugaUrsitoare/index"),
   {
     suspense: true,
   },
@@ -99,6 +106,7 @@ const OrganizariTraseul = () => {
                 <Suspense fallback={<Spinner />}>
                   <Directii destinatie={destinatie} />
                   <AlegeOra eveniment={eveniment} />{" "}
+                  <AdaugaUrsitoare eveniment={eveniment} />
                 </Suspense>
               </ContainerEveniment>
             );

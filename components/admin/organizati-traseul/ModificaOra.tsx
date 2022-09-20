@@ -7,11 +7,13 @@ import { useRouter } from "next/router";
 
 import { IconContext } from "react-icons";
 import { GrStatusGood } from "react-icons/gr";
+import Spinner from "../../spinner/Spinner";
 
 const ModificaOra = (evenimentId) => {
   const [userChoice, setUserChoice] = useState({ value: "", label: "" });
   const [inchis, setDeschisModifica] = useState(false);
   const [deschisModifica, setDeschis] = useState(true);
+  const [loading, setLoading] = useState(false);
   const handleChange = (chioce) => {
     setUserChoice(chioce);
   };
@@ -31,16 +33,18 @@ const ModificaOra = (evenimentId) => {
   const evId = evenimentId.evenimentId;
   const handleModificaOra = async () => {
     const oraValue = userChoice.value;
+    setLoading(true);
     await axios.post("/api/rezervari/confirmare-rezervare", {
       oraValue,
       evId,
     });
-    toast.success("Ora A Fost Modificata !");
+    setLoading(false);
     setTimeout(() => {
       router.reload();
-    }, 1500);
+    }, 1000);
+    toast.success("Ora A Fost Modificata !");
   };
-
+  if (loading) return <Spinner />;
   return (
     <div className={styles.oraContainer}>
       {deschisModifica ? (
