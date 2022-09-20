@@ -7,6 +7,9 @@ import useOnclickOutside from "react-cool-onclickoutside";
 
 const AdminMenu = () => {
   const [mobileMenu, setCloseMobileMenu] = useState(false);
+
+  const closeNavMenu = () => setCloseMobileMenu(false);
+
   const ref = useOnclickOutside(() => {
     setCloseMobileMenu();
   });
@@ -43,7 +46,20 @@ const AdminMenu = () => {
           />
         </div>
         <ul>
-          <li>
+          <li onClick={() => closeNavMenu()}>
+            <Link href="/">
+              <a>
+                <button className="explore">
+                  ACASA<span className={styles.iconRight}></span>
+                  <span
+                    className={`${styles.iconRight} ${styles.after}`}
+                    data-before="ACASA"
+                  ></span>
+                </button>
+              </a>
+            </Link>
+          </li>
+          <li onClick={() => closeNavMenu()}>
             <Link href="/dashboard/admin/creati-un-eveniment">
               <a>
                 <button className="explore">
@@ -56,7 +72,7 @@ const AdminMenu = () => {
               </a>
             </Link>
           </li>
-          <li>
+          <li onClick={() => closeNavMenu()}>
             <Link href="/dashboard/admin/organizati-traseul">
               <a>
                 <button className="explore">
@@ -71,7 +87,7 @@ const AdminMenu = () => {
             </Link>
           </li>
 
-          <li>
+          <li onClick={() => closeNavMenu()}>
             <Link href="/dashboard/admin/adauga-ursitoare">
               <a>
                 <button className="explore">
@@ -84,7 +100,7 @@ const AdminMenu = () => {
               </a>
             </Link>
           </li>
-          <li>
+          <li onClick={() => closeNavMenu()}>
             <Link href="/dashboard/admin/program">
               <a>
                 <button className="explore">

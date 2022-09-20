@@ -5,7 +5,7 @@ import { SessionProvider, useSession } from "next-auth/react";
 import { AnimatePresence } from "framer-motion";
 
 import Spinner from "../components/spinner/Spinner";
-import Transition from "./../components/transition/index";
+
 import Layout from "./../components/layout/index";
 
 import "../styles/globals.css";

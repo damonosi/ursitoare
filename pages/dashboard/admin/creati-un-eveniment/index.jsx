@@ -58,9 +58,7 @@ const CreatiEveniment = () => {
         className={borderColor ? styles.evenimentCreat : styles.creatiEveniment}
       >
         <ContainerEveniment>
-          <h1>
-            Creati un <br /> eveniment nou
-          </h1>
+          <h2>Eveniment nou</h2>
           <form onSubmit={handleSubmit(submitHandler)}>
             <div className={styles.inp}>
               <input
@@ -83,12 +81,12 @@ const CreatiEveniment = () => {
               <span className={styles.focusBg}></span>
               {errors.numecopil && errors.numecopil.type === "required" && (
                 <span role="alert" className={styles.errorText}>
-                  Adaugati Numele Copilului
+                  adaugati numele copilului
                 </span>
               )}
               {errors.numecopil && errors.numecopil.type === "pattern" && (
                 <span role="alert" className={styles.errorText}>
-                  Adaugati un nume valid
+                  adaugati un nume valid
                 </span>
               )}
             </div>
