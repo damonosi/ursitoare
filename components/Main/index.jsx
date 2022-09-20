@@ -56,25 +56,14 @@ const HomePage = () => {
 
       {mounted && isTabletPhone && (
         <section className={styles.secIntroducere}>
-          <motion.div
-            initial={{ x: 10 }}
-            animate={{ x: 0 }}
-            transition={{ duration: 2 }}
-            className={styles.imgIntroducere}
-          >
+          <div className={styles.imgIntroducere}>
             <Image src={CortinaMobil} alt="ursitoare1" />
-          </motion.div>
-          <motion.div
-            custom={0}
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 2 }}
-            className={styles.textIntro}
-          >
+          </div>
+          <div className={styles.textIntro}>
             <h2>Bucurati-va de</h2>
             <h2>momente de neuitat</h2>
             <h2>alaturi de trei zane ursitoare</h2>
-          </motion.div>
+          </div>
         </section>
       )}
 

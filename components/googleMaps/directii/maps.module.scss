@@ -31,3 +31,17 @@
   // padding-top: 3em;
   // padding-bottom: 3em;
 }
+@media (max-width: 768px) {
+  .infoHarta {
+    padding: 1em;
+    padding-right: 2em;
+    font-size: 15px;
+  }
+  .containerMapa {
+    display: flex;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+  }
+}

@@ -2,7 +2,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { GoogleMap, MarkerF, DirectionsRenderer } from "@react-google-maps/api";
 
-import { FaLocationArrow } from "react-icons/fa";
+import { GiPathDistance } from "react-icons/gi";
+import { BiTimer } from "react-icons/bi";
 
 import styles from "./maps.module.scss";
 
@@ -74,11 +75,11 @@ function Directii({ destinatie }) {
 
       <div className={styles.infoHarta}>
         <p>
-          Distanta <br /> {distance}{" "}
+          <GiPathDistance style={{ fontSize: "40px" }} /> <br /> {distance}{" "}
         </p>
         <hr />
         <p>
-          Durata <br /> {duration}{" "}
+          <BiTimer style={{ fontSize: "30px" }} /> <br /> {duration}{" "}
         </p>
       </div>
     </div>
