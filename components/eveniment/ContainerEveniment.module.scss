@@ -20,3 +20,9 @@
     color: rgb(218, 64, 64);
   }
 }
+
+@media (max-width: 768px) {
+  .evenimentContainer {
+    padding: 0em;
+  }
+}

@@ -242,8 +242,12 @@
 }
 @media (max-width: 768px) {
   .creatiEveniment {
-    width: 20em;
+    width: 19em;
   }
+  .evenimentCreat {
+    width: 19em;
+  }
+
   .containerButoane {
     padding: 2em 15em;
   }
@@ -252,5 +256,10 @@
   }
   .butonInnapoi {
     width: 50%;
+  }
+  .inp {
+    input {
+      height: 4em;
+    }
   }
 }

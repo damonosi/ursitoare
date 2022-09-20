@@ -118,4 +118,9 @@
   .dateEveniment {
     grid-template-columns: 1fr;
   }
+  .inp {
+    input {
+      height: 4em;
+    }
+  }
 }

@@ -39,7 +39,7 @@ const AdminMenu = () => {
         <h1>Panou de Comanda</h1>
 
         <hr />
-        <div className={styles.closeArrow}>
+        <div className={styles.closeArrow} onClick={() => closeNavMenu()}>
           <span>x</span>
         </div>
         <ul>
