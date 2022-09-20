@@ -39,7 +39,7 @@ const AlegeOra = ({ eveniment }) => {
           toast.success("Ai confirmat evenimentu si adaugat ora de sosire");
         }}
       >
-        <span> Adauga intervalul orar in care putem ajunge</span>
+        <span> Adauga la ce ora vei ajunge</span>
       </button>
     </div>
   );

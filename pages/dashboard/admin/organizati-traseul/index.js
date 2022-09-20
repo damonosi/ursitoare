@@ -4,7 +4,7 @@ import ChangeDateOrder from "../../../../utils/formatData";
 
 import styles from "./organizare.module.scss";
 import Select from "react-select";
-
+import { BsWhatsapp } from "react-icons/bs";
 import { Suspense } from "react";
 import Spinner from "./../../../../components/spinner/Spinner";
 
@@ -83,7 +83,7 @@ const OrganizariTraseul = () => {
           zIndex: "1000",
         }}
       >
-        <h3> Pe ce data vreti sa Construiti traseul</h3>
+        <h3> Pe ce data vreti sa construiti traseul</h3>
         <Select options={optiuniSelect} onChange={handleChangeDate} />
       </div>
 
@@ -102,7 +102,11 @@ const OrganizariTraseul = () => {
                   <p>
                     Eventul incepe la ora {eveniment.oraInceputPetrecere}.00
                   </p>
-                  <p> {eveniment.nrcontact}</p>
+                  <p>
+                    <a href={`https://wa.me/+40${eveniment.nrcontact}`}>
+                      <BsWhatsapp /> <br /> {eveniment.nrcontact}
+                    </a>
+                  </p>
                 </div>
                 <Suspense fallback={<Spinner />}>
                   <Directii destinatie={destinatie} />

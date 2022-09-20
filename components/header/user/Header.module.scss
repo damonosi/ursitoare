@@ -112,7 +112,7 @@
 }
 .navLinks {
   transition: all 0.8s ease-in-out;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.781);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
@@ -124,7 +124,7 @@
 }
 .dashLinks {
   transition: all 0.8s ease-in-out;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.76);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
@@ -135,6 +135,7 @@
   height: 15em;
   font-size: 1em;
 }
+
 @media (max-width: 768px) {
   .headerContainer {
     padding: 0.5em;

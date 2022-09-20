@@ -10,7 +10,7 @@ import Select from "react-select";
 import ChangeDateOrder from "./../../../../utils/formatData";
 import ContainerEveniment from "./../../../../components/eveniment/ContainerEveniment";
 
-import { BiPhoneCall } from "react-icons/bi";
+import { BsWhatsapp } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
@@ -126,7 +126,9 @@ const Programul = () => {
 
                     <div className={styles.containerInformatii}>
                       <h3>
-                        <BiPhoneCall /> <br /> {evAzi.nrcontact}
+                        <a href={`https://wa.me/+40${evAzi.nrcontact}`}>
+                          <BsWhatsapp /> <br /> {evAzi.nrcontact}
+                        </a>
                       </h3>
                     </div>
 
