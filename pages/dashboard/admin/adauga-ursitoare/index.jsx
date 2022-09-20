@@ -4,7 +4,6 @@ import Select from "react-select";
 import styles from "./adaudaUrsitoare.module.scss";
 import CasetaEveniment from "../../../../components/eveniment/CasetaEveniment";
 import { toast } from "react-toastify";
-import ButonInnapoi from "./../../../../components/butoane/ButonInnapoi";
 
 const AdaugaUrsitoare = () => {
   const [rezervari, setRezervari] = useState([]);

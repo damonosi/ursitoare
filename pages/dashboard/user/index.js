@@ -149,7 +149,9 @@ export default function RezFacute() {
                   </div>
                   <h2> Detalii eveniment</h2>
                   <div className={styles.detaliiEveniment}>
-                    <h3>Restaurant/adresa : {eveniment.locatieeveniment}</h3>
+                    <h3>
+                      Restaurant/adresa : {eveniment.locatieeveniment.nume}
+                    </h3>
 
                     <h3>
                       Data evenimentului{" "}

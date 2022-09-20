@@ -2,17 +2,25 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./ProgramAzi.module.scss";
-import { useDate } from "../../../../utils/hooks/useDate";
+
 import Directii from "../../../../components/googleMaps/directii";
 
 import Spinner from "../../../../components/spinner/Spinner";
-import ButonInnapoi from "../../../../components/butoane/ButonInnapoi";
 import Select from "react-select";
 import ChangeDateOrder from "./../../../../utils/formatData";
 import ContainerEveniment from "./../../../../components/eveniment/ContainerEveniment";
-import ModificaOra from "./../../../../components/organizati-traseul/ModificaOra";
+
 import { BiPhoneCall } from "react-icons/bi";
 import { MdLocationOn } from "react-icons/md";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+const ModificaOra = dynamic(
+  () => import("./../../../../components/organizati-traseul/ModificaOra"),
+  {
+    suspense: true,
+  },
+);
 
 const Programul = () => {
   const [loading, setLoading] = useState(false);
@@ -97,8 +105,9 @@ const Programul = () => {
                     </div>
                     <div className={styles.containerInformatii}>
                       <h2>Ajungem la ora {evAzi.oraConfirmata}.00</h2>
-
-                      <ModificaOra evenimentId={evAzi._id} />
+                      <Suspense fallback={<Spinner />}>
+                        <ModificaOra evenimentId={evAzi._id} />
+                      </Suspense>
                     </div>
 
                     <div className={styles.containerInformatii}>

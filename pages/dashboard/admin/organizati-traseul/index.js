@@ -5,12 +5,18 @@ import ChangeDateOrder from "../../../../utils/formatData";
 import styles from "./organizare.module.scss";
 import Select from "react-select";
 
-import ButonInnapoi from "../../../../components/butoane/ButonInnapoi";
 import { Suspense } from "react";
 import Spinner from "./../../../../components/spinner/Spinner";
-import AlegeOra from "./../../../../components/organizati-traseul/alegeOra";
+
 import ContainerEveniment from "./../../../../components/eveniment/ContainerEveniment";
 import dynamic from "next/dynamic";
+
+const AlegeOra = dynamic(
+  () => import("./../../../../components/organizati-traseul/alegeOra"),
+  {
+    suspense: true,
+  },
+);
 const Directii = dynamic(
   () => import("../../../../components/googleMaps/directii"),
   {
@@ -92,8 +98,8 @@ const OrganizariTraseul = () => {
                 </div>
                 <Suspense fallback={<Spinner />}>
                   <Directii destinatie={destinatie} />
+                  <AlegeOra eveniment={eveniment} />{" "}
                 </Suspense>
-                <AlegeOra eveniment={eveniment} />{" "}
               </ContainerEveniment>
             );
           }

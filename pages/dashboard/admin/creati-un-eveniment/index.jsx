@@ -6,11 +6,19 @@ import { useSession } from "next-auth/react";
 
 import styles from "./CreatiEveniment.module.scss";
 import { getError } from "../../../../utils/error";
-import Eveniment from "./../../../../components/formular/eveniment/index";
-import ButonInnapoi from "./../../../../components/butoane/ButonInnapoi";
+
 import { useRouter } from "next/router";
 import ContainerEveniment from "../../../../components/eveniment/ContainerEveniment";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import Spinner from "../../../../components/spinner/Spinner";
 
+const Eveniment = dynamic(
+  () => import("./../../../../components/formular/eveniment/index"),
+  {
+    suspense: true,
+  },
+);
 const CreatiEveniment = () => {
   const {
     handleSubmit,
@@ -90,12 +98,14 @@ const CreatiEveniment = () => {
                 </span>
               )}
             </div>
-            <Eveniment
-              errors={errors}
-              setValue={setValue}
-              watch={watch}
-              register={register}
-            />
+            <Suspense fallback={<Spinner />}>
+              <Eveniment
+                errors={errors}
+                setValue={setValue}
+                watch={watch}
+                register={register}
+              />
+            </Suspense>
             <div>
               <button className={styles.adaugaEvenimentButon}>
                 <span>Adaugati Eveniment Nou</span>{" "}

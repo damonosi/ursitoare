@@ -1,4 +1,4 @@
-import { useForm, useFieldArray } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import styles from "./Formular.module.scss";
 
@@ -115,7 +115,12 @@ const FormularPage = () => {
             register={register}
           />
           <RudeStrainatate control={control} register={register} />
-          <Eveniment watch={watch} control={control} register={register} />
+          <Eveniment
+            errors={errors}
+            watch={watch}
+            control={control}
+            register={register}
+          />
         </Suspense>
         <button
         // disabled={ disable }
