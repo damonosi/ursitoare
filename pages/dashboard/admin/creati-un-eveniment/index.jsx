@@ -65,7 +65,10 @@ const CreatiEveniment = () => {
     <div className={styles.creatiEvenimentContainer}>
       <ContainerEveniment>
         <h2>Eveniment nou</h2>
-        <form onSubmit={handleSubmit(submitHandler)}>
+        <form
+          className={styles.formularCreazaSingur}
+          onSubmit={handleSubmit(submitHandler)}
+        >
           <Suspense fallback={<Spinner />}>
             <Eveniment
               errors={errors}

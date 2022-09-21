@@ -20,12 +20,12 @@ const AdaugaUrsitoare = ({ eveniment }) => {
     label: u.name,
   }));
   useEffect(() => {
-    setLoading(true);
     const fetchUrsitoare = async () => {
       await axios.get("/api/ursitoare").then((res) => {
         setUrsitoare(res.data);
       });
     };
+    setLoading(true);
     fetchUrsitoare();
     setLoading(false);
   }, []);

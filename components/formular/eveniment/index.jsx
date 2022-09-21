@@ -83,17 +83,16 @@ const Eveniment = ({ register, control, watch, setValue, errors }) => {
           <span className={styles.errorText}>adaugati un numar valid</span>
         )}
       </div>
-      <div>
-        <Suspense fallback={<Spinner />}>
-          <MapaRezervare
-            errors={errors}
-            watch={watch}
-            register={register}
-            control={control}
-            setValue={setValue}
-          />
-        </Suspense>
-      </div>
+
+      <Suspense fallback={<Spinner />}>
+        <MapaRezervare
+          errors={errors}
+          watch={watch}
+          register={register}
+          control={control}
+          setValue={setValue}
+        />
+      </Suspense>
     </div>
   );
 };

@@ -9,7 +9,8 @@
   width: 100%;
   max-width: 280px;
   border-radius: 3px;
-  overflow: hidden;
+  overflow: visible;
+  height: 3.5em;
 
   input {
     -webkit-appearance: none;
@@ -102,7 +103,7 @@
 }
 .sugestii {
   height: 100px;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.973);
   overflow: scroll;
   display: flex;
   flex-direction: column;
@@ -114,6 +115,11 @@
     all: unset;
     text-align: left;
     cursor: pointer;
+    padding: 0.1em;
+
+    &:hover {
+      border: 1px solid black;
+    }
   }
 }
 .latLngContainer {

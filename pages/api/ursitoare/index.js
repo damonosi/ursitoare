@@ -14,7 +14,7 @@ const handler = async (req, res) => {
   Ursaitoare.map((ursitoare) => {
     UrsMinim.push({ name: ursitoare.name, _id: ursitoare._id });
   });
-  console.log(UrsMinim);
+
   await db.disconnect();
   res.send(UrsMinim);
 };
