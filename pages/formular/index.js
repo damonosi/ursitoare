@@ -119,6 +119,7 @@ const FormularPage = () => {
             errors={errors}
             watch={watch}
             control={control}
+            setValue={setValue}
             register={register}
           />
         </Suspense>
