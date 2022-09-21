@@ -80,7 +80,6 @@ const OrganizariTraseul = () => {
           maxWidth: "30em",
           padding: "3em",
           textAlign: "center",
-          zIndex: "1000",
         }}
       >
         <h3> Pe ce data vreti sa construiti traseul</h3>
