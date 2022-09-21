@@ -92,7 +92,7 @@
 }
 .adaugaEvenimentButon {
   padding: 1.5em;
-  margin-top: 1em;
+  margin-top: 3em;
   border-radius: 5%;
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.15);
@@ -126,10 +126,6 @@
   color: red;
 }
 
-.formularCreazaSingur {
-  width: 30em;
-  height: 20em;
-}
 @media (max-width: 768px) {
   .creatiEveniment {
     width: 17em;
