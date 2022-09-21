@@ -104,7 +104,6 @@ const OrganizariTraseul = () => {
                   </p>
                   <p>
                     Nr. de contact <br />
-                    <hr />
                     <a href={`https://wa.me/+40${eveniment.nrcontact}`}>
                       {eveniment.nrcontact}
                       <BsWhatsapp style={{ marginLeft: "10px" }} />
