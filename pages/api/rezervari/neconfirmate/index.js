@@ -19,7 +19,13 @@ const handler = async (req, res) => {
     let dataEveniment = new Date(eveniment.dataeveniment);
 
     if (dataEveniment.getDate() >= dataAzi.getDate()) {
-      evenimenteValabile.push(eveniment);
+      evenimenteValabile.push({
+        dataeveniment: eveniment.dataeveniment,
+        locatieeveniment: eveniment.locatieeveniment,
+        oraInceputPetrecere: eveniment.oraInceputPetrecere,
+        nrcontact: eveniment.nrcontact,
+        ursitoare: eveniment.ursitoare,
+      });
     }
   });
 

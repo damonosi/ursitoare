@@ -34,7 +34,7 @@ const Directii = dynamic(
 const OrganizariTraseul = () => {
   const [neconfirmate, setNeconfirmate] = useState([]);
 
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState({});
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -42,10 +42,10 @@ const OrganizariTraseul = () => {
     const fetchEvNeconfirmnate = async () => {
       await axios.get("/api/rezervari/neconfirmate").then((res) => {
         setNeconfirmate(res.data);
-        setLoading(false);
       });
     };
     fetchEvNeconfirmnate();
+    setLoading(false);
   }, []);
 
   const neconfirmateSort = neconfirmate.sort((a, b) => {
