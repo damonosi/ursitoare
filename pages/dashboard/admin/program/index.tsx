@@ -1,4 +1,3 @@
-/*global google*/
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./ProgramAzi.module.scss";
@@ -14,6 +13,7 @@ import { BsWhatsapp } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+import Link from "next/link";
 
 const ModificaOra = dynamic(
   () => import("../../../../components/admin/organizati-traseul/ModificaOra"),
@@ -60,7 +60,7 @@ const Programul = () => {
     console.log(selectedOption);
     setSelectedDate(selectedOption);
   };
-
+  console.log(optiuniSelect.length);
   if (loading) {
     return <Spinner />;
   }
@@ -82,7 +82,19 @@ const Programul = () => {
           ChangeDateOrder(selectedDate.value)
         ) : (
           <div className={styles.selectDate}>
-            <h3>ALEGETI O DATA</h3>
+            {optiuniSelect.length === 0 ? (
+              <>
+                <h4>Nu aveti evenimente viitoare !</h4>
+
+                <Link href="/dashboard/admin/organizati-traseul">
+                  <a>
+                    <button>Mergeti sa va organizati traseele </button>
+                  </a>
+                </Link>
+              </>
+            ) : (
+              <h4>ALEGETI O DATA</h4>
+            )}
           </div>
         )}
       </h1>

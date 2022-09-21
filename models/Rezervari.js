@@ -4,7 +4,7 @@ export const evenimenteSchema = new mongoose.Schema(
   {
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     confirmat: { type: Boolean, required: false, default: false },
-    numecopil: { type: String, required: true },
+    numecopil: { type: String, required: false },
     datanastere: { type: String, required: false },
     frati: [
       {

@@ -100,17 +100,20 @@ const OrganizariTraseul = () => {
                   <h2> {eveniment.locatieeveniment.nume}</h2>
                   <hr />
                   <p>
-                    Eventul incepe la ora {eveniment.oraInceputPetrecere}.00
+                    Evenimetul incepe la ora {eveniment.oraInceputPetrecere}.00
                   </p>
                   <p>
+                    Nr. de contact <br />
+                    <hr />
                     <a href={`https://wa.me/+40${eveniment.nrcontact}`}>
-                      <BsWhatsapp /> <br /> {eveniment.nrcontact}
+                      {eveniment.nrcontact}
+                      <BsWhatsapp style={{ marginLeft: "10px" }} />
                     </a>
                   </p>
                 </div>
                 <Suspense fallback={<Spinner />}>
                   <Directii destinatie={destinatie} />
-                  <AlegeOra eveniment={eveniment} />{" "}
+                  <AlegeOra eveniment={eveniment} />
                   <AdaugaUrsitoare eveniment={eveniment} />
                 </Suspense>
               </ContainerEveniment>

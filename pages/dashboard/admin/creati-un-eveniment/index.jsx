@@ -60,44 +60,12 @@ const CreatiEveniment = () => {
     }
   };
 
-  const router = useRouter();
-  const regText = new RegExp("[a-zA-Z]");
   if (loading) return <Spinner />;
   return (
     <div className={styles.creatiEvenimentContainer}>
       <ContainerEveniment>
         <h2>Eveniment nou</h2>
         <form onSubmit={handleSubmit(submitHandler)}>
-          <div className={styles.inp}>
-            <input
-              placeholder="&nbsp;"
-              type="text"
-              {...register("numecopil", {
-                required: true,
-                pattern: {
-                  value: regText,
-                },
-              })}
-              className=""
-              id="numecopil"
-              autoFocus
-            />
-
-            <label className={styles.label} htmlFor="numecopil">
-              Numele Copilului
-            </label>
-            <span className={styles.focusBg}></span>
-            {errors.numecopil && errors.numecopil.type === "required" && (
-              <span role="alert" className={styles.errorText}>
-                adaugati numele copilului
-              </span>
-            )}
-            {errors.numecopil && errors.numecopil.type === "pattern" && (
-              <span role="alert" className={styles.errorText}>
-                adaugati un nume valid
-              </span>
-            )}
-          </div>
           <Suspense fallback={<Spinner />}>
             <Eveniment
               errors={errors}

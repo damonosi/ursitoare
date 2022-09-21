@@ -14,12 +14,15 @@ const handler = async (req, res) => {
   await db.disconnect();
   let evenimenteValabile = new Array();
   let dataAzi = new Date();
+
   neconfirmate.map((eveniment) => {
     let dataEveniment = new Date(eveniment.dataeveniment);
+
     if (dataEveniment.getDate() >= dataAzi.getDate()) {
       evenimenteValabile.push(eveniment);
     }
   });
+
   const valSort = evenimenteValabile.sort((a, b) => {
     return a.oraInceputPetrecere - b.oraInceputPetrecere;
   });
