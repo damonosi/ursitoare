@@ -21,14 +21,16 @@ const AdaugaUrsitoare = ({ eveniment }) => {
   }));
   useEffect(() => {
     const fetchUrsitoare = async () => {
+      setLoading(true);
       await axios.get("/api/ursitoare").then((res) => {
         setUrsitoare(res.data);
       });
+      setLoading(false);
     };
-    setLoading(true);
+
     fetchUrsitoare();
-    setLoading(false);
   }, []);
+
   if (loading) return <Spinner />;
   return (
     <>

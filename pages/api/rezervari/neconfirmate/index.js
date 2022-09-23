@@ -20,6 +20,7 @@ const handler = async (req, res) => {
 
     if (dataEveniment.getDate() >= dataAzi.getDate()) {
       evenimenteValabile.push({
+        _id: eveniment._id,
         dataeveniment: eveniment.dataeveniment,
         locatieeveniment: eveniment.locatieeveniment,
         oraInceputPetrecere: eveniment.oraInceputPetrecere,
