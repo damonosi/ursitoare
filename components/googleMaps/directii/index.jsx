@@ -56,7 +56,7 @@ function Directii({ destinatie }) {
       <div className={styles.mapContainer}>
         <GoogleMap
           center={center}
-          zoom={15}
+          zoom={5}
           mapContainerStyle={{ width: "100%", height: "100%" }}
           options={{
             zoomControl: false,
