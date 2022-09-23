@@ -39,13 +39,14 @@ const OrganizariTraseul = () => {
 
   useEffect(() => {
     const fetchEvNeconfirmnate = async () => {
+      setLoading(true);
       await axios.get("/api/rezervari/neconfirmate").then((res) => {
         setNeconfirmate(res.data);
       });
+      setLoading(false);
     };
-    setLoading(true);
+
     fetchEvNeconfirmnate();
-    setLoading(false);
   }, []);
 
   const neconfirmateSort = neconfirmate.sort((a, b) => {
